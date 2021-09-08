@@ -1,12 +1,33 @@
-import bg from './assets/asset-m.png';
+import { Route } from 'react-router-dom';
+
+import Base from './components/layout/Base';
+import ScrollTopTop from './hooks/ScrollToTop';
+
+import Auth from './pages/Auth';
+import SetUp from './pages/SetUp';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
-    <div className='min-h-screen max-h-screen w-screen flex relative'>
-      <img src={bg} className='w-screen h-screen object-cover object-left' alt='logo' />
+    <ScrollTopTop>
+      <Route exact path={['/', '/auth']}>
+        <Base>
+          <Auth />
+        </Base>
+      </Route>
 
-      <div style={{ minWidth: '48rem' }} className={`bg-brand_blue absolute right-0 top-0 bottom-0 z-10 w-5/12 h-screen`}></div>
-    </div>
+      <Route exact path={'/setup'}>
+        <Base>
+          <SetUp />
+        </Base>
+      </Route>
+
+      <Route exact path={'/dashboard'}>
+        <Base>
+          <Dashboard />
+        </Base>
+      </Route>
+    </ScrollTopTop>
   );
 }
 

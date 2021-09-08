@@ -1,0 +1,35 @@
+.tab {
+  width: 100%;
+  padding-top: 16px;
+  color: #5f7d95;
+}
+
+.inline {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+}
+
+.item {
+  display: inline-block;
+  margin-left: 0;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid #5f7d95;
+  transition: all 0.5s;
+  font-weight: 600;
+  cursor: pointer;
+  color: #5f7d95;
+}
+
+.selected {
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}

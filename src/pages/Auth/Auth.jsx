@@ -8,11 +8,14 @@ import SignUp from '../../components/fragments/SignUp';
 
 const Auth = () => {
   return (
-    <div className='min-h-screen flex relative'>
+    <div className='min-h-screen flex relative overflow-hidden'>
       <img src={bg} className='w-screen h-screen object-cover object-left' alt='asset management' />
 
       <div className={`bg-brand_blue absolute right-0 top-0 bottom-0 z-10 w-full lg:w-5/12 h-screen flex justify-center items-center`}>
-        <div className={`w-full max-w-md m-12 p-12 border border-brand_blue_light rounded-2xl`}>
+        <div
+          style={{ maxHeight: 'calc(100vh - 96px)' }}
+          className={`w-full max-h-screen max-w-lg m-6 p-6 sm:m-12 sm:p-12 border border-brand_blue_light rounded-2xl transition_all overflow-auto overflow-x-hidden`}
+        >
           <Tabs>
             <Panel title={'Log In'}>
               <Login />

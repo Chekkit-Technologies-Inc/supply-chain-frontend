@@ -5,9 +5,9 @@ import Button from '../Button';
 
 const Login = () => {
   return (
-    <div>
-      <InputBox />
-      <InputBox />
+    <div className={`space-y-8`}>
+      <InputBox type={`email`} placeholder={`Email Address`} />
+      <InputBox type={`password`} placeholder={`Password`} />
       <Button text={`Log In`} className={`w-full`} variant={1} />
     </div>
   );

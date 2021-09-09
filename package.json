@@ -25,6 +25,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "deploy": "aws s3 sync build/ s3://chekkit-supply-chain",
     "test": "craco test",
     "eject": "react-scripts eject"
   },

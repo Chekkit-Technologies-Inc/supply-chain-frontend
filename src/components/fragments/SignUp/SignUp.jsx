@@ -6,8 +6,11 @@ import Button from '../Button';
 const SignUp = () => {
   return (
     <div className={`space-y-8`}>
-      <InputBox className={`w-full p-5 rounded-t-lg border-b-2 border-brand_blue_light bg-white bg-opacity-10 focus:outline-none`} />
-      <InputBox className={`w-full p-5 rounded-t-lg border-b-2 border-brand_blue_light bg-white bg-opacity-10 focus:outline-none`} />
+      <InputBox type={`text`} placeholder={`Full Name`} />
+      <InputBox type={`email`} placeholder={`Email Address`} />
+      <InputBox type={`tel`} placeholder={`Phone Number`} />
+      <InputBox type={`password`} placeholder={`Password`} />
+      <InputBox type={`password`} placeholder={`Confirm Password`} />
       <Button text={`Sign Up`} className={`w-full`} variant={1} />
     </div>
   );

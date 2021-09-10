@@ -17,7 +17,12 @@ const InputBox = ({ className, type, placeholder }) => {
       {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
       {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
 
-      <input className={`flex-1 bg-transparent focus:outline-none`} spellCheck={false} type={typex} placeholder={placeholder} />
+      <input
+        className={`flex-1 bg-transparent focus:bg-transparent focus-within:bg-transparent focus:outline-none`}
+        spellCheck={false}
+        type={typex}
+        placeholder={placeholder}
+      />
 
       {typex === 'password' && (
         <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />

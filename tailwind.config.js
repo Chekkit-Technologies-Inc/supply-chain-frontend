@@ -9,6 +9,7 @@ module.exports = {
         brand_blue: '#153853',
         brand_blue_light: '#5F7D95',
         brand_green: '#46F7AD',
+        brand_text_dark: '#242424',
       },
     },
   },

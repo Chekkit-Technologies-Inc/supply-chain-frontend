@@ -18,7 +18,7 @@ const InputBox = ({ className, type, placeholder }) => {
       {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
 
       <input
-        className={`flex-1 bg-transparent focus:bg-transparent focus-within:bg-transparent focus:outline-none`}
+        className={`flex-1 h-full bg-transparent focus:bg-transparent focus-within:bg-transparent focus:outline-none`}
         spellCheck={false}
         type={typex}
         placeholder={placeholder}

@@ -4,6 +4,7 @@ const Button = ({ text, type, variant, size, className, icon, placement, onClick
   return (
     <button
       onClick={onClick}
+      style={{ minWidth: '150px' }}
       className={`${className} ${
         variant !== 1
           ? type === 'secondary'

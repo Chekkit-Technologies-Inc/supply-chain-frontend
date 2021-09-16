@@ -8,7 +8,7 @@ import { setupData as data } from '../../../appData';
 
 const WareHousesMap = ({ onComplete }) => {
   return (
-    <div className={`flex flex-col justify-center items-center space-y-6 p-6 min-h-screen w-full max-w-4xl mx-auto`}>
+    <div className={`flex flex-col justify-center items-center space-y-6 p-6 min-h-screen w-full mx-auto`}>
       <Heading className={`font-medium text-center text-brand_blue`} title={data.wareHouseMap.title} size={2} />
       <WarehouseMap />
       <div className={`flex space-x-12 justify-center`}>

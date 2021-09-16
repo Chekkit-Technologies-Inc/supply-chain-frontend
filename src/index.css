@@ -51,3 +51,9 @@ select:-webkit-autofill:focus {
   left: calc(50% - 50px);
   border-top: 4px solid #46f7ad;
 }
+
+.bg {
+  background-image: url('./assets/bg-up.svg'), url('./assets/bg-down.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: top right, bottom left;
+}

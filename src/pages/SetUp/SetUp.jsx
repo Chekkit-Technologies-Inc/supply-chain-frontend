@@ -1,5 +1,8 @@
 import { useState, useRef } from 'react';
 
+// import bg from '../../assets/bg1.svg';
+
+import Container from '../../components/layout/Container';
 import PickManagement from '../../components/sections/PickManagement';
 import SetUpWarehouse from '../../components/sections/SetUpWarehouse';
 import WareHousesMap from '../../components/sections/WareHousesMap';
@@ -21,15 +24,21 @@ const SetUp = () => {
   };
 
   return (
-    <>
-      {pos === 0 && <PickManagement onComplete={onComplete} />}
-
-      {pos === 1 && <SetUpWarehouse onComplete={onComplete} />}
-
-      {pos === 2 && <WareHousesMap onComplete={onComplete} />}
-
-      {pos === 3 && <SetUpHardware onComplete={onComplete} />}
-    </>
+    <div
+      className={`min-h-screen bg`}
+      // style={{
+      //   backgroundImage: `url(${bg}), url(${bg})`,
+      //   backgroundRepeat: 'no-repeat',
+      //   backgroundPosition: 'top right, bottom left',
+      // }}
+    >
+      <Container className={`max-w-7xl mx-auto`}>
+        {pos === 0 && <PickManagement onComplete={onComplete} />}
+        {pos === 1 && <SetUpWarehouse onComplete={onComplete} />}
+        {pos === 2 && <WareHousesMap onComplete={onComplete} />}
+        {pos === 3 && <SetUpHardware onComplete={onComplete} />}
+      </Container>
+    </div>
   );
 };
 

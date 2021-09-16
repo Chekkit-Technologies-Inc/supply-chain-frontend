@@ -14,7 +14,7 @@ const AddWarehouse = () => {
   };
 
   return (
-    <div className={`px-12 py-16 bg-brand_blue rounded-3xl space-y-6`}>
+    <div className={`px-12 py-16 bg-brand_blue rounded-3xl space-y-12 w-full`}>
       {wareHouses.map((item, idx) => {
         return <WareHouse key={idx} num={item} />;
       })}

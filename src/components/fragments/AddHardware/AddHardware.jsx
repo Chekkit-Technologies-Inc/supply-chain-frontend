@@ -31,7 +31,7 @@ const AddHardware = ({ children }) => {
   };
 
   return (
-    <div className={`${children} flex space-x-6 flex-row space-y-0`}>
+    <div className={`${children} flex flex-col space-y-6 md:flex-row md:space-y-0 md:space-x-6 justify-center items-center`}>
       {hardwares.map((item, idx) => {
         return <Item key={idx} idx={idx} item={item} handleIncrement={handleIncrement} handleDecrement={handleDecrement} />;
       })}
@@ -41,7 +41,7 @@ const AddHardware = ({ children }) => {
 
 const Item = ({ idx, item, handleIncrement, handleDecrement }) => {
   return (
-    <div className={`flex flex-col space-y-6 justify-center items-center py-6 px-12 rounded-3xl bg-blue-100`}>
+    <div className={`flex flex-col space-y-6 justify-center items-center py-6 px-12 rounded-3xl bg-blue-100 w-full`}>
       <Text className={`text-center font-medium`} value={item.title} />
       <div className={`w-40 h-40 bg-white rounded-3xl overflow-hidden flex justify-center items-center`}>
         <img className={`p-6 w-full`} src={item.icon} alt={item.title} />

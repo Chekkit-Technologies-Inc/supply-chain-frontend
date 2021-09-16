@@ -1,37 +1,35 @@
 import React from 'react';
 
+// import logo from '../../../assets/logo.svg';
 import Heading from '../../fragments/Heading';
 import Text from '../../fragments/Text';
 import Button from '../../fragments/Button';
+import AddHardware from '../../fragments/AddHardware';
 
 import { setupData as data } from '../../../appData';
 
 const SetUpHardware = ({ onComplete }) => {
   return (
-    <div className={`flex flex-col items-center space-y-6`}>
+    <div>
+      {/* <img width={200} src={logo} alt='logo' /> */}
       <div className={`flex flex-col items-center space-y-6`}>
-        <Heading className={`font-semibold text-center`} title={data.setupHardware.title} />
-        <Text className={`text-center`} value={data.setupHardware.description} />
-        <div className={`flex space-x-6 flex-row space-y-0`}>
-          {data.setupHardware.data.map((item, idx) => {
-            return <Item key={idx} item={item} />;
-          })}
+        <div
+          style={{
+            opacity: '.99',
+            display: 'grid',
+            gridTemplateColumns: 'auto',
+            gridTemplateRows: '140px 200px 1fr',
+          }}
+        >
+          <div style={{ borderRadius: '80px' }} className={`col-span-full row-start-1 row-end-3 space-y-6 h-full bg-brand_blue p-6 md:p-12 text-center`}>
+            <Heading className={`font-semibold text-center text-gray-100 slate`} title={data.setupHardware.title} />
+            <Text className={`text-center text-gray-100`} value={data.setupHardware.description} />
+          </div>
+          <div className={`col-span-full row-start-2 row-end-4 z-50 p-6 md:p-12 md:pb-0`}>
+            <AddHardware />
+          </div>
         </div>
-      </div>
-      <Button text={data.setupHardware.buttonText} onClick={() => onComplete('forward')} />
-    </div>
-  );
-};
-
-const Item = ({ item }) => {
-  return (
-    <div className={`flex flex-col space-y-6 justify-center items-center p-6 rounded-3xl bg-blue-100`}>
-      <Text className={`text-center font-medium`} value={item.title} />
-      <img width={200} className={`bg-white rounded-3xl p-6`} src={item.icon} alt={item.title} />
-      <div className={`flex space-x-4 items-center`}>
-        <span>-</span>
-        <span>0</span>
-        <span>+</span>
+        <Button text={data.setupHardware.buttonText} onClick={() => onComplete('forward')} />
       </div>
     </div>
   );

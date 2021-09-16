@@ -42,14 +42,17 @@ export const setupData = {
       {
         title: 'Chekkit RFID',
         icon: sticker,
+        count: 0,
       },
       {
         title: 'Sticker Printer',
         icon: sticker,
+        count: 0,
       },
       {
         title: 'Sticker Labels',
         icon: sticker,
+        count: 0,
       },
     ],
     buttonText: 'Next',

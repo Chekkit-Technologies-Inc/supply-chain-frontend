@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import logo from '../../../assets/logo.svg';
+import logo from '../../../assets/logo.svg';
 import Heading from '../../fragments/Heading';
 import Text from '../../fragments/Text';
 import Button from '../../fragments/Button';
@@ -10,9 +10,9 @@ import { setupData as data } from '../../../appData';
 
 const SetUpHardware = ({ onComplete }) => {
   return (
-    <div>
-      {/* <img width={200} src={logo} alt='logo' /> */}
-      <div className={`flex flex-col items-center space-y-6`}>
+    <div className={`p-6 `}>
+      <img width={150} src={logo} alt='logo' />
+      <div className={`flex flex-col items-center space-y-6 mt-12`}>
         <div
           style={{
             opacity: '.99',

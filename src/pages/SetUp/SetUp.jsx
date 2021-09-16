@@ -21,12 +21,15 @@ const SetUp = () => {
   };
 
   return (
-    <div className={`p-6 mt-24`}>
+    <>
       {pos === 0 && <PickManagement onComplete={onComplete} />}
+
       {pos === 1 && <SetUpWarehouse onComplete={onComplete} />}
+
       {pos === 2 && <WareHousesMap onComplete={onComplete} />}
+
       {pos === 3 && <SetUpHardware onComplete={onComplete} />}
-    </div>
+    </>
   );
 };
 

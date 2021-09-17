@@ -56,4 +56,15 @@ select:-webkit-autofill:focus {
   background-image: url('./assets/bg-up.svg'), url('./assets/bg-down.svg');
   background-repeat: no-repeat, no-repeat;
   background-position: top right, bottom left;
+  background-size: 45%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }

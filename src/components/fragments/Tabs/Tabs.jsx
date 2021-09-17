@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Tabs.module.css';
 
-export const Tabs = ({ children }) => {
+export const Tabs = ({ children, variant }) => {
   const [selected, setSelected] = React.useState(0);
 
   const handleChange = index => {
@@ -14,7 +14,11 @@ export const Tabs = ({ children }) => {
       <ul className={styles.inline}>
         {children.map((elem, index) => {
           return (
-            <li className={`${styles.item} ${index === selected ? styles.selected : ''}`} key={index} onClick={() => handleChange(index)}>
+            <li
+              className={`${variant ? styles.item_light : styles.item} ${index === selected ? (variant ? styles.selected_light : styles.selected) : ''}`}
+              key={index}
+              onClick={() => handleChange(index)}
+            >
               {elem.props.title}
             </li>
           );

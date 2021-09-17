@@ -57,4 +57,8 @@ export const setupData = {
     ],
     buttonText: 'Next',
   },
+  activateHardware: {
+    description: 'Delivery of the cards will take up to three days. Please enter the neccessary details',
+    buttonText: 'Proceed To Activate',
+  },
 };

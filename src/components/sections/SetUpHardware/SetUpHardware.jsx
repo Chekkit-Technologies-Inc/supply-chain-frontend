@@ -9,7 +9,7 @@ import AddHardware from '../../fragments/AddHardware';
 
 import { setupData as data } from '../../../appData';
 
-const SetUpHardware = ({ onComplete }) => {
+const SetUpHardware = ({ hardwares, setHardwares, onComplete }) => {
   const history = useHistory();
   return (
     <div className={`p-6 w-full `}>
@@ -29,7 +29,7 @@ const SetUpHardware = ({ onComplete }) => {
             <Text className={`text-center text-gray-100`} value={data.setupHardware.description} />
           </div>
           <div className={`col-span-full w-full row-start-2 row-end-4 z-50 p-6 md:px-16 md:pb-0`}>
-            <AddHardware />
+            <AddHardware hardwares={hardwares} setHardwares={setHardwares} />
           </div>
         </div>
         <Button text={data.setupHardware.buttonText} onClick={() => onComplete('forward')} />

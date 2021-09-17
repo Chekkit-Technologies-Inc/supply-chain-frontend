@@ -1,18 +1,20 @@
 import { useState, useRef } from 'react';
 
-// import bg from '../../assets/bg1.svg';
+import { setupData as data } from '../../appData.js';
 
 import Container from '../../components/layout/Container';
 import PickManagement from '../../components/sections/PickManagement';
 import SetUpWarehouse from '../../components/sections/SetUpWarehouse';
 import WareHousesMap from '../../components/sections/WareHousesMap';
 import SetUpHardware from '../../components/sections/SetUpHardware';
+import ActivateHardware from '../../components/sections/ActivateHardware';
 
 const SetUp = () => {
-  const steps = useRef(4);
+  const steps = useRef(5);
   const [pos, setPos] = useState(0);
+  const [hardwares, setHardwares] = useState(data.setupHardware.data);
 
-  const onComplete = dir => {
+  const onComplete = (dir, data) => {
     console.log(pos);
     if (dir === 'forward' && pos < steps.current - 1) {
       setPos(pos => pos + 1);
@@ -24,19 +26,13 @@ const SetUp = () => {
   };
 
   return (
-    <div
-      className={`min-h-screen bg`}
-      // style={{
-      //   backgroundImage: `url(${bg}), url(${bg})`,
-      //   backgroundRepeat: 'no-repeat',
-      //   backgroundPosition: 'top right, bottom left',
-      // }}
-    >
+    <div className={`min-h-screen bg`}>
       <Container className={`max-w-7xl mx-auto`}>
         {pos === 0 && <PickManagement onComplete={onComplete} />}
         {pos === 1 && <SetUpWarehouse onComplete={onComplete} />}
         {pos === 2 && <WareHousesMap onComplete={onComplete} />}
-        {pos === 3 && <SetUpHardware onComplete={onComplete} />}
+        {pos === 3 && <SetUpHardware hardwares={hardwares} setHardwares={setHardwares} onComplete={onComplete} />}
+        {pos === 4 && <ActivateHardware hardwares={hardwares} setHardwares={setHardwares} onComplete={onComplete} />}
       </Container>
     </div>
   );

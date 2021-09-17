@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Text = ({ className, value }) => {
+const Text = ({ className, value, onClick }) => {
   return (
-    <div className={`${className} transition_all`}>
+    <div onClick={onClick} className={`${className} transition_all`}>
       <span>{value}</span>
     </div>
   );

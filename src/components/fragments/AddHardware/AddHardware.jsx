@@ -7,7 +7,7 @@ const AddHardware = ({ hardwares, setHardwares }) => {
     console.log(idx);
     let items = hardwares.map((hds, i) => {
       if (i === idx) {
-        hds.count = hds.count + 1;
+        hds.count = Number(hds.count) + 1;
         return hds;
       }
       return hds;
@@ -19,7 +19,7 @@ const AddHardware = ({ hardwares, setHardwares }) => {
     let items = hardwares.map((hds, i) => {
       if (i === idx) {
         if (hds.count <= 0) return hds;
-        hds.count = hds.count - 1;
+        hds.count = Number(hds.count) - 1;
         return hds;
       }
       return hds;

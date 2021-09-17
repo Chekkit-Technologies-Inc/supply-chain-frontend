@@ -12,7 +12,7 @@ import { setupData as data } from '../../../appData';
 const SetUpHardware = ({ hardwares, setHardwares, onComplete }) => {
   const history = useHistory();
   return (
-    <div className={`p-6 w-full `}>
+    <div className={`p-6 pb-16 w-full `}>
       <img onClick={() => history.push('/')} width={150} className={`cursor-pointer`} src={logo} alt='logo' />
       <div className={`flex flex-col items-center space-y-6 mt-12 `}>
         <div

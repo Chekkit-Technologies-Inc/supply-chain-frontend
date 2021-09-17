@@ -7,7 +7,7 @@ import PickManagement from '../../components/sections/PickManagement';
 import SetUpWarehouse from '../../components/sections/SetUpWarehouse';
 import WareHousesMap from '../../components/sections/WareHousesMap';
 import SetUpHardware from '../../components/sections/SetUpHardware';
-import ActivateHardware from '../../components/sections/ActivateHardware';
+import Activation from '../../components/sections/Activation';
 
 const SetUp = () => {
   const steps = useRef(5);
@@ -15,7 +15,6 @@ const SetUp = () => {
   const [hardwares, setHardwares] = useState(data.setupHardware.data);
 
   const onComplete = (dir, data) => {
-    console.log(pos);
     if (dir === 'forward' && pos < steps.current - 1) {
       setPos(pos => pos + 1);
     }
@@ -32,7 +31,7 @@ const SetUp = () => {
         {pos === 1 && <SetUpWarehouse onComplete={onComplete} />}
         {pos === 2 && <WareHousesMap onComplete={onComplete} />}
         {pos === 3 && <SetUpHardware hardwares={hardwares} setHardwares={setHardwares} onComplete={onComplete} />}
-        {pos === 4 && <ActivateHardware hardwares={hardwares} setHardwares={setHardwares} onComplete={onComplete} />}
+        {pos === 4 && <Activation hardwares={hardwares} setHardwares={setHardwares} onComplete={onComplete} />}
       </Container>
     </div>
   );

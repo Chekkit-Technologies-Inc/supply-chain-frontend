@@ -8,7 +8,7 @@ import { setupData as data } from '../../../appData';
 
 const SetUpWarehouse = ({ onComplete }) => {
   return (
-    <div className={`flex flex-col min-h-screen justify-center items-center space-y-6 p-6 w-full mx-auto`}>
+    <div className={`flex flex-col min-h-screen justify-center items-center space-y-6 p-6 pb-16 w-full mx-auto`}>
       <Heading className={`font-medium text-center text-brand_blue`} title={data.setupWarehouse.title} size={2} />
       <AddWarehouse />
       <div className={`flex space-x-4 md:space-x-12  justify-center`}>

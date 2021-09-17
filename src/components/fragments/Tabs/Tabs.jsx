@@ -1,17 +1,16 @@
 import React from 'react';
 import styles from './Tabs.module.css';
 
-export const Tabs = ({ children, variant }) => {
+export const Tabs = ({ children, variant, className }) => {
   const [selected, setSelected] = React.useState(0);
 
   const handleChange = index => {
     setSelected(index);
   };
 
-  console.log(children);
   return (
-    <div>
-      <ul className={styles.inline}>
+    <div className={`grid grid-cols-1 grid-rows-1`}>
+      <ul className={`${className} ${styles.inline} justify-self-center w-full`}>
         {children.map((elem, index) => {
           return (
             <li

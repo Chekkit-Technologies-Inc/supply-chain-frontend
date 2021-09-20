@@ -15,7 +15,7 @@ function App() {
         <SetUp />
       </Route>
 
-      <Route exact path={'/dashboard'}>
+      <Route exact path={['/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/view-insights', '/settings']}>
         <Dashboard />
       </Route>
     </>

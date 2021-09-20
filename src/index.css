@@ -59,6 +59,13 @@ select:-webkit-autofill:focus {
   background-size: 45%;
 }
 
+.bg-dash {
+  background-image: url('./assets/bg.svg');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 1000px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import rfidImage from '../../../assets/rfid.png';
+import { ReactComponent as Check } from '../../../assets/check-brand.svg';
+
 import InputBox from '../InputBox';
 import Text from '../Text';
 
 const RFIDList = ({ hardwares }) => {
-  const getHardwares = num => {
-    console.log(hardwares);
-    return Array.from(Array(Number(num)).keys());
-  };
+  const [harewareList, setHarewareList] = useState();
+  const [current, setCurrent] = useState();
+
+  useEffect(() => {
+    if (hardwares[0].count > 0) {
+      let arr = Array.from(Array(Number(hardwares[0].count)).keys());
+      let hds = arr.map(num => {
+        return { id: num, selected: false };
+      });
+      setHarewareList(hds);
+    }
+  }, [hardwares]);
 
   return (
     <div className={`w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 grid-flow-row justify-evenly `}>
@@ -16,23 +26,23 @@ const RFIDList = ({ hardwares }) => {
         <img className={`w-full h-full object-contain`} src={rfidImage} alt='rfid' />
       </div>
 
-      {hardwares[0].count > 0 &&
-        getHardwares(hardwares[0].count).map((item, idx) => {
-          return <Item key={idx} />;
+      {harewareList &&
+        harewareList.map(item => {
+          return <Item key={item.id} id={item.id} selected={item.id === current} setCurrent={setCurrent} />;
         })}
     </div>
   );
 };
 
-const Item = () => {
-  const [showInput, setShowInput] = useState(false);
+const Item = ({ id, selected, setCurrent }) => {
+  const handleClick = () => {
+    setCurrent(id);
+  };
   return (
     <div>
-      <div
-        onClick={() => setShowInput(!showInput)}
-        className={`bg-brand_blue text-gray-100 h-60 rounded-xl m-4 cursor-pointer p-6 flex flex-col justify-between`}
-      >
+      <div onClick={handleClick} className={`bg-brand_blue text-gray-100 h-60 rounded-xl m-4 cursor-pointer p-6 flex flex-col justify-between relative`}>
         <div>Icon</div>
+        {selected && <Check className={`w-8 h-8 absolute -right-2 -top-2 rounded-full border border-gray-100`} />}
         <div className={`border-2 border-dashed border-gray-100 p-2 font-mono text-xl flex justify-evenly`}>
           <span>6219</span>
           <span>8619</span>
@@ -40,7 +50,7 @@ const Item = () => {
           <span>8075</span>
         </div>
       </div>
-      {showInput && (
+      {selected && (
         <div className={`bg-brand_blue text-gray-100 rounded-xl m-4 p-6 space-y-6`}>
           <Text className={`text-gray-100 text-sm`} value={`Enter the 11 digits number on the back of your card`} />
           <InputBox placeholder={`Enter RFID Tag Number`} type={`number`} />

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import truck from '../../../assets/truck.svg';
-import finance from '../../../assets/hand-asset.png';
+import truck from '../../../../assets/truck.svg';
+import finance from '../../../../assets/hand-asset.png';
 
-import Heading from '../../fragments/Heading';
-import Text from '../../fragments/Text';
-import Button from '../../fragments/Button';
-import InputBox from '../../fragments/InputBox';
+import Heading from '../../../../components/fragments/Heading';
+import Text from '../../../../components/fragments/Text';
+import Button from '../../../../components/fragments/Button';
+import InputBox from '../../../../components/fragments/InputBox';
 
 const AssetOnboard = () => {
   const [showFlow, setShowFlow] = useState(false);

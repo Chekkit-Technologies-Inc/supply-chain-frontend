@@ -13,7 +13,7 @@ import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
 import { ReactComponent as insightsIcon } from '../../assets/insights-gray.svg';
 import { ReactComponent as settingsIcon } from '../../assets/settings-gray.svg';
 
-import AssetOnboard from '../sections/AssetOnboard';
+import Content from './Content'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon, current: true },
@@ -166,7 +166,7 @@ const Base = () => {
         </div>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none bg-dash'>
           {/* Content */}
-          <AssetOnboard />
+          <Content />
           {/* /End of Content */}
         </main>
       </div>

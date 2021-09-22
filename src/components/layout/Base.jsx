@@ -4,7 +4,6 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
-import truck from '../../assets/truck.svg';
 
 import { ReactComponent as dashboardIcon } from '../../assets/dashboard.svg';
 import { ReactComponent as assetsIcon } from '../../assets/truck-fast-gray.svg';
@@ -14,9 +13,7 @@ import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
 import { ReactComponent as insightsIcon } from '../../assets/insights-gray.svg';
 import { ReactComponent as settingsIcon } from '../../assets/settings-gray.svg';
 
-import Heading from '../fragments/Heading';
-import Text from '../fragments/Text';
-import Button from '../fragments/Button';
+import AssetOnboard from '../sections/AssetOnboard';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon, current: true },
@@ -169,18 +166,7 @@ const Base = () => {
         </div>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none bg-dash'>
           {/* Content */}
-          <div className='w-full h-full py-12 px-4 sm:px-6 md:px-8 '>
-            <div className={`w-full h-full flex justify-center items-center max-w-4xl mx-auto space-x-6`}>
-              <div className={`flex-1 flex flex-col justify-center items-start space-y-6`}>
-                <Heading className={`font-medium`} title={`Let's Get You Started`} />
-                <Text value={`Hi Akin, welcome to your dashboard. To get started lets onboard the assets you have in your warehouse.`} />
-                <Button className={`w-52`} text={`Get Started`} />
-              </div>
-              <div className={`hidden flex-1 lg:flex flex-col justify-center items-center p-6`}>
-                <img className={`w-full max-w-sm`} src={truck} alt='truck' />
-              </div>
-            </div>
-          </div>
+          <AssetOnboard />
           {/* /End of Content */}
         </main>
       </div>

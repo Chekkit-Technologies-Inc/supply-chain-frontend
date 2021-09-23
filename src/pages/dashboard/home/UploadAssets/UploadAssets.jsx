@@ -49,7 +49,7 @@ const UploadAssets = () => {
     setCsvArr(newArray)
 }
 
-  return <div className={`space-y-6 py-16 px-4 bg-white `}>
+  return <div className={`space-y-6 py-16 px-4 sm:px-6 bg-white `}>
     <Heading className={`font-medium text-brand_blue`} title={`Select type of asset you want to onboard`} size={2} />
     <div className={`space-y-12`}>
       <AssetUploadList />

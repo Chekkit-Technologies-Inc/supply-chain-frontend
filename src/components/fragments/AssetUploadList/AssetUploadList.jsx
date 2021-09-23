@@ -51,7 +51,7 @@ const AssetUploadList = () => {
           </li>
           {idx === current && <div className={`flex items-center justify-between space-x-6`}>
             <Text className={`text-brand_blue text-sm`} value={`${item.alt} CSV Template`} />
-            <a href={item.sample} className={`flex items-center`} download>
+            <a href={item.sample} className={`flex items-center`} download={item.alt}>
               <DownloadIcon />
               <Text className={`text-brand_blue font-medium text-sm ml-4 underline cursor-pointer`} value={`Download`} />
             </a>

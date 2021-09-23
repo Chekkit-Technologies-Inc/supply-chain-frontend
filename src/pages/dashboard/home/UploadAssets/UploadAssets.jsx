@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom'
 
 import Heading from '../../../../components/fragments/Heading'
 import AssetUploadList from '../../../../components/fragments/AssetUploadList'
@@ -8,6 +9,7 @@ import Button from '../../../../components/fragments/Button'
 
 
 const UploadAssets = () => {
+  const history = useHistory()
   const [file, setFile] = useState(null)
   const [csvArr, setCsvArr] = useState(null)
 
@@ -59,7 +61,7 @@ const UploadAssets = () => {
         </DragDropZone>
       </div>
       <div className={`flex space-x-4 md:space-x-12 justify-center`}>
-          <Button text={`Back`} type={`secondary`} />
+          <Button text={`Back`} type={`secondary`} onClick={() => history.goBack()} />
           <Button text={`Continue`} />
       </div>
     </div>

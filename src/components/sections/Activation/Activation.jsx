@@ -57,9 +57,9 @@ const Activation = ({ hardwares }) => {
             <img src={activation} alt='activation steps' />
           </div>
           <div className={`flex space-x-4 md:space-x-12 justify-center`}>
-            <Button className={`w-60`} text={`Back`} type={`secondary`} onClick={() => onProceed('backward')} />
+            <Button className={`sm:w-60`} text={`Back`} type={`secondary`} onClick={() => onProceed('backward')} />
 
-            <Button className={`w-60`} text={`Activate`} onClick={() => onProceed('forward')} />
+            <Button className={`sm:w-60`} text={`Activate`} onClick={() => onProceed('forward')} />
           </div>
         </div>
       )}

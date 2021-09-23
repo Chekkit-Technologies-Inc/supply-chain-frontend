@@ -45,7 +45,7 @@ const AssetUploadList = () => {
               </div>
             </div>
           </li>
-          <div className={`flex items-center justify-between`}>
+          <div className={`flex items-center justify-between space-x-6`}>
             <Text className={`text-brand_blue text-sm`} value={`${item.alt} CSV Template`} />
             <div className={`flex items-center`}>
               <DownloadIcon />

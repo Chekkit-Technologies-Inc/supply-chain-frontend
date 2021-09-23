@@ -39,7 +39,7 @@ const DragDropZone = ({className, children, onChange}) => {
           // onDragLeave={(event) => console.log('onDragLeave', event)}
           onTargetClick={onTargetClick}
           onDrop={(files) => {handleChange(files);setInDropZone(false);}}
-          frame={dropZone.current ? dropZone.current : document.createElement('div')}
+          frame={dropZone.current ? dropZone.current : document}
         >
     <div ref={dropZone} className={`${className} flex flex-col justify-center items-center p-4 rounded-lg bg-gray-100 hover:bg-gray-200 border-2 border-dashed border-gray-300 w-full h-60 cursor-pointer ${inDropZone ? `bg-green-100 border-green-300` : ``}`}>
       {children}

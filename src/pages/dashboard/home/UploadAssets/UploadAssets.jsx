@@ -18,7 +18,7 @@ const UploadAssets = () => {
         <DragDropZone onChange={setFile}>
           <Text className={`text-lg font-medium text-brand_blue underline`} value={file && file.name ? file.name : `Select CSV file`} />
           <Text className={`text-sm text-gray-400`} value={`or drop your file here`} />
-          <Text className={`text-sm text-gray-400`} value={`(.csv, .xls, .xlsx)`} />
+          {/* <Text className={`text-sm text-gray-400`} value={`(.csv, .xls, .xlsx)`} /> */}
         </DragDropZone>
       </div>
       <div className={`flex space-x-4 md:space-x-12 justify-center`}>

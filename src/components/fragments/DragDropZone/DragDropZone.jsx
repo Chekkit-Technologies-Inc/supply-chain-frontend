@@ -15,7 +15,7 @@ const DragDropZone = ({className, children, onChange}) => {
   }
 
   const validate = (file) => {
-    if (!(file.type === 'text/csv' || file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || file.type === 'application/vnd.ms-excel')) {
+    if (!(file.type === 'text/csv')) {
       return false
     }
     return true
@@ -27,7 +27,8 @@ const DragDropZone = ({className, children, onChange}) => {
 
   return (
   <div className={`w-full max-w-md`}>
-    <input ref={fileInputRef} onChange={handleChange} id="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" hidden />
+    {/* <input ref={fileInputRef} onChange={handleChange} id="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" hidden /> */}
+    <input ref={fileInputRef} onChange={handleChange} id="file" type="file" accept=".csv" hidden />
     <FileDrop
           // onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
           // onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}

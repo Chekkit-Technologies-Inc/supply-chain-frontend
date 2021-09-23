@@ -6,6 +6,7 @@ import ChargerImage from '../../../assets/charger.png'
 import { ReactComponent as Checked } from '../../../assets/radio-checked.svg';
 import { ReactComponent as Unchecked } from '../../../assets/radio-unchecked.svg';
 import { ReactComponent as DownloadIcon } from '../../../assets/download.svg';
+import sampleData from '../../../assets/sample.csv'
 
 import Text from "../Text";
 
@@ -13,17 +14,20 @@ const assetTypes = [
   {
     name: 'Battery',
     alt: 'Batteries',
-    imageUrl: BatteryImage
+    imageUrl: BatteryImage,
+    sample: sampleData
   },
   {
     name: 'Solar Panel',
     alt: 'Panels',
-    imageUrl: SolarImage
+    imageUrl: SolarImage,
+    sample: sampleData
   },
   {
     name: 'Charger Controller',
     alt: 'Chargers',
-    imageUrl: ChargerImage
+    imageUrl: ChargerImage,
+    sample: sampleData
   },
 ]
 
@@ -47,10 +51,10 @@ const AssetUploadList = () => {
           </li>
           {idx === current && <div className={`flex items-center justify-between space-x-6`}>
             <Text className={`text-brand_blue text-sm`} value={`${item.alt} CSV Template`} />
-            <div className={`flex items-center`}>
+            <a href={item.sample} className={`flex items-center`} download>
               <DownloadIcon />
               <Text className={`text-brand_blue font-medium text-sm ml-4 underline cursor-pointer`} value={`Download`} />
-            </div>
+            </a>
           </div>}
         </div>
       ))}

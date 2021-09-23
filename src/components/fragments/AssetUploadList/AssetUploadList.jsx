@@ -33,8 +33,8 @@ const AssetUploadList = () => {
   return (
     <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {assetTypes.map((item, idx) => (
-        <div className={`space-y-6`}>
-          <li key={idx} onClick={() => setCurrent(idx)} className="col-span-1 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow cursor-pointer">
+        <div key={idx} className={`space-y-6`}>
+          <li onClick={() => setCurrent(idx)} className="col-span-1 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow cursor-pointer">
             <div className="w-full">
               <img className="w-full h-60 object-cover  flex-shrink-0" src={item.imageUrl} alt="" />
             </div>

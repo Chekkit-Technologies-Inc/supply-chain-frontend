@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Heading from '../../../../components/fragments/Heading'
 import AssetUploadList from '../../../../components/fragments/AssetUploadList'
@@ -9,6 +9,43 @@ import Button from '../../../../components/fragments/Button'
 
 const UploadAssets = () => {
   const [file, setFile] = useState(null)
+  const [csvArr, setCsvArr] = useState(null)
+
+  useEffect(() => {
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+          const text = e.target.result;
+          console.log(text);
+          processCSV(text)
+      }
+
+      reader.readAsText(file);
+    }
+  }, [file])
+
+  useEffect(() => {
+    if (csvArr) {
+      console.log(csvArr);
+    }
+  }, [csvArr])
+
+  const processCSV = (str, delim=',') => {
+    const headers = str.slice(0,str.indexOf('\n')).split(delim);
+    const rows = str.slice(str.indexOf('\n')+1).split('\n');
+
+    const newArray = rows.map( row => {
+        const values = row.split(delim);
+        const eachObject = headers.reduce((obj, header, i) => {
+            obj[header] = values[i];
+            return obj;
+        }, {})
+        return eachObject;
+    })
+
+    setCsvArr(newArray)
+}
 
   return <div className={`space-y-6 py-16 px-4 bg-white `}>
     <Heading className={`font-medium text-brand_blue`} title={`Select type of asset you want to onboard`} size={2} />

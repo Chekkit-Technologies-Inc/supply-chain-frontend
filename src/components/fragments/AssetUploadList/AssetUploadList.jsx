@@ -45,13 +45,13 @@ const AssetUploadList = () => {
               </div>
             </div>
           </li>
-          <div className={`flex items-center justify-between space-x-6`}>
+          {idx === current && <div className={`flex items-center justify-between space-x-6`}>
             <Text className={`text-brand_blue text-sm`} value={`${item.alt} CSV Template`} />
             <div className={`flex items-center`}>
               <DownloadIcon />
               <Text className={`text-brand_blue font-medium text-sm ml-4 underline cursor-pointer`} value={`Download`} />
             </div>
-          </div>
+          </div>}
         </div>
       ))}
     </ul>

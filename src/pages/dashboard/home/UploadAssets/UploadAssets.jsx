@@ -8,7 +8,7 @@ import Button from '../../../../components/fragments/Button'
 
 
 const UploadAssets = () => {
-  return <div className={`space-y-6 py-16 px-6 bg-white h-full`}>
+  return <div className={`space-y-6 py-16 px-4 bg-white h-full`}>
     <Heading className={`font-medium text-brand_blue`} title={`Select type of asset you want to onboard`} size={2} />
     <AssetUploadList />
     <div className={`flex justify-center`} >

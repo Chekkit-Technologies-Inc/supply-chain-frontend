@@ -27,7 +27,7 @@ const UploadAssets = () => {
 
   useEffect(() => {
     if (csvArr) {
-      console.log(csvArr);
+      console.table(csvArr);
     }
   }, [csvArr])
 

@@ -1,8 +1,10 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import { FileDrop } from 'react-file-drop'
 
 const DragDropZone = ({className, children, onChange}) => {
   const fileInputRef = useRef(null);
+  const dropZone = useRef(null);
+  const [inDropZone, setInDropZone] = useState(false)
 
   const handleChange = (e) => {
     if (!(e instanceof FileList)) {
@@ -30,15 +32,16 @@ const DragDropZone = ({className, children, onChange}) => {
     {/* <input ref={fileInputRef} onChange={handleChange} id="file" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" hidden /> */}
     <input ref={fileInputRef} onChange={handleChange} id="file" type="file" accept=".csv" hidden />
     <FileDrop
-          // onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
-          // onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}
+          onFrameDragEnter={() => setInDropZone(true)}
+          onFrameDragLeave={() => setInDropZone(false)}
           // onFrameDrop={(event) => console.log('onFrameDrop', event)}
           // onDragOver={(event) => console.log('onDragOver', event)}
           // onDragLeave={(event) => console.log('onDragLeave', event)}
           onTargetClick={onTargetClick}
-          onDrop={(files) => handleChange(files)}
+          onDrop={(files) => {handleChange(files);setInDropZone(false);}}
+          frame={dropZone.current ? dropZone.current : document.createElement('div')}
         >
-    <div className={`${className} flex flex-col justify-center items-center p-4 rounded-lg bg-gray-100 hover:bg-gray-200 border-2 border-dashed border-gray-300 w-full h-60 cursor-pointer`}>
+    <div ref={dropZone} className={`${className} flex flex-col justify-center items-center p-4 rounded-lg bg-gray-100 hover:bg-gray-200 border-2 border-dashed border-gray-300 w-full h-60 cursor-pointer ${inDropZone ? `bg-green-100 border-green-300` : ``}`}>
       {children}
     </div>
     </FileDrop>

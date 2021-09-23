@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom'
 
 import truck from '../../../../assets/truck.svg';
 import finance from '../../../../assets/hand-asset.png';
@@ -9,6 +10,7 @@ import Button from '../../../../components/fragments/Button';
 import InputBox from '../../../../components/fragments/InputBox';
 
 const AssetOnboard = () => {
+  const history = useHistory()
   const [showFlow, setShowFlow] = useState(false);
   return (
     <>
@@ -35,7 +37,7 @@ const AssetOnboard = () => {
             <div className={`w-full max-w-xl text-right`}>
               <Text className={`text-white cursor-pointer underline`} value={`+ add more assets`} />
             </div>
-            <Button className={`w-60`} text={`Save & Continue`} light={true} />
+            <Button className={`w-60`} text={`Save & Continue`} light={true} onClick={() => history.push('/dashboard/upload-assets')} />
           </div>
         </div>
       )}

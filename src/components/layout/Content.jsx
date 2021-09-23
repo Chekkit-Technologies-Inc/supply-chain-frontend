@@ -13,23 +13,23 @@ function Content() {
   return (
     <>
 
-      <Route exact path={'/dashboard'}>
+      <Route path={'/dashboard'}>
         <Home />
       </Route>
 
-      <Route exact path={'/assets'}>
+      <Route path={'/assets'}>
         <Assets />
       </Route>
 
-      <Route exact path={'/field-configuration'}>
+      <Route path={'/field-configuration'}>
         <FieldConfigurations />
       </Route>
 
-      <Route exact path={'/survey-rewards'}>
+      <Route path={'/survey-rewards'}>
         <SurveyRewards />
       </Route>
 
-      <Route exact path={'/reports'}>
+      <Route path={'/reports'}>
         <Reports />
       </Route>
 

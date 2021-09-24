@@ -2,12 +2,11 @@ import { Route } from 'react-router-dom';
 
 import Auth from './pages/Auth';
 import SetUp from './pages/SetUp';
-import Base from './components/layout/Base'
+import Base from './components/layout/Base';
 
 function App() {
   return (
     <>
-
       <Route exact path={['/', '/auth']}>
         <Auth />
       </Route>
@@ -16,10 +15,9 @@ function App() {
         <SetUp />
       </Route>
 
-      <Route path={['/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/view-insights', '/settings']}>
+      <Route path={['/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/view-insights', '/finance', '/settings']}>
         <Base />
       </Route>
-
     </>
   );
 }

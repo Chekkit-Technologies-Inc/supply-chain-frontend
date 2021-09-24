@@ -11,11 +11,10 @@ const UploadedAssets = ({ data }) => {
     <div className={` px-4 sm:px-6 bg-white h-full`}>
       <div className={`py-8 sm:py-16 bg-white space-y-6`}>
         <div className={`flex flex-col sm:flex-row space-y-4 sm:space-x-4 justify-between items-center`}>
-          <Heading className={`text-brand_blue`} title={`Uploaded CSV`} />
-          <Button text={`Upload More Data`} />
+          <Heading className={`text-brand_blue`} title={`Uploaded CSV`} size={2} />
+          <Button className={``} text={`Upload More Data`} />
         </div>
-        <AssetTable />
-        {JSON.stringify(data)}
+        <AssetTable data={data} />
         <div className={`flex space-x-4 md:space-x-12 justify-center`}>
           <Button text={`Back`} type={`secondary`} onClick={() => history.goBack()} />
           <Button text={`Continue`} />

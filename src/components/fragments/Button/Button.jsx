@@ -16,7 +16,7 @@ const Button = ({ text, type, variant, light, size, className, icon, placement, 
           ? `bg-transparent text-brand_green border-brand_green hover:text-white hover:bg-brand_green`
           : `bg-brand_green border-brand_green text-brand_blue`
       } transition_all border-2 border-transparent ${
-        size && size === 2 ? `px-4 py-2 text-sm` : `px-6 py-4 text-lg`
+        size && size === 2 ? `px-2 py-3 text-sm` : `px-6 py-4 text-lg`
       } rounded-lg flex justify-center items-center`}
     >
       {icon && placement === 'left' && icon}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import rfidImage from '../../../assets/rfid.png';
 import { ReactComponent as Check } from '../../../assets/check-brand.svg';
+import { ReactComponent as Rfid } from '../../../assets/rfid-light.svg';
 
 import InputBox from '../InputBox';
 import Text from '../Text';
@@ -41,7 +42,9 @@ const Item = ({ id, selected, setCurrent }) => {
   return (
     <div>
       <div onClick={handleClick} className={`bg-brand_blue text-gray-100 h-60 rounded-xl m-4 cursor-pointer p-6 flex flex-col justify-between relative`}>
-        <div>Icon</div>
+        <div>
+          <Rfid className={`w-12 h-12`} />
+        </div>
         {selected && <Check className={`w-8 h-8 absolute -right-2 -top-2 rounded-full border border-gray-100`} />}
         <div className={`border-2 border-dashed border-gray-100 p-2 font-mono text-xl flex justify-evenly`}>
           <span>6219</span>

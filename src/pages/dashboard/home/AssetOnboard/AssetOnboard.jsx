@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 import truck from '../../../../assets/truck.svg';
 import finance from '../../../../assets/hand-asset.png';
@@ -10,7 +10,7 @@ import Button from '../../../../components/fragments/Button';
 import InputBox from '../../../../components/fragments/InputBox';
 
 const AssetOnboard = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [showFlow, setShowFlow] = useState(false);
   return (
     <>
@@ -33,7 +33,7 @@ const AssetOnboard = () => {
           <img src={finance} alt='finance' />
           <Heading className={`text-center text-white`} title={`What Type Of Assets Will You Be Onboarding?`} />
           <div className='space-y-6 w-full flex flex-col justify-center items-center'>
-            <InputBox className={`max-w-xl`} variant={true} placeholder={`e.g. Batteries, fridge, cement`} />
+            <InputBox className={`max-w-xl`} variant={1} placeholder={`e.g. Batteries, fridge, cement`} />
             <div className={`w-full max-w-xl text-right`}>
               <Text className={`text-white cursor-pointer underline`} value={`+ add more assets`} />
             </div>

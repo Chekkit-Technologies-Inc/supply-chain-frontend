@@ -43,14 +43,12 @@ const WareHouse = ({ num, onRemove }) => {
       <Heading className={`font-medium text-gray-200`} title={`Warehouse ${num}`} size={2} />
       <div className={`space-y-12`}>
         <div className={`flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0`}>
-          <SelectBox label={`Address`} labelColor={`text-gray-200`} options={['Lagos', 'Abuja']} />
-          <SelectBox label={`State`} labelColor={`text-gray-200`} options={['Lagos', 'Abuja']} />
-          <SelectBox label={`Country`} labelColor={`text-gray-200`} options={['Lagos', 'Abuja']} />
+          <InputBox label={`Address`} labelColor={`text-gray-200`} placeholder={`Type Here`} />
+          <InputBox label={`Capacity`} labelColor={`text-gray-200`} placeholder={`Type Here`} />
         </div>
         <div className={`flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0`}>
-          <InputBox label={`Latitude`} labelColor={`text-gray-200`} placeholder={`Type Here`} />
-          <InputBox label={`Longitude`} labelColor={`text-gray-200`} placeholder={`Type Here`} />
-          <InputBox label={`Capacity`} labelColor={`text-gray-200`} placeholder={`Type Here`} />
+          <SelectBox label={`State`} labelColor={`text-gray-200`} options={['Lagos', 'Abuja']} />
+          <SelectBox label={`Country`} labelColor={`text-gray-200`} options={['Nigeria', 'Ghana']} />
         </div>
       </div>
       <div className={`flex justify-between`}>

@@ -1,4 +1,7 @@
 import truck from './assets/truck.svg';
+import inventory from './assets/inventory.svg';
+import rfid from './assets/rfid.svg';
+import printer from './assets/printer.svg';
 import sticker from './assets/sticker.png';
 
 export const appData = {
@@ -18,7 +21,7 @@ export const setupData = {
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fringilla lorem qconvallis tellus rutrum in. Proin vitae tristique ante, non venenati',
       },
       {
-        icon: truck,
+        icon: inventory,
         title: 'Inventory Management ',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fringilla lorem qconvallis tellus rutrum in. Proin vitae tristique ante, non venenati',
@@ -41,12 +44,12 @@ export const setupData = {
     data: [
       {
         title: 'Chekkit RFID',
-        icon: sticker,
+        icon: rfid,
         count: 0,
       },
       {
         title: 'Sticker Printer',
-        icon: sticker,
+        icon: printer,
         count: 0,
       },
       {

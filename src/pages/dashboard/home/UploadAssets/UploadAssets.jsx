@@ -33,7 +33,10 @@ const UploadAssets = ({ onSuccess }) => {
   }, [csvArr]);
 
   const processCSV = (str, delim = ',') => {
-    const headers = str.slice(0, str.indexOf('\n')).split(delim);
+    const hds = str.slice(0, str.indexOf('\n')).split(delim);
+
+    const headers = hds.map(h => h.split(' ').join('_').toLowerCase());
+
     const rows = str.slice(str.indexOf('\n') + 1).split('\n');
 
     const newArray = rows.map(row => {
@@ -50,7 +53,17 @@ const UploadAssets = ({ onSuccess }) => {
 
   const onProceed = () => {
     // Validate CSV
-    if (!csvArr) return;
+    if (!csvArr) {
+      console.error('Invalid CSV');
+      return;
+    }
+    let keys = Object.keys(csvArr[0]);
+    console.log('Keys', keys);
+    if (!keys.includes('asset_name') && !keys.includes('asset_price') && !keys.includes('batch_number')) {
+      console.error('Invalid CSV, upload csv with at least Asset Name, Asset Price and Batch Number Field');
+      return;
+    }
+
     onSuccess(csvArr);
     history.push('/dashboard/uploaded-assets');
   };

@@ -53,7 +53,7 @@ const Item = ({ idx, item, handleIncrement, handleDecrement, handleChange }) => 
     <div className={`flex flex-col space-y-6 justify-center items-center py-6 px-12 rounded-3xl bg-blue-100 w-full`}>
       <Text className={`text-center font-medium`} value={item.title} />
       <div className={`w-40 h-40 bg-white rounded-3xl overflow-hidden flex justify-center items-center`}>
-        <img className={`p-6 w-full`} src={item.icon} alt={item.title} />
+        <img className={`p-6 w-32 h-32`} src={item.icon} alt={item.title} />
       </div>
       <div className={`flex space-x-4 items-center`}>
         <span

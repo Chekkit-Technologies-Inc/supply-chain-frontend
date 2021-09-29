@@ -9,23 +9,25 @@ const PlanList = ({ items, onComplete }) => {
   const [selected, setSelected] = useState(1);
 
   const handleClick = idx => {
-    if (selected === idx) {
-      onComplete('forward');
-      return;
-    }
     setSelected(idx);
   };
 
+  const handleButtonClick = isSelected => {
+    if (isSelected) {
+      onComplete('forward');
+    }
+  };
+
   return (
-    <div className={`flex flex-col md:flex-row justify-center items-center w-full`}>
+    <div className={`flex flex-col lg:flex-row justify-center items-center w-full`}>
       {items.map((item, idx) => {
-        return <Item onClick={() => handleClick(idx)} selected={selected === idx} key={idx} item={item} />;
+        return <Item onClick={() => handleClick(idx)} handleButtonClick={handleButtonClick} selected={selected === idx} key={idx} item={item} />;
       })}
     </div>
   );
 };
 
-const Item = ({ item, onClick, selected }) => {
+const Item = ({ item, onClick, selected, handleButtonClick }) => {
   return (
     <div
       onClick={onClick}
@@ -56,8 +58,13 @@ const Item = ({ item, onClick, selected }) => {
         </div>
       </div>
       <div className={`pt-8 space-y-8`}>
-        <div>{item.desc}</div>
-        {selected ? <Button className={`w-full`} light={true} text={`Choose Plan`} /> : <Button className={`w-full`} text={`Choose Plan`} />}
+        <div className={`${selected ? `text-lg` : `text-base text-gray-400`}`}>
+          <span className={`${selected ? `font-semibold` : `font-semibold text-brand_blue`}`}>Free access </span>
+          {item.desc}
+          <span className={`${selected ? `font-semibold` : `font-semibold text-brand_blue`}`}> first quarter </span>
+          <span className={``}>(3 months).</span>
+        </div>
+        {selected ? <Button className={`w-full`} light={true} text={`Choose Plan`} onClick={() => handleButtonClick(selected)} /> : <Button className={`w-full`} text={`Choose Plan`} />}
       </div>
     </div>
   );

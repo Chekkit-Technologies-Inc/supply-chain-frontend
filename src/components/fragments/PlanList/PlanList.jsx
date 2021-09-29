@@ -29,7 +29,7 @@ const Item = ({ item, onClick, selected }) => {
   return (
     <div
       onClick={onClick}
-      className={`flex flex-col space-y-8 rounded-3xl max-w-lg cursor-pointer w-full divide-y divide-gray-300 transform ${
+      className={`${selected ? `card` : ``} flex flex-col space-y-8 rounded-3xl max-w-lg cursor-pointer w-full divide-y divide-gray-300 transform ${
         selected ? `border-4 border-white bg-brand_blue p-12 shadow-2xl text-white z-10` : `bg-white p-6 text-gray-600 scale-95`
       }`}
     >
@@ -47,6 +47,7 @@ const Item = ({ item, onClick, selected }) => {
           <span className={`font-semibold ${selected ? `text-3xl` : `text-xl`} `}>{item.title}</span>
           <div className={`flex items-end space-x-1`}>
             <div className={`flex items-baseline`}>
+              <sup className={`transform -translate-y-2 font-medium ${selected ? `text-lg` : `text-base`}`}>$</sup>
               <div className={`${selected ? `text-4xl` : `text-3xl`} font-bold`}>{item.amount}</div>
               <div className={`text-base transform -translate-y-1`}>/</div>
             </div>

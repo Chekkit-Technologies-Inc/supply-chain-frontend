@@ -6,6 +6,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 
 import Button from '../Button';
 import InputBox from '../InputBox';
+import SelectBox from '../SelectBox';
 
 const AssetTable = ({ data }) => {
   const [assets, setAssets] = useState();
@@ -152,6 +153,7 @@ const Item = ({ asset, idx, selectAsset, onSave }) => {
                 variant={2}
                 placeholder={item?.asset_price}
                 name={`asset_price`}
+                type={`number`}
                 value={item?.asset_price}
                 onValueChange={handleInputChange}
                 label={`Asset Price`}
@@ -168,13 +170,14 @@ const Item = ({ asset, idx, selectAsset, onSave }) => {
               />
             </div>
             <div className={`w-40 text-gray-400 font-medium`}>
-              <InputBox
+              <SelectBox
                 variant={2}
                 placeholder={item?.category}
                 name={`category`}
                 value={item?.category}
                 onValueChange={handleInputChange}
                 label={`Category`}
+                options={['Cat01', 'Cat02']}
               />
             </div>
             <div className={`w-40 text-gray-400 font-medium`}>
@@ -182,6 +185,7 @@ const Item = ({ asset, idx, selectAsset, onSave }) => {
                 variant={2}
                 placeholder={item?.date_installed}
                 name={`date_installed`}
+                type={`date`}
                 value={item?.date_installed}
                 onValueChange={handleInputChange}
                 label={`Date Installed`}

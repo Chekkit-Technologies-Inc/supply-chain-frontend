@@ -28,6 +28,29 @@ export const setupData = {
       },
     ],
   },
+  pickPlan: [
+    {
+      title: 'Free Trial',
+      amount: '0',
+      duration: 'first 3 months',
+      buttonText: 'ChoosePlan',
+      desc: 'to the all features for the',
+    },
+    {
+      title: 'Quarterly',
+      amount: '30',
+      duration: '3 months',
+      buttonText: 'ChoosePlan',
+      desc: 'to the signal room for the',
+    },
+    {
+      title: 'Yearly',
+      amount: '30',
+      duration: '12 months',
+      buttonText: 'ChoosePlan',
+      desc: 'to the all features for the',
+    },
+  ],
   setupWarehouse: {
     title: 'Set Up Warehouse',
     buttonText1: 'Back',

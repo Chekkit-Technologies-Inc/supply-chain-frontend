@@ -6,11 +6,11 @@ import PlanItemLight from '../../../assets/plan-item-light.svg';
 import Button from '../Button';
 
 const PlanList = ({ items, onComplete }) => {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(1);
 
   const handleClick = idx => {
     if (selected === idx) {
-      onComplete();
+      onComplete('forward');
       return;
     }
     setSelected(idx);

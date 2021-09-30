@@ -17,7 +17,7 @@ const UploadedAssets = ({ data }) => {
         <AssetTable data={data} />
         <div className={`flex space-x-4 md:space-x-12 justify-center`}>
           <Button text={`Back`} type={`secondary`} onClick={() => history.goBack()} />
-          <Button text={`Continue`} />
+          <Button text={`Continue`} onClick={() => history.push('/dashboard/setup-stickers')} />
         </div>
       </div>
     </div>

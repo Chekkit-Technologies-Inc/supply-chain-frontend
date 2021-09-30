@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import AssetOnboard from './AssetOnboard'
 import UploadAssets from './UploadAssets'
 import UploadedAssets from './UploadedAssets'
+import SetupStickers from './SetupStickers';
 
 const Home = () => {
   const [csvData, setCsvData] = useState(null)
@@ -20,6 +21,10 @@ const Home = () => {
 
       <Route path={'/dashboard/uploaded-assets'}>
         <UploadedAssets data={csvData} />
+      </Route>
+
+      <Route path={'/dashboard/setup-stickers'}>
+        <SetupStickers />
       </Route>
 
     </>

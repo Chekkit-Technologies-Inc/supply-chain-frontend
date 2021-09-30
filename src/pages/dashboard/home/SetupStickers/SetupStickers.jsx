@@ -13,7 +13,7 @@ const SetupStickers = () => {
     <div className={` px-4 sm:px-6 bg-white h-full w-full`}>
       <div className={`pt-36 pb-16 bg-white space-y-16 w-full`}>
         <div className={`flex justify-center items-center`}>
-          <div className={`relative w-80 h-80`}>
+          <div className={`relative w-72 h-64`}>
             <div className={`w-full h-full bg-green-300 bg-opacity-50 absolute`}></div>
             <img className={`absolute w-full h-full bottom-20 left-10`} width={400} src={Sticker} alt="sticker" />
           </div>

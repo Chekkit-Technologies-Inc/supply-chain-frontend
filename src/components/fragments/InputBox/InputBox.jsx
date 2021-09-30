@@ -72,6 +72,36 @@ const InputBox = ({ className, type, placeholder, label, labelColor, variant, na
           </div>
         </div>
       )}
+      {variant === 3 && (
+        <div className={`${className} space-y-2 w-full`}>
+          {label && (
+            <label className={`${labelColor}`} htmlFor={label}>
+              {label}
+            </label>
+          )}
+          <div className={`p-4 rounded-md border bg-white border-gray-300 text-gray-700 flex items-center space-x-4 overflow-hidden`}>
+            {placeholder === 'Company Name' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
+            <input
+              id={label ? label : ''}
+              className={` bg-transparent focus:outline-none  w-full`}
+              spellCheck={false}
+              type={typex}
+              placeholder={placeholder}
+              name={name}
+              onChange={onValueChange}
+              value={value}
+            />
+            {typex === 'password' && (
+              <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />
+            )}
+            {typex === 'textx' && <AiFillEye onClick={() => setTypex('password')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />}
+          </div>
+        </div>
+      )}
     </>
   );
 };

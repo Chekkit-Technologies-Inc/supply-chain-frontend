@@ -39,7 +39,7 @@ const SetupStickers = () => {
 
         <div className={`flex space-x-4 md:space-x-12 justify-center bg-white w-full`}>
           <Button text={`Setup After`} type={`secondary`} onClick={() => history.goBack()} />
-          <Button text={`Setup Sticker`} />
+          <Button text={`Setup Sticker`} onClick={() => history.push('create-survey')} />
         </div>
       </div>
     </div>

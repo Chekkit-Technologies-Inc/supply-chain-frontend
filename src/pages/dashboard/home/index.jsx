@@ -5,6 +5,7 @@ import AssetOnboard from './AssetOnboard'
 import UploadAssets from './UploadAssets'
 import UploadedAssets from './UploadedAssets'
 import SetupStickers from './SetupStickers';
+import CreateSurvey from './CreateSurvey';
 
 const Home = () => {
   const [csvData, setCsvData] = useState(null)
@@ -25,6 +26,10 @@ const Home = () => {
 
       <Route path={'/dashboard/setup-stickers'}>
         <SetupStickers />
+      </Route>
+
+      <Route path={'/dashboard/create-survey'}>
+        <CreateSurvey />
       </Route>
 
     </>

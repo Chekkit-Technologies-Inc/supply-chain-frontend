@@ -66,6 +66,14 @@ select:-webkit-autofill:focus {
   background-size: 1000px;
 }
 
+.bg-dots {
+  background-color: white;
+  background-image: url('./assets/bg-dots.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1000px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

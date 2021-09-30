@@ -1,6 +1,6 @@
 import React from 'react';
 
-import bg from '../../assets/asset-m.png';
+import bg from '../../assets/asset-mmm.jpeg';
 
 import { Tabs, Panel } from '../../components/fragments/Tabs';
 import Login from '../../components/fragments/Login';

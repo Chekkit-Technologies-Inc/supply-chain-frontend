@@ -70,7 +70,8 @@ select:-webkit-autofill:focus {
   background-color: white;
   background-image: url('./assets/bg-dots.svg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: 1000px;
 }
 

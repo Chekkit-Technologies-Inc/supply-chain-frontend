@@ -63,7 +63,7 @@ const InputBox = ({ className, type, placeholder, label, labelColor, variant, na
               placeholder={placeholder}
               name={name}
               onChange={onValueChange}
-              value={value}
+              value={value ? value : ''}
             />
             {typex === 'password' && (
               <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />
@@ -93,7 +93,7 @@ const InputBox = ({ className, type, placeholder, label, labelColor, variant, na
               placeholder={placeholder}
               name={name}
               onChange={onValueChange}
-              value={value}
+              value={value ? value : ''}
             />
             {typex === 'password' && (
               <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />

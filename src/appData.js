@@ -6,7 +6,7 @@ import sticker from './assets/sticker.png';
 
 export const appData = {
   name: 'Chekkit',
-  description: 'Asset management',
+  description: 'Supply Chain',
 };
 
 export const setupData = {

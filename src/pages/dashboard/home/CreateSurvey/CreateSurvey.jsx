@@ -7,10 +7,12 @@ import Heading from '../../../../components/fragments/Heading';
 import Text from '../../../../components/fragments/Text';
 import Button from '../../../../components/fragments/Button';
 import SurveyEdit from '../../../../components/fragments/SurveyEdit';
+import SurveyPreview from '../../../../components/fragments/SurveyPreview'
 
 const CreateSurvey = () => {
   const history = useHistory();
-  const [showFlow, setShowFlow] = useState(false);
+  const [showFlow, setShowFlow] = useState(0);
+  const [data, setData] = useState([]);
   return (
     <>
       {!showFlow && (
@@ -24,7 +26,7 @@ const CreateSurvey = () => {
               <Text value={`Create survey to attach on asset which wil be embedded in the data matrix code.`} />
               <div className={`flex space-x-4 md:space-x-8 justify-center`}>
                 <Button text={`Back`} type={`secondary`} onClick={() => history.goBack()} />
-                <Button text={`Get Started`} onClick={() => setShowFlow(true)} />
+                <Button text={`Get Started`} onClick={() => setShowFlow(1)} />
               </div>
             </div>
             <div className={`hidden flex-1 xl:flex flex-col justify-center items-center p-6`}>
@@ -33,7 +35,13 @@ const CreateSurvey = () => {
           </div>
         </div>
       )}
-      {showFlow && <SurveyEdit fresh={true} goBack={() => setShowFlow(false)} />}
+
+      {showFlow === 1 && <SurveyEdit fresh={true} goBack={() => setShowFlow(0)} onDone={(data) => {
+        setShowFlow(2)
+        setData(data)
+      }} />}
+
+      {showFlow === 2 && <SurveyPreview data={data} goBack={() => setShowFlow(1)} />}
     </>
   );
 };

@@ -31,9 +31,15 @@ const initialDnDState = {
   updatedOrder: [],
 };
 
-const QuestionList = () => {
+const QuestionList = ({update}) => {
   const [questions, setQuestions] = useState(questionData);
   const [dragAndDrop, setDragAndDrop] = useState(initialDnDState);
+
+  useEffect(() => {
+    if (questions) {
+      update(questions)
+    } // eslint-disable-next-line
+  }, [questions])
 
   const addQuestion = () => {
     setQuestions([...questions, ...questionData]);

@@ -31,7 +31,6 @@ const Home = () => {
       <Route path={'/dashboard/create-survey'}>
         <CreateSurvey />
       </Route>
-
     </>
   )
 };

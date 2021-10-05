@@ -7,7 +7,7 @@ import Heading from '../../../../components/fragments/Heading';
 import Text from '../../../../components/fragments/Text';
 import Button from '../../../../components/fragments/Button';
 import SurveyEdit from '../../../../components/fragments/SurveyEdit';
-import SurveyPreview from '../../../../components/fragments/SurveyPreview'
+import SurveyPreview from '../../../../components/fragments/SurveyPreview';
 
 const CreateSurvey = () => {
   const history = useHistory();
@@ -36,12 +36,26 @@ const CreateSurvey = () => {
         </div>
       )}
 
-      {showFlow === 1 && <SurveyEdit fresh={true} goBack={() => setShowFlow(0)} onDone={(data) => {
-        setShowFlow(2)
-        setData(data)
-      }} />}
+      {showFlow === 1 && (
+        <SurveyEdit
+          data={data}
+          goBack={() => setShowFlow(0)}
+          onDone={data => {
+            setShowFlow(2);
+            setData(data);
+          }}
+        />
+      )}
 
-      {showFlow === 2 && <SurveyPreview data={data} goBack={() => setShowFlow(1)} />}
+      {showFlow === 2 && (
+        <SurveyPreview
+          data={data}
+          goBack={data => {
+            setShowFlow(1);
+            setData(data);
+          }}
+        />
+      )}
     </>
   );
 };

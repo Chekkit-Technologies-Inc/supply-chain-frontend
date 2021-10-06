@@ -39,7 +39,7 @@ const SurveyPreview = ({ data, goBack }) => {
 
 const Item = ({ item }) => {
   return (
-    <li className={`bg-gray-100 p-6 rounded-xl space-y-6`}>
+    <li className={`bg-gray-100 p-6 rounded-xl space-y-8`}>
       <Heading className={`text-gray-600`} title={item?.question} size={2} />
       <ul className={`grid grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-between w-full`}>
         {item &&

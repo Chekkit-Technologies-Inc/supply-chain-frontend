@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import InputBox from '../input-box';
-import Button from '../button';
+import InputBox from '../../../components/fragments/input-box';
+import Button from '../../../components/fragments/button';
 
 const SignUp = () => {
   const history = useHistory();

@@ -15,7 +15,7 @@ const EmbedInfo = () => {
     }
   };
   return (
-    <div className='w-full h-full py-12 md:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-start bg-dots'>
+    <div className='w-full py-12 md:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-start bg-dots'>
       <div className={`flex flex-col justify-center items-center p-4 w-full max-w-3xl space-y-10`}>
         <div className={`space-y-4 text-center`}>
           <div className={`text-center`}>

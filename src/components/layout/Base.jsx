@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link, useLocation } from 'react-router-dom';
 
-import logo from '../../assets/logo.svg';
+import Logo from '../fragments/logo';
 
 import { ReactComponent as dashboardIcon } from '../../assets/dashboard.svg';
 import { ReactComponent as assetsIcon } from '../../assets/truck-fast-gray.svg';
@@ -96,7 +96,7 @@ const Base = () => {
               </Transition.Child>
               <div className='flex-1 h-0 pt-12 pb-4 overflow-y-auto'>
                 <div className='flex items-center flex-shrink-0 px-6'>
-                  <img className='h-10 w-auto' src={logo} alt='Chekkit Logo' />
+                  <Logo size={150} />
                 </div>
                 <nav className='mt-12 flex-1 bg-gray-100 space-y-4'>
                   {navItems.map(item => (
@@ -128,7 +128,7 @@ const Base = () => {
           <div className='flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100'>
             <div className='flex-1 flex flex-col pt-12 pb-4 overflow-y-auto'>
               <div className='flex items-center flex-shrink-0 px-6'>
-                <img className='h-10 w-auto' src={logo} alt='Chekkit Logo' />
+                <Logo size={150} />
               </div>
               <nav className='mt-12 flex-1 bg-gray-100 space-y-4'>
                 {navItems.map(item => (
@@ -162,7 +162,7 @@ const Base = () => {
             <span className='sr-only'>Open sidebar</span>
             <MenuIcon className='h-6 w-6' aria-hidden='true' />
           </button>
-          <img className='h-8 w-auto' src={logo} alt='Chekkit Logo' />
+          <Logo size={150} />
         </div>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none bg-dash'>
           {/* Content */}

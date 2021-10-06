@@ -10,8 +10,8 @@ import Button from '../../../../components/fragments/button';
 const SetupStickers = () => {
   const history = useHistory();
   return (
-    <div className={` px-4 sm:px-6 bg-white h-full w-full`}>
-      <div className={`pt-36 pb-16 bg-white space-y-16 w-full`}>
+    <div className={` px-4 sm:px-6 bg-white w-full min-h-screen flex justify-center items-center`}>
+      <div className={`pb-16 pt-32 sm:pt-40 bg-white space-y-16 w-full`}>
         <div className={`flex justify-center items-center`}>
           <div className={`relative w-72 h-64`}>
             <div className={`w-full h-full bg-green-300 bg-opacity-50 absolute`}></div>
@@ -40,7 +40,7 @@ const SetupStickers = () => {
           </ul>
         </div>
 
-        <div className={`flex space-x-4 md:space-x-12 justify-center bg-white w-full`}>
+        <div className={`flex space-x-4 md:space-x-12 justify-center w-full`}>
           <Button text={`Setup After`} type={`secondary`} onClick={() => history.goBack()} />
           <Button text={`Setup Sticker`} onClick={() => history.push('create-survey')} />
         </div>

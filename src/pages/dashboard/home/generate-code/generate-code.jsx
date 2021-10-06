@@ -7,7 +7,7 @@ import Button from '../../../../components/fragments/button';
 const GenerateCode = () => {
   const history = useHistory();
   return (
-    <div className='w-full py-12 md:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-start bg-dots'>
+    <div className='w-full py-12 md:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center min-h-screen bg-dots'>
       <div className={`flex flex-col justify-center items-center p-4 w-full max-w-3xl space-y-10`}>
         <div className={`p-10 rounded-xl bg-brand_blue max-w-lg w-full space-y-8 text-gray-100`}>
           <div className={`font-semibold text-center`}>Generate Data Matrix Code</div>

@@ -29,7 +29,7 @@ const AssetOnboard = () => {
         </div>
       )}
       {showFlow && (
-        <div className='w-full h-full py-12 md:py-32 px-4 sm:px-6 md:px-8 bg-gray-900 bg-opacity-60 flex flex-col items-center justify-start space-y-16'>
+        <div className='w-full h-full py-12 md:py-32 px-4 sm:px-6 md:px-8 bg-gray-900 bg-opacity-60 flex flex-col items-center justify-center space-y-16'>
           <img src={finance} alt='finance' />
           <Heading className={`text-center text-white`} title={`What Type Of Assets Will You Be Onboarding?`} />
           <div className='space-y-6 w-full flex flex-col justify-center items-center'>

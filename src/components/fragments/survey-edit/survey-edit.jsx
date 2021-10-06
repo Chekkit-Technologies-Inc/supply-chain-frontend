@@ -15,7 +15,7 @@ const SurveyEdit = ({ data, goBack, onDone }) => {
   // }, [data]);
 
   return (
-    <div className='w-full py-12 md:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-start bg-dots'>
+    <div className='w-full py-12 md:py-32 px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center min-h-screen bg-dots'>
       <div className={`flex flex-col justify-center items-center bg-gray-100 rounded-xl p-4 w-full max-w-3xl divide-y divide-gray-300 space-y-6`}>
         <QuestionList data={questionData} update={setQuestionData} />
         <div className={`w-full flex justify-between items-end pt-6`}>

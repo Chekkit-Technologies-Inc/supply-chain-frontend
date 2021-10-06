@@ -29,7 +29,25 @@
   color: #5f7d95;
 }
 
+.item_light {
+  display: inline-block;
+  margin-left: 0;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid #9ca3af;
+  transition: all 0.5s;
+  font-weight: 600;
+  cursor: pointer;
+  color: #9ca3af;
+}
+
 .selected {
   border-bottom: 2px solid #fff;
   color: #fff;
+}
+
+.selected_light {
+  border-bottom: 2px solid #153853;
+  color: #153853;
 }

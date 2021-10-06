@@ -1,33 +1,24 @@
 import { Route } from 'react-router-dom';
 
-import Base from './components/layout/Base';
-import ScrollTopTop from './hooks/ScrollToTop';
-
-import Auth from './pages/Auth';
-import SetUp from './pages/SetUp';
-import Dashboard from './pages/Dashboard';
+import Auth from './pages/auth';
+import SetUp from './pages/setup';
+import Base from './components/layout/base';
 
 function App() {
   return (
-    <ScrollTopTop>
+    <>
       <Route exact path={['/', '/auth']}>
-        <Base>
-          <Auth />
-        </Base>
+        <Auth />
       </Route>
 
       <Route exact path={'/setup'}>
-        <Base>
-          <SetUp />
-        </Base>
+        <SetUp />
       </Route>
 
-      <Route exact path={'/dashboard'}>
-        <Base>
-          <Dashboard />
-        </Base>
+      <Route path={['/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/finances', '/settings']}>
+        <Base />
       </Route>
-    </ScrollTopTop>
+    </>
   );
 }
 

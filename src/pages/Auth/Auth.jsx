@@ -2,9 +2,9 @@ import React from 'react';
 
 import bg from '../../assets/asset-mmm.jpeg';
 
-import { Tabs, Panel } from '../../components/fragments/Tabs';
-import Login from '../../components/fragments/Login';
-import SignUp from '../../components/fragments/SignUp';
+import { Tabs, Panel } from '../../components/fragments/tabs';
+import Login from '../../components/fragments/login';
+import SignUp from '../../components/fragments/sign-up';
 
 const Auth = () => {
   return (

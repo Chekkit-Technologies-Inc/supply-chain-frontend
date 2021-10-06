@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Tabs.module.css';
+import styles from './tabs.module.css';
 
 export const Tabs = ({ children, variant, className }) => {
   const [selected, setSelected] = React.useState(0);

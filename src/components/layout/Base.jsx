@@ -13,7 +13,7 @@ import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
 import { ReactComponent as insightsIcon } from '../../assets/insights-gray.svg';
 import { ReactComponent as settingsIcon } from '../../assets/settings-gray.svg';
 
-import Content from './Content'
+import Content from './content';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon, current: true },

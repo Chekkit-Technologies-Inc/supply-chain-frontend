@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import InputBox from '../InputBox';
-import Button from '../Button';
+import InputBox from '../input-box';
+import Button from '../button';
 
 const Login = () => {
   const history = useHistory();

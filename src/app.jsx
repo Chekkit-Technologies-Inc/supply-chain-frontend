@@ -1,8 +1,8 @@
 import { Route } from 'react-router-dom';
 
-import Auth from './pages/Auth';
-import SetUp from './pages/SetUp';
-import Base from './components/layout/Base';
+import Auth from './pages/auth';
+import SetUp from './pages/setup';
+import Base from './components/layout/base';
 
 function App() {
   return (

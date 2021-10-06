@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
-import AssetOnboard from './AssetOnboard';
-import UploadAssets from './UploadAssets';
-import UploadedAssets from './UploadedAssets';
-import SetupStickers from './SetupStickers';
-import CreateSurvey from './CreateSurvey';
-import EmbedInfo from './EmbedInfo';
-import GenerateCode from './GenerateCode';
-import OnboardSuccess from './OnboardSuccess';
+import AssetOnboard from './asset-onboard';
+import UploadAssets from './upload-assets';
+import UploadedAssets from './uploaded-assets';
+import SetupStickers from './setup-stickers';
+import CreateSurvey from './create-survey';
+import EmbedInfo from './embed-info';
+import GenerateCode from './generate-code';
+import OnboardSuccess from './onboard-success';
 
 const Home = () => {
   const [csvData, setCsvData] = useState(null);

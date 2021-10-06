@@ -10,7 +10,7 @@ import { ReactComponent as assetsIcon } from '../../assets/truck-fast-gray.svg';
 import { ReactComponent as fieldsIcon } from '../../assets/location-gray.svg';
 import { ReactComponent as surveysIcon } from '../../assets/document-gray.svg';
 import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
-import { ReactComponent as insightsIcon } from '../../assets/insights-gray.svg';
+import { ReactComponent as financesIcon } from '../../assets/finances-gray.svg';
 import { ReactComponent as settingsIcon } from '../../assets/settings-gray.svg';
 
 import Content from './content';
@@ -21,7 +21,7 @@ const navigation = [
   { name: 'Field Configuration', href: '/field-configuration', icon: fieldsIcon, current: false },
   { name: 'Survey & Rewards', href: '/survey-rewards', icon: surveysIcon, current: false },
   { name: 'Reports', href: '/reports', icon: reportsIcon, current: false },
-  { name: 'View Insights', href: '/view-insights', icon: insightsIcon, current: false },
+  { name: 'Finances', href: '/finances', icon: financesIcon, current: false },
   { name: 'Settings', href: '/settings', icon: settingsIcon, current: false },
 ];
 

@@ -15,7 +15,7 @@ function App() {
         <SetUp />
       </Route>
 
-      <Route path={['/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/view-insights', '/finance', '/settings']}>
+      <Route path={['/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/finances', '/settings']}>
         <Base />
       </Route>
     </>

@@ -33,7 +33,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "deploy": "aws s3 sync build/ s3://chekkit-supply-chain",
+    "deploy": "aws s3 sync --delete build/ s3://chekkit-supply-chain",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id XYZ --paths '/*'",
     "test": "craco test",
     "eject": "react-scripts eject"
   },

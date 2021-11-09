@@ -19,7 +19,7 @@ const SignIn = () => {
   useEffect(() => {
     if (user.isAuthorized) {
       localStorage.setItem('chekkit-act', user.token);
-      history.push('/setup/pick-management');
+      history.push('/overview');
     }
     // eslint-disable-next-line
   }, [user]);

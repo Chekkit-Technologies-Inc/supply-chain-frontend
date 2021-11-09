@@ -5,24 +5,20 @@ import { Link, useLocation } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 
 import Logo from '../fragments/logo';
+import InputBox from '../fragments/input-box';
 
-import { ReactComponent as dashboardIcon } from '../../assets/dashboard.svg';
-import { ReactComponent as assetsIcon } from '../../assets/truck-fast-gray.svg';
-import { ReactComponent as fieldsIcon } from '../../assets/location-gray.svg';
-import { ReactComponent as surveysIcon } from '../../assets/document-gray.svg';
-import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
-import { ReactComponent as financesIcon } from '../../assets/finances-gray.svg';
+import { ReactComponent as overviewIcon } from '../../assets/finances-gray.svg';
+// import { ReactComponent as assetsIcon } from '../../assets/truck-fast-gray.svg';
+// import { ReactComponent as fieldsIcon } from '../../assets/location-gray.svg';
+// import { ReactComponent as surveysIcon } from '../../assets/document-gray.svg';
+// import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
+// import { ReactComponent as financesIcon } from '../../assets/finances-gray.svg';
 import { ReactComponent as settingsIcon } from '../../assets/settings-gray.svg';
 
 import Content from './content';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon, current: false },
-  { name: 'Assets', href: '/assets', icon: assetsIcon, current: false },
-  { name: 'Field Configuration', href: '/field-configuration', icon: fieldsIcon, current: false },
-  { name: 'Survey & Rewards', href: '/survey-rewards', icon: surveysIcon, current: false },
-  { name: 'Reports', href: '/reports', icon: reportsIcon, current: false },
-  { name: 'Finances', href: '/finances', icon: financesIcon, current: false },
+  { name: 'Overview', href: '/overview', icon: overviewIcon, current: false },
   { name: 'Settings', href: '/settings', icon: settingsIcon, current: false },
 ];
 
@@ -34,6 +30,12 @@ const Base = () => {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navItems, setNavItems] = useState(navigation);
+  const [phrase, setPhrase] = useState('');
+
+  const handleInputChange = event => {
+    const { value } = event.target;
+    setPhrase(value);
+  };
 
   useEffect(() => {
     setNavItems(
@@ -165,7 +167,24 @@ const Base = () => {
           </button>
           <Logo size={150} />
         </div>
-        <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none bg-dash'>
+        <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none '>
+          <div className={`flex flex-col xl:flex-row space-y-6 xl:space-y-0 items-center justify-between px-4 md:px-12 py-6   shadow bg-white z-10`}>
+            <div className={`w-96`}>
+              <InputBox value={phrase} onValueChange={handleInputChange} name={`phrase`} placeholder={`Search...`} variant={4} className={``} type={`search`} />
+            </div>
+            <div className={`flex items-center space-x-6`}>
+              <div
+                className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
+              >
+                View Product Demo
+              </div>
+              <div
+                className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
+              >
+                Profile
+              </div>
+            </div>
+          </div>
           {/* Content */}
           <Content />
           {/* /End of Content */}

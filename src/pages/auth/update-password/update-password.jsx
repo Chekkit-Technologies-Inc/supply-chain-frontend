@@ -41,7 +41,7 @@ const UpdatePassword = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className={`text-lg text-gray-100 font-medium mb-6 sm:-mt-4`}>Update Password</h1>
+      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Update Password</h1>
       <FadeIn className={`space-y-8`}>
         <InputBox
           type={`password`}
@@ -50,6 +50,7 @@ const UpdatePassword = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
+          variant={5}
         />
         <InputBox
           type={`password`}
@@ -58,8 +59,9 @@ const UpdatePassword = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
+          variant={5}
         />
-        <Button text={`Update Password`} className={`w-full`} variant={1} />
+        <Button text={`Update Password`} className={`w-full`} />
       </FadeIn>
     </form>
   );

@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useDispatch, useSelector } from 'react-redux';
 
 import InputBox from '../../../components/fragments/input-box';
 import Button from '../../../components/fragments/button';
 
-import { User } from '../../../models';
+// import { User } from '../../../models';
 import { UserActions } from '../../../states/actions';
 
 const SignUp = () => {
-  const { companyIdentifier } = useParams()
   const user = useSelector(state => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [userDetail, setUserDetail] = useState(new User());
+  const [userDetail, setUserDetail] = useState();
+
+  useEffect(() => {
+    if (user) {
+      setUserDetail(user);
+    }
+  }, [user]);
 
   useEffect(() => {
     if (user?.email && !user?.acc_verified) {
@@ -28,18 +33,6 @@ const SignUp = () => {
     }
     // eslint-disable-next-line
   }, [user]);
-
-  useEffect(() => {
-      if (companyIdentifier === '1') {
-        setUserDetail({...userDetail, companyIdentfier: 'manufacturer'})
-      } else if (companyIdentifier === '2') {
-        setUserDetail({...userDetail, companyIdentfier: 'distributor'})
-      } else if (companyIdentifier === '3') {
-        setUserDetail({...userDetail, companyIdentfier: 'retailer'})
-      } else {
-        history.push('/')
-      } // eslint-disable-next-line
-  }, [companyIdentifier])
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -56,7 +49,16 @@ const SignUp = () => {
         <InputBox type={`text`} placeholder={`Company Name`} name={`companyName`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox type={`text`} placeholder={`Company Address`} name={`address`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox type={`text`} placeholder={`Company Country`} name={`country`} onValueChange={handleInputChange} required={true} variant={5} />
-        <InputBox type={`text`} placeholder={`Company Type`} name={`companyIdentifier`} value={userDetail?.companyIdentfier} onValueChange={handleInputChange} required={true} variant={3} readOnly={true} />
+        <InputBox
+          type={`text`}
+          placeholder={`Company Type`}
+          name={`companyIdentifier`}
+          value={userDetail?.companyIdentfier}
+          onValueChange={handleInputChange}
+          required={true}
+          variant={3}
+          readOnly={true}
+        />
         <InputBox type={`text`} placeholder={`Attendee Name`} name={`name`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox type={`text`} placeholder={`Attendee Role`} name={`companyRole`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox type={`email`} placeholder={`Attendee Work Email`} name={`email`} onValueChange={handleInputChange} required={true} variant={5} />
@@ -78,7 +80,7 @@ const SignUp = () => {
           required={true}
           variant={5}
         />
-        <Button text={`Sign Up`} className={`w-full`}  />
+        <Button text={`Sign Up`} className={`w-full`} />
       </FadeIn>
     </form>
   );

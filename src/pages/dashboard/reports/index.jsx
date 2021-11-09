@@ -6,7 +6,7 @@ import AllReports from './all-reports';
 const Reports = () => {
   return (
     <Switch>
-      <Route exact path={'/reports'}>
+      <Route exact path={'/overview'}>
         <AllReports />
       </Route>
       <Redirect to={`/404`} />

@@ -5,11 +5,10 @@ import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 
 import IndexPage from './pages';
+import PickModules from './pages/pick-modules';
 import Auth from './pages/auth';
 import VerifyAcount from './pages/auth/verify-acount';
-import SetUp from './pages/setup';
 import Base from './components/layout/base';
-import StickerPrintSuccess from './pages/dashboard/onboarding/sticker-print-success';
 import NotFound from './pages/404-page';
 
 import { UserActions } from './states/actions';
@@ -79,6 +78,9 @@ function App() {
         <Route exact path={'/'}>
           <IndexPage />
         </Route>
+        <Route exact path={'/pick-modules'}>
+          <PickModules />
+        </Route>
         <Route
           exact
           path={[
@@ -99,13 +101,7 @@ function App() {
         <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
           <VerifyAcount />
         </Route>
-        <Route path={'/setup'}>
-          <SetUp />
-        </Route>
-        <Route path={'/onboarding/sticker-id-success'}>
-          <StickerPrintSuccess />
-        </Route>
-        <Route path={['/onboarding', '/dashboard', '/assets', '/field-configuration', '/survey-rewards', '/reports', '/finances', '/settings']}>
+        <Route path={['/overview', '/settings']}>
           <Base />
         </Route>
         <Route
@@ -121,18 +117,5 @@ function App() {
     </>
   );
 }
-
-// '/onboarding/get-started',
-//             '/onboarding/upload-assets',
-//             '/onboarding/uploaded-assets',
-//             '/onboarding/setup-stickers',
-//             '/onboarding/create-survey',
-//             '/onboarding/create-survey/survey-edit',
-//             '/onboarding/create-survey/survey-preview',
-//             '/onboarding/embed-info',
-//             '/onboarding/generate-code',
-//             '/onboarding/onboarding-success',
-//             '/onboarding/post-onboard',
-//             '/onboarding/onboarded-assets',
 
 export default App;

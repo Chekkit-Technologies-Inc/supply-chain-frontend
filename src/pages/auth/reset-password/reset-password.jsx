@@ -35,10 +35,10 @@ const ResetPassword = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className={`text-lg text-gray-100 font-medium mb-6 sm:-mt-4`}>Reset Password</h1>
+      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Reset Password</h1>
       <FadeIn className={`space-y-8`}>
-        <InputBox type={`email`} placeholder={`Email Address`} name={`email`} onValueChange={handleInputChange} required={true} />
-        <Button text={`Reset Password`} className={`w-full`} variant={1} />
+        <InputBox type={`email`} placeholder={`Email Address`} name={`email`} onValueChange={handleInputChange} required={true} variant={5} />
+        <Button text={`Reset Password`} className={`w-full`} />
       </FadeIn>
     </form>
   );

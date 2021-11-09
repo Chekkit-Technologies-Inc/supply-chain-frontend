@@ -8,17 +8,19 @@ import Logo from '../fragments/logo';
 import InputBox from '../fragments/input-box';
 
 import { ReactComponent as overviewIcon } from '../../assets/finances-gray.svg';
-// import { ReactComponent as assetsIcon } from '../../assets/truck-fast-gray.svg';
-// import { ReactComponent as fieldsIcon } from '../../assets/location-gray.svg';
-// import { ReactComponent as surveysIcon } from '../../assets/document-gray.svg';
-// import { ReactComponent as reportsIcon } from '../../assets/reports-gray.svg';
-// import { ReactComponent as financesIcon } from '../../assets/finances-gray.svg';
+import { ReactComponent as Icon } from '../../assets/document-gray.svg';
 import { ReactComponent as settingsIcon } from '../../assets/settings-gray.svg';
 
 import Content from './content';
 
 const navigation = [
   { name: 'Overview', href: '/overview', icon: overviewIcon, current: false },
+  { name: 'Asset Management', href: '/asset-management', icon: Icon, current: false },
+  { name: 'Consumer Intelligence', href: '/consumer-intelligence', icon: Icon, current: false },
+  { name: 'Connect Plus', href: '/connect-plus', icon: Icon, current: false },
+  { name: 'Engage', href: '/engage', icon: Icon, current: false },
+  { name: 'Retail & POS', href: '/retail-pos', icon: Icon, current: false },
+  { name: 'Reports', href: '/reports', icon: Icon, current: false },
   { name: 'Settings', href: '/settings', icon: settingsIcon, current: false },
 ];
 

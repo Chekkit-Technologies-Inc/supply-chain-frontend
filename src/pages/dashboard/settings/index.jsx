@@ -7,7 +7,7 @@ const Settings = () => {
     <Switch>
       <Route exact path={'/settings'}>
         <FadeIn>
-          <div className={`font-bold text-4xl text-brand_blue text-center p-24`}>Settings</div>
+          <div className={`font-bold text-4xl text-brand_blue text-center p-16`}>Settings</div>
         </FadeIn>
       </Route>
       <Redirect to={`/404`} />

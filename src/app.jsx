@@ -85,6 +85,7 @@ function App() {
             '/auth',
             '/auth/signin',
             '/auth/signup',
+            '/auth/signup/:companyIdentifier',
             '/forgot-password',
             '/auth/forgot-password',
             '/reset-password',

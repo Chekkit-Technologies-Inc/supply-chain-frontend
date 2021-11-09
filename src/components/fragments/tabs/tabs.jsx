@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './tabs.module.css';
 
-export const Tabs = ({ children, variant, className }) => {
+export const Tabs = ({ children, variant, className, current }) => {
   const [selected, setSelected] = React.useState(0);
+
+  useEffect(() => {
+    if (current) {
+      setSelected(current)
+    }
+  }, [current])
 
   const handleChange = index => {
     setSelected(index);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,6 +10,7 @@ import { User } from '../../../models';
 import { UserActions } from '../../../states/actions';
 
 const SignUp = () => {
+  const { companyIdentifier } = useParams()
   const user = useSelector(state => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -28,6 +29,18 @@ const SignUp = () => {
     // eslint-disable-next-line
   }, [user]);
 
+  useEffect(() => {
+      if (companyIdentifier === '1') {
+        setUserDetail({...userDetail, companyIdentfier: 'manufacturer'})
+      } else if (companyIdentifier === '2') {
+        setUserDetail({...userDetail, companyIdentfier: 'distributor'})
+      } else if (companyIdentifier === '3') {
+        setUserDetail({...userDetail, companyIdentfier: 'retailer'})
+      } else {
+        history.push('/')
+      } // eslint-disable-next-line
+  }, [companyIdentifier])
+
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(UserActions.signUp(userDetail)).catch(console.log);
@@ -40,12 +53,13 @@ const SignUp = () => {
   return (
     <form onSubmit={handleSubmit}>
       <FadeIn className={`space-y-8`}>
-        <InputBox type={`text`} placeholder={`Company Name`} name={`companyName`} onValueChange={handleInputChange} required={true} />
-        <InputBox type={`text`} placeholder={`Company Address`} name={`address`} onValueChange={handleInputChange} required={true} />
-        <InputBox type={`text`} placeholder={`Company Country`} name={`country`} onValueChange={handleInputChange} required={true} />
-        <InputBox type={`text`} placeholder={`Attendee Name`} name={`name`} onValueChange={handleInputChange} required={true} />
-        <InputBox type={`email`} placeholder={`Work Email Address`} name={`email`} onValueChange={handleInputChange} required={true} />
-        <InputBox type={`tel`} placeholder={`Phone Number`} name={`phoneNumber`} onValueChange={handleInputChange} required={true} />
+        <InputBox type={`text`} placeholder={`Company Name`} name={`companyName`} onValueChange={handleInputChange} required={true} variant={5} />
+        <InputBox type={`text`} placeholder={`Company Address`} name={`address`} onValueChange={handleInputChange} required={true} variant={5} />
+        <InputBox type={`text`} placeholder={`Company Country`} name={`country`} onValueChange={handleInputChange} required={true} variant={5} />
+        <InputBox type={`text`} placeholder={`Company Type`} name={`companyIdentifier`} value={userDetail?.companyIdentfier} onValueChange={handleInputChange} required={true} variant={3} readOnly={true} />
+        <InputBox type={`text`} placeholder={`Attendee Name`} name={`name`} onValueChange={handleInputChange} required={true} variant={5} />
+        <InputBox type={`text`} placeholder={`Attendee Role`} name={`companyRole`} onValueChange={handleInputChange} required={true} variant={5} />
+        <InputBox type={`email`} placeholder={`Attendee Work Email`} name={`email`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox
           type={`password`}
           placeholder={`Password`}
@@ -53,6 +67,7 @@ const SignUp = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
+          variant={5}
         />
         <InputBox
           type={`password`}
@@ -61,8 +76,9 @@ const SignUp = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
+          variant={5}
         />
-        <Button text={`Sign Up`} className={`w-full`} variant={1} />
+        <Button text={`Sign Up`} className={`w-full`}  />
       </FadeIn>
     </form>
   );

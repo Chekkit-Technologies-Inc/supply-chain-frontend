@@ -37,7 +37,7 @@ const SignIn = () => {
   return (
     <form onSubmit={handleSubmit}>
       <FadeIn className={`space-y-8`}>
-        <InputBox type={`email`} placeholder={`Email Address`} name={`email`} onValueChange={handleInputChange} required={true} />
+        <InputBox type={`email`} placeholder={`Attendee Work Email`} name={`email`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox
           type={`password`}
           placeholder={`Password`}
@@ -45,11 +45,12 @@ const SignIn = () => {
           autoComplete={'current-password'}
           onValueChange={handleInputChange}
           required={true}
+          variant={5}
         />
         <div className={`text-right -mt-4`}>
           <Text onClick={() => history.push('/forgot-password')} className={`cursor-pointer hover:text-green-300 inline-block`} value={`Forgot password`} />
         </div>
-        <Button text={`Sign In`} className={`w-full`} variant={1} />
+        <Button text={`Sign In`} className={`w-full`} />
       </FadeIn>
     </form>
   );

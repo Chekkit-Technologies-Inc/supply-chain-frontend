@@ -1,10 +1,6 @@
 import React from 'react';
-import ImageFadeIn from 'react-image-fade-in';
 import { useHistory } from 'react-router-dom';
 import { Route, Switch, useLocation } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-
-import supplyChain from '../../assets/supply-chain.jpeg';
 
 import { Tabs, Panel } from '../../components/fragments/tabs';
 import Text from '../../components/fragments/text';
@@ -15,19 +11,24 @@ import UpdatePassword from './update-password';
 
 const Auth = () => {
   const location = useLocation();
-  // const dispatch = useDispatch();
+
   const history = useHistory();
   return (
-    <div className='min-h-screen flex relative overflow-hidden'>
-      <ImageFadeIn className='w-screen h-screen object-cover object-left' src={supplyChain} opacityTransition={1} />
-      <div className={`bg-brand_blue absolute right-0 top-0 bottom-0 z-10 w-full xl:w-5/12 h-screen flex justify-center items-center`}>
+    <div className='min-h-screen flex relative overflow-hidden bg-dash '>
+      <div className={`h-screen ml-24 hidden xl:flex justify-center items-center`}>
+        <h1>
+          <div onClick={() => history.push('/')} className={`font-extrabold text-7xl text-brand_green slate cursor-pointer`}>Chekkit</div>
+          <div className={`font-extrabold text-7xl text-brand_blue mt-4`}>Supply Chain</div>
+        </h1>
+      </div>
+      <div className={`absolute right-0 top-0 bottom-0 z-10 w-full xl:w-5/12 h-screen flex justify-center items-center`}>
         <div
           style={{ maxHeight: 'calc(100vh - 96px)' }}
-          className={`w-full max-w-lg m-6 p-6 sm:m-12 sm:p-12 border border-brand_blue_light rounded-2xl transition_all overflow-auto no-scrollbar overflow-x-hidden`}
+          className={`w-full max-w-lg m-6 p-6 sm:m-12 sm:p-12 shadow rounded-2xl transition_all overflow-auto no-scrollbar overflow-x-hidden bg-white`}
         >
           <Switch location={location}>
-            <Route exact path={['/', '/auth', '/auth/signin', '/auth/signup']}>
-              <Tabs>
+            <Route exact path={['/', '/auth', '/auth/signin', '/auth/signup/:companyIdentifier', '/auth/signup']}>
+              <Tabs variant={true} current={location.pathname === '/auth/signin' ? 0 : 1}>
                 <Panel title={'Sign In'}>
                   <SignIn />
                 </Panel>

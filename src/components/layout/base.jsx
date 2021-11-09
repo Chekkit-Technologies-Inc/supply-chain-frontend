@@ -171,10 +171,10 @@ const Base = () => {
         </div>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none '>
           <div className={`flex flex-col xl:flex-row space-y-6 xl:space-y-0 items-center justify-between px-4 md:px-12 py-6   shadow bg-white z-10`}>
-            <div className={`w-96`}>
+            <div className={`w-full xl:max-w-lg`}>
               <InputBox value={phrase} onValueChange={handleInputChange} name={`phrase`} placeholder={`Search...`} variant={4} className={``} type={`search`} />
             </div>
-            <div className={`flex items-center space-x-6`}>
+            <div className={`flex justify-between w-full xl:w-auto items-center space-x-6 flex-shrink-0 xl:ml-6`}>
               <div
                 className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
               >

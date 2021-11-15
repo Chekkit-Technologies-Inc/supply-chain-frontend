@@ -65,7 +65,7 @@ const VerifyAccount = () => {
             <Heading className={`font-semibold text-center mt-6`} title={`Verification Successful!`} />
             <Text className={`text-center text-brand_blue`} value={`Account has been Verified`} />
           </div>
-          <Button text={`Sign In`} onClick={() => history.push('/auth')} />
+          <Button text={`Sign In`} onClick={() => history.push('/auth/signin')} />
         </FadeIn>
       )}
       {token && !user?.acc_verified && !response.loading && (

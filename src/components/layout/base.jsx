@@ -170,7 +170,7 @@ const Base = () => {
           <Logo size={150} />
         </div>
         <main className='flex-1 relative z-0 overflow-y-auto focus:outline-none '>
-          <div className={`flex flex-col xl:flex-row space-y-6 xl:space-y-0 items-center justify-between px-4 md:px-12 py-6   shadow bg-white z-10`}>
+          <div className={`flex flex-col xl:flex-row space-y-6 xl:space-y-0 items-center justify-between px-4 md:px-12 py-6 shadow bg-white z-10`}>
             <div className={`w-full xl:max-w-lg`}>
               <InputBox value={phrase} onValueChange={handleInputChange} name={`phrase`} placeholder={`Search...`} variant={4} className={``} type={`search`} />
             </div>

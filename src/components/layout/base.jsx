@@ -174,7 +174,9 @@ const Base = () => {
             <div className={`w-full xl:max-w-lg`}>
               <InputBox value={phrase} onValueChange={handleInputChange} name={`phrase`} placeholder={`Search...`} variant={4} className={``} type={`search`} />
             </div>
-            <div className={`flex justify-between w-full xl:w-auto items-center space-x-6 flex-shrink-0 xl:ml-6`}>
+            <div
+              className={`flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between w-full xl:w-auto items-start sm:items-center sm:space-x-6 flex-shrink-0 xl:ml-6`}
+            >
               <div
                 className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
               >
@@ -183,7 +185,7 @@ const Base = () => {
               <div
                 className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
               >
-                Profile
+                Company Profile
               </div>
             </div>
           </div>

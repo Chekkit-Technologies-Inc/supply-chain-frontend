@@ -45,6 +45,8 @@ const InputBox = ({
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Full Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
@@ -86,6 +88,8 @@ const InputBox = ({
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Full Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
@@ -133,6 +137,8 @@ const InputBox = ({
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Full Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
@@ -172,6 +178,8 @@ const InputBox = ({
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Full Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
@@ -211,6 +219,8 @@ const InputBox = ({
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Full Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
@@ -233,9 +243,7 @@ const InputBox = ({
               <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />
             )}
             {typex === 'textx' && <AiFillEye onClick={() => setTypex('password')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />}
-            {typex === 'search' && (
-              <FiSearch className={`opacity-50 select-none flex-shrink-0 text-lg`} />
-            )}
+            {typex === 'search' && <FiSearch className={`opacity-50 select-none flex-shrink-0 text-lg`} />}
           </div>
         </div>
       )}
@@ -253,6 +261,8 @@ const InputBox = ({
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Full Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}

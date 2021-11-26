@@ -1,4 +1,19 @@
-import { SIGNUP, SIGNIN, UPDATE_USER, VERIFY_ACCOUNT, RESET_PASSWORD, UPDATE_PASSWORD } from '../type';
+import {
+  SIGNUP,
+  SIGNIN,
+  UPDATE_USER,
+  VERIFY_ACCOUNT,
+  RESET_PASSWORD,
+  UPDATE_PASSWORD,
+  SEND_INVITE,
+  ACCEPT_INVITE,
+  GET_COMPANY_USERS,
+  GET_USERS_ROLES,
+  ASSIGN_USER_ROLE,
+  GET_COMPANY_PERMISSIONS,
+  ASSIGN_TEMP_PERMISSIONS,
+  REMOVE_TEMP_PERMISSIONS,
+} from '../type';
 import { UserService } from '../../services';
 import { notify, loading } from './response';
 
@@ -100,6 +115,150 @@ export const updatePassword = data => async dispatch => {
   }
 };
 
+export const sendInvite = data => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.sendInvite(data);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: SEND_INVITE,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const acceptInvite = data => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.acceptInvite(data);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: ACCEPT_INVITE,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const getCompanyUsers = () => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.getCompanyUsers();
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: GET_COMPANY_USERS,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const getUsersRoles = () => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.getUsersRoles();
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: GET_USERS_ROLES,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const assignUserRole = (id, roleId) => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.assignUserRole(id, roleId);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: ASSIGN_USER_ROLE,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const getCompanyPermissions = () => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.getCompanyPermissions();
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: GET_COMPANY_PERMISSIONS,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const assignTempPermission = id => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.assignTempPermission(id);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: ASSIGN_TEMP_PERMISSIONS,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const removeTempPermission = id => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.removeTempPermission(id);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: REMOVE_TEMP_PERMISSIONS,
+      payload: res.data,
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
 const UserActions = {
   signUp,
   signIn,
@@ -107,6 +266,14 @@ const UserActions = {
   verifyAccount,
   resetPassword,
   updatePassword,
+  sendInvite,
+  acceptInvite,
+  getCompanyUsers,
+  getUsersRoles,
+  assignUserRole,
+  getCompanyPermissions,
+  assignTempPermission,
+  removeTempPermission,
 };
 
 export default UserActions;

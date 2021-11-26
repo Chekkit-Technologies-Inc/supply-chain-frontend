@@ -8,12 +8,12 @@ import Button from '../../../components/fragments/button';
 
 import { UserActions } from '../../../states/actions';
 
-const UpdatePassword = () => {
+const AcceptInvite = () => {
   const { token } = useParams();
   const history = useHistory();
   const response = useSelector(state => state.response);
   const dispatch = useDispatch();
-  const [userDetail, setUserDetail] = useState({ newPassword: '', confirmPassword: '' });
+  const [userDetail, setUserDetail] = useState({ name: '', newPassword: '', confirmPassword: '' });
 
   useEffect(() => {
     if (token) {
@@ -31,7 +31,7 @@ const UpdatePassword = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(UserActions.updatePassword(userDetail)).catch(console.log);
+    dispatch(UserActions.acceptInvite(userDetail)).catch(console.log);
   };
 
   const handleInputChange = event => {
@@ -41,8 +41,9 @@ const UpdatePassword = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Update Password</h1>
+      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Update Profile</h1>
       <FadeIn className={`space-y-8`}>
+        <InputBox type={`text`} placeholder={`Full Name`} name={`name`} onValueChange={handleInputChange} required={true} variant={5} />
         <InputBox
           type={`password`}
           placeholder={`New Password`}
@@ -56,15 +57,15 @@ const UpdatePassword = () => {
           type={`password`}
           placeholder={`Confirm Password`}
           name={`confirmPassword`}
-          autoComplete={'new-password'}
+          autoComplete={'confirm-password'}
           onValueChange={handleInputChange}
           required={true}
           variant={5}
         />
-        <Button text={`Update Password`} className={`w-full`} />
+        <Button text={`Accept Invitation`} className={`w-full`} />
       </FadeIn>
     </form>
   );
 };
 
-export default UpdatePassword;
+export default AcceptInvite;

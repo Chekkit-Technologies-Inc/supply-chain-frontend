@@ -8,6 +8,7 @@ import SignIn from './sign-in';
 import SignUp from './sign-up';
 import ResetPassword from './reset-password';
 import UpdatePassword from './update-password';
+import AcceptInvite from './accept-invite';
 
 const Auth = () => {
   const location = useLocation();
@@ -17,7 +18,9 @@ const Auth = () => {
     <div className='min-h-screen flex relative overflow-hidden bg-dash '>
       <div className={`h-screen ml-24 hidden xl:flex justify-center items-center`}>
         <h1>
-          <div onClick={() => history.push('/')} className={`font-extrabold text-7xl text-brand_green slate cursor-pointer`}>Chekkit</div>
+          <div onClick={() => history.push('/')} className={`font-extrabold text-7xl text-brand_green slate cursor-pointer`}>
+            Chekkit
+          </div>
           <div className={`font-extrabold text-7xl text-brand_blue mt-4`}>Supply Chain</div>
         </h1>
       </div>
@@ -43,10 +46,13 @@ const Auth = () => {
             <Route path={['/reset-password/:token', '/auth/reset-password/:token', '/auth/reset-password', '/reset-password']}>
               <UpdatePassword />
             </Route>
+            <Route path={['/user-invite/:token', '/auth/user-invite/:token', '/auth/user-invite', '/user-invite']}>
+              <AcceptInvite />
+            </Route>
           </Switch>
           <Route path={['/forgot-password', '/auth/forgot-password', '/reset-password', '/auth/reset-password']}>
             <div style={{ color: '#5f7d95' }} className={`text-center mt-6 sm:-mb-4`}>
-              <Text onClick={() => history.push('/auth')} className={`cursor-pointer hover:text-green-300 inline-block`} value={`Sign In`} />
+              <Text onClick={() => history.push('/auth/signin')} className={`cursor-pointer hover:text-green-300 inline-block`} value={`Sign In`} />
             </div>
           </Route>
         </div>

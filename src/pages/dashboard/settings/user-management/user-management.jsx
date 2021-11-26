@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 
+import { UserActions } from '../../../../states/actions';
+
 import Dialog from '../../../../components/fragments/dialog';
 import Button from '../../../../components/fragments/button';
 import Heading from '../../../../components/fragments/heading';

@@ -20,12 +20,52 @@ export const updatePassword = async data => {
   return http().patch(`/auth/update-password`, data);
 };
 
+export const sendInvite = async data => {
+  return http().post(`/users/invite`, data);
+};
+
+export const acceptInvite = async data => {
+  return http().post(`/users/accept-invite`, data);
+};
+
+export const getCompanyUsers = async () => {
+  return http().get(`/users`);
+};
+
+export const getUsersRoles = async () => {
+  return http().get(`/users/roles`);
+};
+
+export const assignUserRole = async (id, roleId) => {
+  return http().put(`/users/${id}/roles/${roleId}`);
+};
+
+export const getCompanyPermissions = async () => {
+  return http().get(`/users/company/permissions`);
+};
+
+export const assignTempPermission = async id => {
+  return http().put(`/users/${id}/assign-permissions`);
+};
+
+export const removeTempPermission = async id => {
+  return http().put(`/users/${id}/remove-permissions`);
+};
+
 const UserService = {
   signUp,
   signIn,
   verifyAccount,
   resetPassword,
   updatePassword,
+  sendInvite,
+  acceptInvite,
+  getCompanyUsers,
+  getUsersRoles,
+  assignUserRole,
+  getCompanyPermissions,
+  assignTempPermission,
+  removeTempPermission,
 };
 
 export default UserService;

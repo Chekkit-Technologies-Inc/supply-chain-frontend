@@ -29,7 +29,7 @@ const SignUp = () => {
       history.push('/setup/pick-management');
     }
     if (user?.email && user?.acc_verified && !user?.isAuthorized) {
-      history.push('/auth');
+      history.push('/auth/signin');
     }
     // eslint-disable-next-line
   }, [user]);

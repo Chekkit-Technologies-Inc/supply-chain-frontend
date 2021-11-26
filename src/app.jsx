@@ -94,6 +94,10 @@ function App() {
             '/auth/reset-password',
             '/reset-password/:token',
             '/auth/reset-password/:token',
+            '/user-invite/:token',
+            '/auth/user-invite/:token',
+            '/auth/user-invite',
+            '/user-invite',
           ]}
         >
           <Auth />

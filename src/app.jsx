@@ -19,7 +19,7 @@ function App() {
   const dispatch = useDispatch();
   const response = useSelector(state => state.response);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let token = localStorage.getItem('chekkit-act');
     if (token) {
       dispatch(UserActions.updateUser({ token }));

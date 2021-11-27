@@ -9,11 +9,21 @@ import Button from '../../../components/fragments/button';
 // import { User } from '../../../models';
 import { UserActions } from '../../../states/actions';
 
+const detail = {
+  name: '',
+  email: '',
+  companyName: '',
+  address: '',
+  country: '',
+  companyRole: '',
+  companyIdentifier: '',
+};
+
 const SignUp = () => {
   const user = useSelector(state => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [userDetail, setUserDetail] = useState();
+  const [userDetail, setUserDetail] = useState(detail);
 
   useEffect(() => {
     if (user) {
@@ -22,13 +32,14 @@ const SignUp = () => {
   }, [user]);
 
   useEffect(() => {
-    if (user?.email && !user?.acc_verified) {
+    localStorage.removeItem('chekkit-act');
+    if (user?.name && !user?.acc_verified) {
       history.push('/auth/verify-account');
     }
-    if (user?.email && user?.acc_verified && user?.isAuthorized) {
-      history.push('/setup/pick-management');
+    if (user?.name && user?.acc_verified && user?.isAuthorized) {
+      history.push('/overview');
     }
-    if (user?.email && user?.acc_verified && !user?.isAuthorized) {
+    if (user?.name && user?.acc_verified && !user?.isAuthorized) {
       history.push('/auth/signin');
     }
     // eslint-disable-next-line

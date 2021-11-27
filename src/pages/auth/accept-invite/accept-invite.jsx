@@ -13,7 +13,13 @@ const AcceptInvite = () => {
   const history = useHistory();
   const response = useSelector(state => state.response);
   const dispatch = useDispatch();
-  const [userDetail, setUserDetail] = useState({ name: '', newPassword: '', confirmPassword: '' });
+  const [userDetail, setUserDetail] = useState({ name: '', password: '', confirmPassword: '' });
+
+  useEffect(() => {
+    dispatch(UserActions.signOut());
+    localStorage.removeItem('chekkit-act');
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -47,7 +53,7 @@ const AcceptInvite = () => {
         <InputBox
           type={`password`}
           placeholder={`New Password`}
-          name={`newPassword`}
+          name={`password`}
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}

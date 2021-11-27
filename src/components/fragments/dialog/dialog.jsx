@@ -1,24 +1,32 @@
-import React, { Fragment, useRef, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import { useDispatch } from 'react-redux';
 
 import Button from '../button';
 import InputBox from '../input-box';
 import Heading from '../heading';
 
-const initialInviteData = { name: '', email: '', role: '' };
+import { ResponseActions } from '../../../states/actions';
+
+const initialInviteData = { email: '', companyRole: '' };
 
 const AppDialog = ({ open, setOpen, type, title, action }) => {
-  const cancelButtonRef = useRef(null);
+  const dispatch = useDispatch();
   const [inviteData, setInviteData] = useState(initialInviteData);
 
   const onSubmit = e => {
     e.preventDefault();
     if (action) {
       if (type === 'user-invite') {
-        action(inviteData);
-        setInviteData(initialInviteData);
+        let send = inviteData.email && inviteData.companyRole;
+        if (send) {
+          action(inviteData);
+          setInviteData(initialInviteData);
+          setOpen(false);
+        } else {
+          dispatch(ResponseActions.notify({ title: 'Error', message: 'Incomplete data', type: 'danger' }));
+        }
       }
-      setOpen(false);
     }
   };
 
@@ -34,7 +42,7 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as='div' className='fixed z-10 inset-0 overflow-y-auto' initialFocus={cancelButtonRef} onClose={setOpen}>
+      <Dialog as='div' className='fixed z-10 inset-0 overflow-y-auto' onClose={setOpen}>
         <div className='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
           <Transition.Child
             as={Fragment}
@@ -73,14 +81,6 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
                       </Dialog.Title>
                       <div style={{ minWidth: '300px' }} className='mt-6 space-y-4'>
                         <InputBox
-                          placeholder={`Full Name`}
-                          name={`name`}
-                          value={inviteData.name}
-                          onValueChange={handleInputChange}
-                          variant={3}
-                          required={true}
-                        />
-                        <InputBox
                           placeholder={`Company Email`}
                           name={`email`}
                           type={'email'}
@@ -91,9 +91,10 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
                         />
                         <InputBox
                           placeholder={`Company Role`}
-                          value={inviteData.role}
+                          type={'text'}
                           onValueChange={handleInputChange}
-                          name={`role`}
+                          value={inviteData.companyRole}
+                          name={`companyRole`}
                           variant={3}
                           required={true}
                         />
@@ -101,7 +102,7 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
                     </div>
                   </div>
                   <div className='mt-5 sm:mt-6 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense w-full'>
-                    <Button className={`h-14 w-full`} onClick={closeDialog} ref={cancelButtonRef} text={`Cancel`} type={`secondary`} cx={2} />
+                    <Button className={`h-14 w-full`} onClick={closeDialog} text={`Cancel`} type={`secondary`} cx={2} />
                     <Button type={`submit`} className={`h-14 w-full`} text={`Invite`} cx={2} />
                   </div>
                 </form>

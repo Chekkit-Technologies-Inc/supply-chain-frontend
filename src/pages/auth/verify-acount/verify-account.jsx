@@ -23,8 +23,9 @@ const VerifyAccount = () => {
   const response = useSelector(state => state.response);
 
   useEffect(() => {
+    localStorage.removeItem('chekkit-act');
     if (!token && !user?.email) {
-      history.push('/auth');
+      history.push('/auth/signin');
     }
     // eslint-disable-next-line
   }, []);

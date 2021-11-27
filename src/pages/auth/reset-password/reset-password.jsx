@@ -19,6 +19,8 @@ const ResetPassword = () => {
     if (user.isAuthorized) {
       localStorage.setItem('chekkit-act', user.token);
       history.push('/setup/pick-management');
+    } else {
+      localStorage.removeItem('chekkit-act');
     }
     // eslint-disable-next-line
   }, [user]);

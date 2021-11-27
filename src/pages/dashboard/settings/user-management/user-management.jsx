@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { UserActions } from '../../../../states/actions';
 
@@ -8,20 +9,25 @@ import Button from '../../../../components/fragments/button';
 import Heading from '../../../../components/fragments/heading';
 import UserList from '../../../../components/fragments/user-list';
 
-const users = [
-  { name: 'Michael Jude', email: 'mikejude@gmail.com', role: 'Operations', status: 'accepted' },
-  { name: 'Michael Jude', email: 'mikejude@gmail.com', role: 'Operations', status: 'accepted' },
-  { name: 'Michael Jude', email: 'mikejude@gmail.com', role: 'Operations', status: 'accepted' },
-  { name: 'Michael Jude', email: 'mikejude@gmail.com', role: 'Operations', status: 'accepted' },
-];
-
 const UserManagement = () => {
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [userList, setUserList] = useState(users);
+
+  useEffect(() => {
+    if (user?.token) {
+      dispatch(UserActions.getUsersRoles()).catch(console.log);
+      dispatch(UserActions.getCompanyUsers()).catch(console.log);
+      dispatch(UserActions.getCompanyPermissions()).catch(console.log);
+    } // eslint-disable-next-line
+  }, [user?.token]);
 
   const InviteUser = data => {
-    const users = [...userList, { ...data, status: 'invited' }];
-    setUserList(users);
+    dispatch(UserActions.sendInvite(data)).catch(console.log);
+  };
+
+  const changeCompanyRole = (userId, roleId) => {
+    dispatch(UserActions.assignUserRole(userId, roleId)).catch(console.log);
   };
 
   return (
@@ -38,7 +44,7 @@ const UserManagement = () => {
           <Heading className={`font-semibold text-brand_blue`} title={`Company Users`} size={3} />
           <Button className={`h-12`} onClick={() => setOpen(true)} text={`Invite User`} cx={2} />
         </div>
-        <UserList userList={userList} />
+        <UserList userList={user.companyUsers} roles={user.roles} permissions={user.permissions} changeCompanyRole={changeCompanyRole} />
       </FadeIn>
       <Dialog open={open} setOpen={setOpen} title={`User Invite`} type={`user-invite`} action={InviteUser} />
     </div>

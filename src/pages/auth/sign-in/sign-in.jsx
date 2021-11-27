@@ -7,19 +7,24 @@ import InputBox from '../../../components/fragments/input-box';
 import Button from '../../../components/fragments/button';
 import Text from '../../../components/fragments/text';
 
-import { User } from '../../../models';
 import { UserActions } from '../../../states/actions';
+
+const detail = {
+  email: '',
+};
 
 const SignIn = () => {
   const user = useSelector(state => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const [userDetail, setUserDetail] = useState(new User());
+  const [userDetail, setUserDetail] = useState(detail);
 
   useEffect(() => {
     if (user.isAuthorized) {
       localStorage.setItem('chekkit-act', user.token);
       history.push('/overview');
+    } else {
+      localStorage.removeItem('chekkit-act');
     }
     // eslint-disable-next-line
   }, [user]);

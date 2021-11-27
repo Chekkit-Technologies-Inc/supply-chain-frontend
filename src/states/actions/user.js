@@ -5,6 +5,7 @@ import {
   VERIFY_ACCOUNT,
   RESET_PASSWORD,
   UPDATE_PASSWORD,
+  SIGNOUT,
   SEND_INVITE,
   ACCEPT_INVITE,
   GET_COMPANY_USERS,
@@ -115,6 +116,12 @@ export const updatePassword = data => async dispatch => {
   }
 };
 
+export const signOut = () => async dispatch => {
+  dispatch({
+    type: SIGNOUT,
+  });
+};
+
 export const sendInvite = data => async dispatch => {
   dispatch(loading({ loading: true }));
   try {
@@ -124,7 +131,6 @@ export const sendInvite = data => async dispatch => {
 
     dispatch({
       type: SEND_INVITE,
-      payload: res.data,
     });
     return Promise.resolve(res.data);
   } catch (err) {
@@ -142,7 +148,6 @@ export const acceptInvite = data => async dispatch => {
 
     dispatch({
       type: ACCEPT_INVITE,
-      payload: res.data,
     });
     return Promise.resolve(res.data);
   } catch (err) {
@@ -196,8 +201,9 @@ export const assignUserRole = (id, roleId) => async dispatch => {
 
     dispatch({
       type: ASSIGN_USER_ROLE,
-      payload: res.data,
     });
+
+    dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
@@ -232,8 +238,8 @@ export const assignTempPermission = id => async dispatch => {
 
     dispatch({
       type: ASSIGN_TEMP_PERMISSIONS,
-      payload: res.data,
     });
+
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
@@ -250,8 +256,8 @@ export const removeTempPermission = id => async dispatch => {
 
     dispatch({
       type: REMOVE_TEMP_PERMISSIONS,
-      payload: res.data,
     });
+
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
@@ -266,6 +272,7 @@ const UserActions = {
   verifyAccount,
   resetPassword,
   updatePassword,
+  signOut,
   sendInvite,
   acceptInvite,
   getCompanyUsers,

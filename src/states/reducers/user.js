@@ -5,14 +5,10 @@ import {
   VERIFY_ACCOUNT,
   RESET_PASSWORD,
   UPDATE_PASSWORD,
-  SEND_INVITE,
-  ACCEPT_INVITE,
+  SIGNOUT,
   GET_COMPANY_USERS,
   GET_USERS_ROLES,
-  ASSIGN_USER_ROLE,
   GET_COMPANY_PERMISSIONS,
-  ASSIGN_TEMP_PERMISSIONS,
-  REMOVE_TEMP_PERMISSIONS,
 } from '../type';
 import { User } from '../../models';
 
@@ -25,7 +21,7 @@ const userReducer = (user = initialState, action) => {
     case SIGNUP:
       return { ...user, ...payload };
     case SIGNIN:
-      return { ...user, ...payload };
+      return payload;
     case VERIFY_ACCOUNT:
       return { ...user, ...payload };
     case UPDATE_USER:
@@ -34,6 +30,14 @@ const userReducer = (user = initialState, action) => {
       return user;
     case UPDATE_PASSWORD:
       return user;
+    case SIGNOUT:
+      return initialState;
+    case GET_COMPANY_USERS:
+      return { ...user, companyUsers: payload.data };
+    case GET_USERS_ROLES:
+      return { ...user, roles: payload.data };
+    case GET_COMPANY_PERMISSIONS:
+      return { ...user, permissions: payload.data };
     default:
       return user;
   }

@@ -16,6 +16,7 @@ const UpdatePassword = () => {
   const [userDetail, setUserDetail] = useState({ newPassword: '', confirmPassword: '' });
 
   useEffect(() => {
+    localStorage.removeItem('chekkit-act');
     if (token) {
       dispatch(UserActions.updateUser({ token }));
     }

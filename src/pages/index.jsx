@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { UserActions } from '../states/actions';
 
@@ -9,9 +9,20 @@ import Logo from '../components/fragments/logo';
 import Button from '../components/fragments/button';
 
 const IndexPage = () => {
+  const user = useSelector(state => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
   const [selected, setSelected] = useState();
+
+  useEffect(() => {
+    if (user.isAuthorized) {
+      localStorage.setItem('chekkit-act', user.token);
+      history.push('/overview');
+    } else {
+      localStorage.removeItem('chekkit-act');
+    }
+    // eslint-disable-next-line
+  }, [user]);
 
   const handleIdentifier = () => {
     if (!selected) return;

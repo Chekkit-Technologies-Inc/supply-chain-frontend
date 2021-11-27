@@ -1,12 +1,12 @@
-// auth
+// user
 export const SIGNUP = 'SIGNUP';
 export const SIGNIN = 'SIGNIN';
 export const UPDATE_USER = 'UPDATE_USER';
 export const VERIFY_ACCOUNT = 'VERIFY_ACCOUNT';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+export const SIGNOUT = 'SIGNOUT';
 
-// users
 export const SEND_INVITE = 'SEND_INVITE';
 export const ACCEPT_INVITE = 'ACCEPT_INVITE';
 export const GET_COMPANY_USERS = 'GET_COMPANY_USERS';

@@ -1,8 +1,11 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { MdMenu, MdClose } from 'react-icons/md';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import { useDispatch } from 'react-redux';
+
+import { UserActions } from '../../states/actions';
 
 import Logo from '../fragments/logo';
 import InputBox from '../fragments/input-box';
@@ -30,6 +33,8 @@ function classNames(...classes) {
 
 const Base = () => {
   const location = useLocation();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navItems, setNavItems] = useState(navigation);
   const [phrase, setPhrase] = useState('');
@@ -37,6 +42,12 @@ const Base = () => {
   const handleInputChange = event => {
     const { value } = event.target;
     setPhrase(value);
+  };
+
+  const signout = () => {
+    dispatch(UserActions.signOut());
+    localStorage.removeItem('chekkit-act');
+    history.push('/auth/signin');
   };
 
   useEffect(() => {
@@ -103,7 +114,7 @@ const Base = () => {
                 <div className='flex items-center flex-shrink-0 px-6'>
                   <Logo size={150} />
                 </div>
-                <FadeIn className='mt-2  flex-1 bg-gray-100 space-y-4'>
+                <FadeIn className='mt-2  flex-1 bg-gray-100 space-y-4 flex flex-col justify-between'>
                   {navItems.map(item => (
                     <Link
                       key={item.name}
@@ -120,6 +131,9 @@ const Base = () => {
                       {item.name}
                     </Link>
                   ))}
+                  <div onClick={signout} className={`text-red-500 font-semibold px-6 mb-6 cursor-pointer`}>
+                    Sign Out
+                  </div>
                 </FadeIn>
               </div>
             </div>
@@ -135,7 +149,7 @@ const Base = () => {
               <div className='flex items-center flex-shrink-0 px-6'>
                 <Logo size={150} />
               </div>
-              <FadeIn className='mt-2 flex-1 bg-gray-100 space-y-4'>
+              <FadeIn className='mt-2 flex-1 bg-gray-100 space-y-4 flex flex-col justify-between'>
                 {navItems.map(item => (
                   <Link
                     key={item.name}
@@ -152,6 +166,9 @@ const Base = () => {
                     {item.name}
                   </Link>
                 ))}
+                <div onClick={signout} className={`text-red-500 font-semibold px-6 mb-6 cursor-pointer`}>
+                  Sign Out
+                </div>
               </FadeIn>
             </div>
           </div>

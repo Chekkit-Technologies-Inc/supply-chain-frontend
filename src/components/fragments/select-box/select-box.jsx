@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectBox = ({ className, options, placeholder, label, labelColor, name, variant, value, onValueChange }) => {
+const SelectBox = ({ className, options, placeholder, label, labelColor, name, variant, value, onValueChange, table }) => {
   return (
     <>
       {!variant && (
@@ -76,7 +76,7 @@ const SelectBox = ({ className, options, placeholder, label, labelColor, name, v
           <div className={`p-4 rounded-md border border-gray-400 text-gray-700 flex items-center space-x-4 overflow-hidden`}>
             <select
               id={label ? label : ''}
-              className={`flex-1 h-full bg-transparent focus:bg-transparent focus-within:bg-transparent focus:outline-none cursor-pointer`}
+              className={`flex-1 h-full bg-transparent focus:bg-transparent focus-within:bg-transparent focus:outline-none cursor-pointer pr-2`}
               spellCheck={false}
               placeholder={placeholder}
               name={name}

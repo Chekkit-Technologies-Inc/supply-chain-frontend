@@ -44,12 +44,13 @@ export const getCompanyPermissions = async () => {
   return http().get(`/users/company/permissions`);
 };
 
-export const assignTempPermission = async id => {
-  return http().put(`/users/${id}/assign-permissions`);
+export const assignTempPermission = async (id, data) => {
+  console.log(data);
+  return http().put(`/users/${id}/assign-permissions`, data);
 };
 
-export const removeTempPermission = async id => {
-  return http().put(`/users/${id}/remove-permissions`);
+export const removeTempPermission = async (id, data) => {
+  return http().put(`/users/${id}/remove-permissions`, data);
 };
 
 const UserService = {

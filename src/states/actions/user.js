@@ -229,10 +229,11 @@ export const getCompanyPermissions = () => async dispatch => {
   }
 };
 
-export const assignTempPermission = id => async dispatch => {
+export const assignTempPermission = (id, data) => async dispatch => {
   dispatch(loading({ loading: true }));
+  let reqData = { permissions: data };
   try {
-    const res = await UserService.assignTempPermission(id);
+    const res = await UserService.assignTempPermission(id, reqData);
 
     dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
 
@@ -240,6 +241,7 @@ export const assignTempPermission = id => async dispatch => {
       type: ASSIGN_TEMP_PERMISSIONS,
     });
 
+    dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
@@ -247,10 +249,11 @@ export const assignTempPermission = id => async dispatch => {
   }
 };
 
-export const removeTempPermission = id => async dispatch => {
+export const removeTempPermission = (id, data) => async dispatch => {
   dispatch(loading({ loading: true }));
+  let reqData = { permissions: data };
   try {
-    const res = await UserService.removeTempPermission(id);
+    const res = await UserService.removeTempPermission(id, reqData);
 
     dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
 
@@ -258,6 +261,7 @@ export const removeTempPermission = id => async dispatch => {
       type: REMOVE_TEMP_PERMISSIONS,
     });
 
+    dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));

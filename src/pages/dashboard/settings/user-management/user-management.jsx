@@ -30,6 +30,14 @@ const UserManagement = () => {
     dispatch(UserActions.assignUserRole(userId, roleId)).catch(console.log);
   };
 
+  const assignTempPermissions = (userId, data) => {
+    dispatch(UserActions.assignTempPermission(userId, data)).catch(console.log);
+  };
+
+  const removeTempPermissions = (userId, data) => {
+    dispatch(UserActions.removeTempPermission(userId, data)).catch(console.log);
+  };
+
   return (
     <div>
       <FadeIn
@@ -44,7 +52,14 @@ const UserManagement = () => {
           <Heading className={`font-semibold text-brand_blue`} title={`Company Users`} size={3} />
           <Button className={`h-12`} onClick={() => setOpen(true)} text={`Invite User`} cx={2} />
         </div>
-        <UserList userList={user.companyUsers} roles={user.roles} permissions={user.permissions} changeCompanyRole={changeCompanyRole} />
+        <UserList
+          userList={user.companyUsers}
+          roles={user.roles}
+          permissions={user.permissions.permissions}
+          changeCompanyRole={changeCompanyRole}
+          assignTempPermissions={assignTempPermissions}
+          removeTempPermissions={removeTempPermissions}
+        />
       </FadeIn>
       <Dialog open={open} setOpen={setOpen} title={`User Invite`} type={`user-invite`} action={InviteUser} />
     </div>

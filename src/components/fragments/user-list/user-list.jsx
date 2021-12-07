@@ -3,7 +3,7 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 
 import SelectBox from '../select-box';
 
-const UserList = ({ userList, roles, permissions, changeCompanyRole }) => {
+const UserList = ({ userList, roles, permissions, changeCompanyRole, assignTempPermissions, removeTempPermissions }) => {
   return (
     <>
       <div className={`overflow-auto min-w-full py-6`}>
@@ -20,7 +20,18 @@ const UserList = ({ userList, roles, permissions, changeCompanyRole }) => {
         <FadeIn className={`min-w-max flex-shrink-0 space-y-6 pt-6`}>
           {userList ? (
             userList.map((item, idx) => {
-              return <Item key={idx} sn={idx + 1} user={item} roles={roles} permissions={permissions} changeCompanyRole={changeCompanyRole} />;
+              return (
+                <Item
+                  key={idx}
+                  sn={idx + 1}
+                  user={item}
+                  roles={roles}
+                  permissions={permissions}
+                  changeCompanyRole={changeCompanyRole}
+                  assignTempPermissions={assignTempPermissions}
+                  removeTempPermissions={removeTempPermissions}
+                />
+              );
             })
           ) : (
             <div className={`text-center`}>No Users Yet</div>
@@ -31,13 +42,13 @@ const UserList = ({ userList, roles, permissions, changeCompanyRole }) => {
   );
 };
 
-const Item = ({ user, sn, roles, permissions, changeCompanyRole }) => {
+const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermissions, removeTempPermissions }) => {
   const [item, setItem] = useState();
   const [userRoles, setUserRoles] = useState([]);
   const [userPermissions, setUserPermissions] = useState([]);
 
   useEffect(() => {
-    if (roles) {
+    if (roles && roles.length > 0) {
       setUserRoles(
         roles.reduce((p, n) => {
           return [...p, n.name];
@@ -47,10 +58,10 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole }) => {
   }, [roles]);
 
   useEffect(() => {
-    if (permissions) {
+    if (permissions && permissions.length > 0) {
       setUserPermissions(
         permissions.reduce((p, n) => {
-          return [...p, n?.name];
+          return [...p, n];
         }, []),
       );
     }
@@ -71,15 +82,18 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole }) => {
   const handleInputChange = e => {
     const { name, value } = e.target;
     if (name === 'role' && roles) {
-      let roleId = '';
       roles.forEach(role => {
         if (role.name === value) {
-          roleId = role.id;
-          changeCompanyRole(user.id, roleId);
+          changeCompanyRole(user.id, role.id);
         }
       });
     }
-    if (name === 'permissions') {
+    if (name === 'permissions' && permissions) {
+      permissions.forEach(permission => {
+        if (permission === value) {
+          assignTempPermissions(user.id, [permission]);
+        }
+      });
     }
   };
 
@@ -111,7 +125,7 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole }) => {
             <SelectBox
               placeholder={`Temporary Permissions`}
               options={[...userPermissions]}
-              value={item?.companyRole}
+              value={item?.temporary_permissions[item?.temporary_permissions?.length - 1]}
               onValueChange={handleInputChange}
               name={`permissions`}
               variant={3}

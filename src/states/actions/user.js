@@ -1,6 +1,7 @@
 import {
   SIGNUP,
   SIGNIN,
+  FETCH_USER,
   UPDATE_USER,
   VERIFY_ACCOUNT,
   RESET_PASSWORD,
@@ -51,6 +52,25 @@ export const signIn = data => async dispatch => {
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
+export const fetchUser = () => async dispatch => {
+  dispatch(loading({ loading: true }));
+
+  try {
+    const res = await UserService.fetchUser();
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch({
+      type: FETCH_USER,
+      payload: { ...res.data.data, isAuthorized: true },
+    });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -272,6 +292,7 @@ export const removeTempPermission = (id, data) => async dispatch => {
 const UserActions = {
   signUp,
   signIn,
+  fetchUser,
   updateUser,
   verifyAccount,
   resetPassword,

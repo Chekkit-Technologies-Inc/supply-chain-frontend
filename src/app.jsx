@@ -18,6 +18,7 @@ function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   const response = useSelector(state => state.response);
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     let token = localStorage.getItem('chekkit-act');
@@ -25,6 +26,17 @@ function App() {
       dispatch(UserActions.updateUser({ token }));
     } // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    if (user?.token) {
+      dispatch(UserActions.fetchUser());
+      dispatch(UserActions.getUsersRoles());
+      dispatch(UserActions.getCompanyUsers());
+      dispatch(UserActions.getCompanyPermissions());
+      // dispatch(ProductActions.fetchProducts());
+    }
+    // eslint-disable-next-line
+  }, [user?.token]);
 
   useEffect(() => {
     if (response.type) {

@@ -106,33 +106,37 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
         </div>
         <div className={`w-64 flex-shrink-0`}>{item?.email}</div>
         <div className={`w-64 flex-shrink-0`}>{item?.companyRole}</div>
-        <div className={`w-64`}>
-          <div className={`w-min`}>
-            <SelectBox
-              placeholder={`Role`}
-              options={[...userRoles]}
-              value={item?.role}
-              onValueChange={handleInputChange}
-              name={`role`}
-              variant={3}
-              table={true}
-              required={true}
-            />
-          </div>
-        </div>
-        <div className={`w-64`}>
-          <div className={`w-min`}>
-            <SelectBox
-              placeholder={`Temporary Permissions`}
-              options={[...userPermissions]}
-              value={item?.temporary_permissions[item?.temporary_permissions?.length - 1]}
-              onValueChange={handleInputChange}
-              name={`permissions`}
-              variant={3}
-              required={true}
-            />
-          </div>
-        </div>
+        {!item?.temporary_permissions.includes('users.manage') && (
+          <>
+            <div className={`w-64`}>
+              <div className={`w-min`}>
+                <SelectBox
+                  placeholder={`Role`}
+                  options={[...userRoles]}
+                  value={item?.role}
+                  onValueChange={handleInputChange}
+                  name={`role`}
+                  variant={3}
+                  table={true}
+                  required={true}
+                />
+              </div>
+            </div>
+            <div className={`w-64`}>
+              <div className={`w-min`}>
+                <SelectBox
+                  placeholder={`Temporary Permissions`}
+                  options={[...userPermissions]}
+                  value={item?.temporary_permissions[item?.temporary_permissions?.length - 1]}
+                  onValueChange={handleInputChange}
+                  name={`permissions`}
+                  variant={3}
+                  required={true}
+                />
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

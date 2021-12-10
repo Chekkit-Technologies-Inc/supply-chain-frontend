@@ -8,6 +8,10 @@ export const signIn = async data => {
   return http().post('/auth/signin', data);
 };
 
+export const fetchUser = async () => {
+  return http().get('/users/authenticated');
+};
+
 export const verifyAccount = async () => {
   return http().patch('/auth/verify-account');
 };
@@ -56,6 +60,7 @@ export const removeTempPermission = async (id, data) => {
 const UserService = {
   signUp,
   signIn,
+  fetchUser,
   verifyAccount,
   resetPassword,
   updatePassword,

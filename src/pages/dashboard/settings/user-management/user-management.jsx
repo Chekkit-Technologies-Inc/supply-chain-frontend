@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,28 +14,20 @@ const UserManagement = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (user?.token) {
-      dispatch(UserActions.getUsersRoles()).catch(console.log);
-      dispatch(UserActions.getCompanyUsers()).catch(console.log);
-      dispatch(UserActions.getCompanyPermissions()).catch(console.log);
-    } // eslint-disable-next-line
-  }, [user?.token]);
-
   const InviteUser = data => {
-    dispatch(UserActions.sendInvite(data)).catch(console.log);
+    dispatch(UserActions.sendInvite(data));
   };
 
   const changeCompanyRole = (userId, roleId) => {
-    dispatch(UserActions.assignUserRole(userId, roleId)).catch(console.log);
+    dispatch(UserActions.assignUserRole(userId, roleId));
   };
 
   const assignTempPermissions = (userId, data) => {
-    dispatch(UserActions.assignTempPermission(userId, data)).catch(console.log);
+    dispatch(UserActions.assignTempPermission(userId, data));
   };
 
   const removeTempPermissions = (userId, data) => {
-    dispatch(UserActions.removeTempPermission(userId, data)).catch(console.log);
+    dispatch(UserActions.removeTempPermission(userId, data));
   };
 
   return (

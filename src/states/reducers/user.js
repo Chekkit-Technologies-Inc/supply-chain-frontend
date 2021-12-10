@@ -1,6 +1,7 @@
 import {
   SIGNUP,
   SIGNIN,
+  FETCH_USER,
   UPDATE_USER,
   VERIFY_ACCOUNT,
   RESET_PASSWORD,
@@ -22,6 +23,8 @@ const userReducer = (user = initialState, action) => {
       return { ...user, ...payload };
     case SIGNIN:
       return payload;
+    case FETCH_USER:
+      return { ...user, ...payload };
     case VERIFY_ACCOUNT:
       return { ...user, ...payload };
     case UPDATE_USER:

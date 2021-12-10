@@ -3,7 +3,7 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useSelector } from 'react-redux';
 
 const links = [
-  { name: 'Asset Management & Tracking', url: 'http://localhost:3001/#/setup/pick-plan' },
+  { name: 'Asset Management & Tracking', url: 'http://localhost:3001/#/as' },
   { name: 'Inventory Management', url: '/asset-management/#' },
 ];
 
@@ -21,7 +21,6 @@ const AMBase = () => {
             <a
               key={idx}
               href={`${link.url}/${user?.token}`}
-              target={`_blank`}
               className={`w-full h-64 rounded-2xl bg-white shadow flex items-center justify-center border cursor-pointer font-semibold hover:shadow-lg p-6 text-center`}
             >
               {link.name}

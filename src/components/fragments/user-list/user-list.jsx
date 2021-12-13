@@ -106,7 +106,7 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
         </div>
         <div className={`w-64 flex-shrink-0`}>{item?.email}</div>
         <div className={`w-64 flex-shrink-0`}>{item?.companyRole}</div>
-        {!item?.temporary_permissions.includes('users.manage') && (
+        {!item?.temporary_permissions?.includes('users.manage') && (
           <>
             <div className={`w-64`}>
               <div className={`w-min`}>
@@ -127,7 +127,6 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
                 <SelectBox
                   placeholder={`Temporary Permissions`}
                   options={[...userPermissions]}
-                  value={item?.temporary_permissions[item?.temporary_permissions?.length - 1]}
                   onValueChange={handleInputChange}
                   name={`permissions`}
                   variant={3}

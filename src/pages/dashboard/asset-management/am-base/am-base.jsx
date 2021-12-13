@@ -3,19 +3,19 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useSelector } from 'react-redux';
 
 const links = [
-  { name: 'Asset Management & Tracking', url: 'http://localhost:3001/#/as' },
-  { name: 'Inventory Management', url: '/asset-management/#' },
+  { name: 'Asset Management & Tracking', url: process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as' },
+  { name: 'Inventory Management', url: process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/im' },
 ];
 
 const AMBase = () => {
   const user = useSelector(state => state.user);
   return (
     <FadeIn
-      className={`flex flex-col justify-start items-start
+      className={`flex flex-col justify-start
      space-y-6 px-4 md:px-12 py-8 min-h-screen w-full`}
     >
       <div className={`font-bold text-2xl text-brand_blue`}>Asset Management</div>
-      <FadeIn className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12`}>
+      <FadeIn className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12`}>
         {links.map((link, idx) => {
           return (
             <a

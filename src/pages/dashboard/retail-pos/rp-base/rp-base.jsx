@@ -10,11 +10,11 @@ const links = [
 const RPBase = () => {
   return (
     <FadeIn
-      className={`flex flex-col justify-start items-start
+      className={`flex flex-col justify-start
 space-y-6 px-4 md:px-12 py-8 min-h-screen w-full `}
     >
       <div className={`font-bold text-2xl text-brand_blue`}>Retail & POS</div>
-      <FadeIn className={`max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12`}>
+      <FadeIn className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12`}>
         {links.map((link, idx) => {
           return (
             <Link

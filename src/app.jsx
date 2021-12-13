@@ -11,32 +11,12 @@ import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
 import NotFound from './pages/404-page';
 
-import { UserActions } from './states/actions';
 import { notify } from './states/actions/response';
 
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   const response = useSelector(state => state.response);
-  const user = useSelector(state => state.user);
-
-  useEffect(() => {
-    let token = localStorage.getItem('chekkit-act');
-    if (token) {
-      dispatch(UserActions.updateUser({ token }));
-    } // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
-    if (user?.token) {
-      dispatch(UserActions.fetchUser());
-      dispatch(UserActions.getUsersRoles());
-      dispatch(UserActions.getCompanyUsers());
-      dispatch(UserActions.getCompanyPermissions());
-      // dispatch(ProductActions.fetchProducts());
-    }
-    // eslint-disable-next-line
-  }, [user?.token]);
 
   useEffect(() => {
     if (response.type) {

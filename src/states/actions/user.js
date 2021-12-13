@@ -32,7 +32,7 @@ export const signUp = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -51,7 +51,7 @@ export const signIn = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -95,7 +95,7 @@ export const verifyAccount = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -113,7 +113,7 @@ export const resetPassword = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -131,7 +131,7 @@ export const updatePassword = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -154,7 +154,7 @@ export const sendInvite = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -171,7 +171,7 @@ export const acceptInvite = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -189,7 +189,7 @@ export const getCompanyUsers = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -207,7 +207,7 @@ export const getUsersRoles = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -226,7 +226,7 @@ export const assignUserRole = (id, roleId) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -244,7 +244,7 @@ export const getCompanyPermissions = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -264,7 +264,7 @@ export const assignTempPermission = (id, data) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };
@@ -284,7 +284,7 @@ export const removeTempPermission = (id, data) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response.data.error, type: 'danger', loading: false }));
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
 };

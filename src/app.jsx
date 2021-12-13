@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
+import { CgSpinner } from 'react-icons/cg';
 
 import IndexPage from './pages';
 import PickModules from './pages/pick-modules';
@@ -11,12 +12,47 @@ import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
 import NotFound from './pages/404-page';
 
+import { UserActions, ProductActions } from './states/actions';
 import { notify } from './states/actions/response';
 
 function App() {
+  const user = useSelector(state => state.user);
   const location = useLocation();
   const dispatch = useDispatch();
+  const history = useHistory();
   const response = useSelector(state => state.response);
+  const [userLoading, setUserLoading] = useState(true);
+
+  useEffect(() => {
+    let token = localStorage.getItem('chekkit-act');
+    if (token) {
+      dispatch(UserActions.updateUser({ token }));
+    } else {
+      setUserLoading(false);
+      history.push('/');
+    } // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    if (user?.token) {
+      dispatch(UserActions.fetchUser())
+        .then(res => {
+          setUserLoading(false);
+          history.push(location.pathname);
+        })
+        .catch(err => {
+          setUserLoading(false);
+          localStorage.removeItem('chekkit-act');
+          dispatch(UserActions.updateUser({ token: '' }));
+          history.push('/');
+        });
+      dispatch(UserActions.getUsersRoles());
+      dispatch(UserActions.getCompanyUsers());
+      dispatch(UserActions.getCompanyPermissions());
+      dispatch(ProductActions.fetchProducts());
+    }
+    // eslint-disable-next-line
+  }, [user?.token]);
 
   useEffect(() => {
     if (response.type) {
@@ -66,50 +102,57 @@ function App() {
   return (
     <>
       <ReactNotification isMobile={true} />
-      <Switch location={location}>
-        <Route exact path={'/'}>
-          <IndexPage />
-        </Route>
-        <Route exact path={'/pick-modules'}>
-          <PickModules />
-        </Route>
-        <Route
-          exact
-          path={[
-            '/auth',
-            '/auth/signin',
-            '/auth/signup',
-            '/auth/signup/:companyIdentifier',
-            '/forgot-password',
-            '/auth/forgot-password',
-            '/reset-password',
-            '/auth/reset-password',
-            '/reset-password/:token',
-            '/auth/reset-password/:token',
-            '/user-invite/:token',
-            '/auth/user-invite/:token',
-            '/auth/user-invite',
-            '/user-invite',
-          ]}
-        >
-          <Auth />
-        </Route>
-        <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
-          <VerifyAcount />
-        </Route>
-        <Route path={['/overview', '/asset-management', '/connect-plus', '/consumer-intelligence', '/retail-pos', '/engage', '/reports', '/settings']}>
-          <Base />
-        </Route>
-        <Route
-          render={() => {
-            return (
-              <div className={`bg`}>
-                <NotFound />;
-              </div>
-            );
-          }}
-        />
-      </Switch>
+      {userLoading && (
+        <div className={`absolute top-0 bottom-0 left-0 right-0 z-20 flex justify-center items-center`}>
+          <CgSpinner className={`text-brand_blue animate-spin`} size={64} />
+        </div>
+      )}
+      {!userLoading && (
+        <Switch location={location}>
+          <Route exact path={'/'}>
+            <IndexPage />
+          </Route>
+          <Route exact path={'/pick-modules'}>
+            <PickModules />
+          </Route>
+          <Route
+            exact
+            path={[
+              '/auth',
+              '/auth/signin',
+              '/auth/signup',
+              '/auth/signup/:companyIdentifier',
+              '/forgot-password',
+              '/auth/forgot-password',
+              '/reset-password',
+              '/auth/reset-password',
+              '/reset-password/:token',
+              '/auth/reset-password/:token',
+              '/user-invite/:token',
+              '/auth/user-invite/:token',
+              '/auth/user-invite',
+              '/user-invite',
+            ]}
+          >
+            <Auth />
+          </Route>
+          <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
+            <VerifyAcount />
+          </Route>
+          <Route path={['/overview', '/asset-management', '/connect-plus', '/consumer-intelligence', '/retail-pos', '/engage', '/reports', '/settings']}>
+            <Base />
+          </Route>
+          <Route
+            render={() => {
+              return (
+                <div className={`bg`}>
+                  <NotFound />;
+                </div>
+              );
+            }}
+          />
+        </Switch>
+      )}
     </>
   );
 }

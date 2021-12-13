@@ -1,3 +1,6 @@
+// products
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+
 // user
 export const SIGNUP = 'SIGNUP';
 export const SIGNIN = 'SIGNIN';

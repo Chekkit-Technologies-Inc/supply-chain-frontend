@@ -23,7 +23,7 @@ const navigation = [
   { name: 'Connect Plus', href: '/connect-plus', icon: Icon, current: false },
   { name: 'Engage', href: '/engage', icon: Icon, current: false },
   { name: 'Retail & POS', href: '/retail-pos', icon: Icon, current: false },
-  { name: 'Reports', href: '/reports', icon: Icon, current: false },
+  // { name: 'Reports', href: '/reports', icon: Icon, current: false },
   { name: 'Settings', href: '/settings', icon: settingsIcon, current: false },
 ];
 

@@ -12,7 +12,7 @@ import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
 import NotFound from './pages/404-page';
 
-import { UserActions, ProductActions } from './states/actions';
+import { UserActions } from './states/actions';
 import { notify } from './states/actions/response';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     let token = localStorage.getItem('chekkit-act');
     if (token) {
       dispatch(UserActions.updateUser({ token }));
-    } else {
+    } else if (!location.pathname.length > 200) {
       setUserLoading(false);
       history.push('/');
     } // eslint-disable-next-line
@@ -49,7 +49,6 @@ function App() {
       dispatch(UserActions.getUsersRoles());
       dispatch(UserActions.getCompanyUsers());
       dispatch(UserActions.getCompanyPermissions());
-      dispatch(ProductActions.fetchProducts());
     }
     // eslint-disable-next-line
   }, [user?.token]);

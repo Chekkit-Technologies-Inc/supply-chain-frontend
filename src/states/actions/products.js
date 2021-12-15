@@ -1,29 +1,22 @@
-import { FETCH_PRODUCTS } from '../type';
-import { notify, loading } from './response';
+import { SET_PRODUCTS, UPDATE_PRODUCT } from '../type';
 
-import { ProductService } from '../../services';
+export const setProducts = data => async dispatch => {
+  dispatch({
+    type: SET_PRODUCTS,
+    payload: data,
+  });
+};
 
-export const fetchProducts = () => async dispatch => {
-  dispatch(loading({ loading: true }));
-  try {
-    const res = await ProductService.retrieveProducts();
-
-    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
-
-    dispatch({
-      type: FETCH_PRODUCTS,
-      payload: res.data.data,
-    });
-
-    return Promise.resolve(res.data);
-  } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
-    return Promise.reject(err);
-  }
+export const updateProduct = (id, data) => async dispatch => {
+  dispatch({
+    type: UPDATE_PRODUCT,
+    payload: { id, data },
+  });
 };
 
 const ProductActions = {
-  fetchProducts,
+  setProducts,
+  updateProduct,
 };
 
 export default ProductActions;

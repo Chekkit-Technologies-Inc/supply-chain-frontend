@@ -18,11 +18,11 @@ import Content from './content';
 
 const navigation = [
   { name: 'Overview', href: '/overview', icon: overviewIcon, current: false },
-  { name: 'Asset Management', href: '/asset-management', icon: Icon, current: false },
-  { name: 'Consumer Intelligence', href: '/consumer-intelligence', icon: Icon, current: false },
-  { name: 'Connect Plus', href: '/connect-plus', icon: Icon, current: false },
-  { name: 'Engage', href: '/engage', icon: Icon, current: false },
-  { name: 'Retail & POS', href: '/retail-pos', icon: Icon, current: false },
+  { name: 'Asset Management', href: '/asset-management', icon: Icon, current: false, sub: false },
+  { name: 'Consumer Intelligence', href: '/consumer-intelligence', icon: Icon, current: false, sub: false },
+  { name: 'Connect Plus', href: '/connect-plus', icon: Icon, current: false, sub: false },
+  { name: 'Engage', href: '/engage', icon: Icon, current: false, sub: false },
+  { name: 'Retail & POS', href: '/retail-pos', icon: Icon, current: false, sub: true },
   // { name: 'Reports', href: '/reports', icon: Icon, current: false },
   { name: 'Settings', href: '/settings', icon: settingsIcon, current: false },
 ];
@@ -37,6 +37,7 @@ const Base = () => {
   const dispatch = useDispatch();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navItems, setNavItems] = useState(navigation);
+  const [products, setProducts] = useState(navigation);
   const [phrase, setPhrase] = useState('');
 
   const handleInputChange = event => {
@@ -51,18 +52,37 @@ const Base = () => {
   };
 
   useEffect(() => {
-    setNavItems(
-      navItems.map(item => {
-        item.current = item.name
-          .replace(' ', '-')
-          .replace('&', '')
-          .replace(' ', '')
-          .toLocaleLowerCase()
-          .includes(location.pathname.split('/')[1].toLocaleLowerCase());
-        return item;
-      }),
-      setSidebarOpen(false),
-    ); // eslint-disable-next-line
+    if (location.pathname.split('/')[1].toLocaleLowerCase().includes('overview') || location.pathname.split('/')[1].toLocaleLowerCase().includes('settings')) {
+      setProducts(
+        products.map(item => {
+          item.current = item.name
+            .replace(' ', '-')
+            .replace('&', '')
+            .replace(' ', '')
+            .toLocaleLowerCase()
+            .includes(location.pathname.split('/')[1].toLocaleLowerCase());
+          return item;
+        }),
+      );
+    } else {
+      setNavItems(
+        navItems
+          .sort(x => {
+            return x.sub;
+          })
+          .map(item => {
+            item.current = item.name
+              .replace(' ', '-')
+              .replace('&', '')
+              .replace(' ', '')
+              .toLocaleLowerCase()
+              .includes(location.pathname.split('/')[1].toLocaleLowerCase());
+            return item;
+          }),
+      );
+    }
+    setSidebarOpen(false);
+    // eslint-disable-next-line
   }, [location]);
 
   return (
@@ -115,22 +135,60 @@ const Base = () => {
                   <Logo size={150} />
                 </div>
                 <FadeIn className='mt-2  flex-1 bg-gray-100 space-y-4 flex flex-col justify-between'>
-                  {navItems.map(item => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className={classNames(
-                        item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
-                        'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
-                      )}
-                    >
-                      <item.icon
-                        className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
-                        aria-hidden='true'
-                      />
-                      {item.name}
-                    </Link>
-                  ))}
+                  {products
+                    .filter(i => i.name === 'Overview')
+                    .map(item => (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className={classNames(
+                          item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
+                          'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
+                        )}
+                      >
+                        <item.icon
+                          className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
+                          aria-hidden='true'
+                        />
+                        {item.name}
+                      </Link>
+                    ))}
+                  {navItems
+                    .filter(i => i.name !== 'Overview' && i.name !== 'Settings')
+                    .map(item => (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className={classNames(
+                          item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
+                          'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
+                        )}
+                      >
+                        <item.icon
+                          className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
+                          aria-hidden='true'
+                        />
+                        {item.name}
+                      </Link>
+                    ))}
+                  {products
+                    .filter(i => i.name === 'Settings')
+                    .map(item => (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className={classNames(
+                          item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
+                          'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
+                        )}
+                      >
+                        <item.icon
+                          className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
+                          aria-hidden='true'
+                        />
+                        {item.name}
+                      </Link>
+                    ))}
                   <div onClick={signout} className={`text-red-500 font-semibold px-6 mb-6 cursor-pointer`}>
                     Sign Out
                   </div>
@@ -150,22 +208,60 @@ const Base = () => {
                 <Logo size={150} />
               </div>
               <FadeIn className='mt-2 flex-1 bg-gray-100 space-y-4 flex flex-col justify-between'>
-                {navItems.map(item => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={classNames(
-                      item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
-                      'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
-                    )}
-                  >
-                    <item.icon
-                      className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
-                      aria-hidden='true'
-                    />
-                    {item.name}
-                  </Link>
-                ))}
+                {products
+                  .filter(i => i.name === 'Overview')
+                  .map(item => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={classNames(
+                        item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
+                        'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
+                      )}
+                    >
+                      <item.icon
+                        className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
+                        aria-hidden='true'
+                      />
+                      {item.name}
+                    </Link>
+                  ))}
+                {navItems
+                  .filter(i => i.name !== 'Overview' && i.name !== 'Settings')
+                  .map(item => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={classNames(
+                        item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
+                        'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
+                      )}
+                    >
+                      <item.icon
+                        className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
+                        aria-hidden='true'
+                      />
+                      {item.name}
+                    </Link>
+                  ))}
+                {products
+                  .filter(i => i.name === 'Settings')
+                  .map(item => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={classNames(
+                        item.current ? 'bg-brand_blue text-white' : 'text-gray-400 hover:bg-brand_blue hover:opacity-25 hover:text-white',
+                        'group flex items-center p-6 mr-6 text-sm font-medium rounded-r-3xl',
+                      )}
+                    >
+                      <item.icon
+                        className={classNames(item.current ? 'text-white' : 'text-gray-400 group-hover:text-white', 'mr-4 flex-shrink-0 h-6 w-6')}
+                        aria-hidden='true'
+                      />
+                      {item.name}
+                    </Link>
+                  ))}
                 <div onClick={signout} className={`text-red-500 font-semibold px-6 mb-6 cursor-pointer`}>
                   Sign Out
                 </div>

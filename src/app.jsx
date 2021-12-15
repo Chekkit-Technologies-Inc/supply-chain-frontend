@@ -27,7 +27,9 @@ function App() {
     let token = localStorage.getItem('chekkit-act');
     if (token) {
       dispatch(UserActions.updateUser({ token }));
-    } else if (!location.pathname.length > 200) {
+    } else if (location.pathname.length > 200) {
+      setUserLoading(false);
+    } else {
       setUserLoading(false);
       history.push('/');
     } // eslint-disable-next-line

@@ -19,7 +19,7 @@ const AMBase = () => {
       className={`flex flex-col justify-start
      space-y-6 px-4 md:px-12 py-8 min-h-screen w-full`}
     >
-      {user.company.subscription.plan.product.name === 'Asset Management' ? (
+      {user.company.subscription.status && user.company.subscription.plan.product.name === 'Asset Management' ? (
         <div className='space-y-6'>
           <div className={`font-bold text-2xl text-brand_blue`}>Asset Management</div>
           <FadeIn className={`grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12`}>

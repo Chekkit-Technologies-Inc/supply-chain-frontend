@@ -19,20 +19,22 @@ const UserList = ({ userList, roles, permissions, changeCompanyRole, assignTempP
         </div>
         <FadeIn className={`min-w-max flex-shrink-0 space-y-6 pt-6`}>
           {userList ? (
-            userList.map((item, idx) => {
-              return (
-                <Item
-                  key={idx}
-                  sn={idx + 1}
-                  user={item}
-                  roles={roles}
-                  permissions={permissions}
-                  changeCompanyRole={changeCompanyRole}
-                  assignTempPermissions={assignTempPermissions}
-                  removeTempPermissions={removeTempPermissions}
-                />
-              );
-            })
+            userList
+              .sort((a, b) => b.isAdmin - a.isAdmin)
+              .map((item, idx) => {
+                return (
+                  <Item
+                    key={idx}
+                    sn={idx + 1}
+                    user={item}
+                    roles={roles}
+                    permissions={permissions}
+                    changeCompanyRole={changeCompanyRole}
+                    assignTempPermissions={assignTempPermissions}
+                    removeTempPermissions={removeTempPermissions}
+                  />
+                );
+              })
           ) : (
             <div className={`text-center`}>No Users Yet</div>
           )}
@@ -69,7 +71,7 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
 
   useEffect(() => {
     if (user && roles) {
-      let details = user;
+      let details = { ...user };
       roles.forEach(role => {
         if (role.id === user.roleId) {
           details = { ...details, role: role.name };
@@ -106,7 +108,7 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
         </div>
         <div className={`w-64 flex-shrink-0`}>{item?.email}</div>
         <div className={`w-64 flex-shrink-0`}>{item?.companyRole}</div>
-        {!item?.temporary_permissions?.includes('users.manage') && (
+        {!item?.isAdmin && (
           <>
             <div className={`w-64`}>
               <div className={`w-min`}>

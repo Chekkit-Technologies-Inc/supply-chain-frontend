@@ -45,8 +45,8 @@ function App() {
         .catch(err => {
           setUserLoading(false);
           localStorage.removeItem('chekkit-act');
-          dispatch(UserActions.updateUser({ token: '' }));
-          history.push('/');
+          // dispatch(UserActions.updateUser({ token: '' }));
+          // history.push('/');
         });
       dispatch(UserActions.getUsersRoles());
       dispatch(UserActions.getCompanyUsers());

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import { useSelector } from 'react-redux';
 
 const links = [
   { name: 'Edit my account', url: '/settings/#' },
@@ -10,6 +11,15 @@ const links = [
 ];
 
 const SettingsBase = () => {
+  const user = useSelector(state => state.user);
+
+  const isAdmin = (prev, next) => {
+    if (next.name === 'User Management Center' && !user.isAdminUser) {
+      return prev;
+    }
+    return [...prev, next];
+  };
+
   return (
     <FadeIn
       className={`flex flex-col justify-start
@@ -17,7 +27,7 @@ space-y-6 px-4 md:px-12 py-8 min-h-screen w-full `}
     >
       <div className={`font-bold text-2xl text-brand_blue`}>Settings</div>
       <FadeIn className={`grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12`}>
-        {links.map((link, idx) => {
+        {links.reduce(isAdmin, []).map((link, idx) => {
           return (
             <Link
               key={idx}

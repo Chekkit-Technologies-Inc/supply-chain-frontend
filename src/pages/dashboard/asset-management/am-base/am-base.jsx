@@ -28,7 +28,7 @@ const AMBase = () => {
                 <a
                   key={idx}
                   href={`${link.url}/${user?.token}`}
-                  className={`w-full h-64 rounded-2xl bg-white shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
+                  className={`w-full h-64 rounded-2xl bg-white bg shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
                 >
                   {link.name}
                 </a>
@@ -46,7 +46,7 @@ const AMBase = () => {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, porro? Odio atque nihil possimus quae delectus harum sed officia nesciunt nam quam
             corporis libero illo iste fugit dolore, dolores accusamus ea ipsum. Quos, unde?
           </div>
-          <Button text={`Activate Plan`} onClick={() => window.open(`${process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as' }/${user?.token}`)} />
+          <Button text={`Activate Plan`} onClick={() => window.open(`${process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as' }/${user?.token}`, '_self')} />
         </div>
       )}
     </FadeIn>

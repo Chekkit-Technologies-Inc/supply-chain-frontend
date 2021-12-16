@@ -6,11 +6,11 @@ import { ReactComponent as Product } from '../../../../assets/product.svg';
 import Button from '../../../../components/fragments/button';
 
 const links = [
-  { name: 'Create Product and Batches', url: '/consumer-intelligence/#' },
-  { name: 'Generate & Request Sticker Labels', url: '/consumer-intelligence/#' },
-  { name: 'Setup & Manage Survey Questions', url: '/consumer-intelligence/#' },
-  { name: 'Setup & Manage Rewards', url: '/consumer-intelligence/#' },
-  { name: 'Reports', url: '/consumer-intelligence/#' },
+  { name: 'Create Product and Batches', url: '/#/consumer-intelligence/#' },
+  { name: 'Generate & Request Sticker Labels', url: '/#/consumer-intelligence/#' },
+  { name: 'Setup & Manage Survey Questions', url: '/#/consumer-intelligence/#' },
+  { name: 'Setup & Manage Rewards', url: '/#/consumer-intelligence/#' },
+  { name: 'Reports', url: '/#/consumer-intelligence/#' },
 ];
 
 const CIBase = () => {
@@ -29,7 +29,7 @@ space-y-6 px-4 md:px-12 py-8 min-h-screen w-full`}
                 <a
                   key={idx}
                   href={`${link.url}`}
-                  className={`w-full h-64 rounded-2xl bg-white shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
+                  className={`w-full h-64 rounded-2xl bg-white bg shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
                 >
                   {link.name}
                 </a>

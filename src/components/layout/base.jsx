@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { MdMenu, MdClose } from 'react-icons/md';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { UserActions } from '../../states/actions';
 
@@ -35,6 +35,7 @@ const Base = () => {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user)
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navItems, setNavItems] = useState(navigation);
   const [products, setProducts] = useState(navigation);
@@ -67,9 +68,9 @@ const Base = () => {
     } else {
       setNavItems(
         navItems
-          .sort(x => {
-            return x.sub;
-          })
+        .sort(function (x, y) {
+          return y.name.includes(user.company.subscription?.plan?.product?.name) - x.name.includes(user.company.subscription?.plan?.product?.name);
+        })
           .map(item => {
             item.current = item.name
               .replace(' ', '-')
@@ -83,7 +84,7 @@ const Base = () => {
     }
     setSidebarOpen(false);
     // eslint-disable-next-line
-  }, [location]);
+  }, [location, user.company.subscription]);
 
   return (
     <div className='h-screen flex overflow-hidden'>

@@ -6,12 +6,12 @@ import { ReactComponent as Product } from '../../../../assets/product.svg';
 import Button from '../../../../components/fragments/button';
 
 const links = [
-  { name: 'View Feed', url: '/connect-plus/#' },
-  { name: 'Chat & Messages', url: '/connect-plus/#' },
-  { name: 'Order Management', url: '/connect-plus/#' },
-  { name: 'My Profile', url: '/connect-plus/#' },
-  { name: 'Manage Product Listings', url: '/connect-plus/#' },
-  { name: 'Invoices & Payment', url: '/connect-plus/#' },
+  { name: 'View Feed', url: '/#/connect-plus/#' },
+  { name: 'Chat & Messages', url: '/#/connect-plus/#' },
+  { name: 'Order Management', url: '/#/connect-plus/#' },
+  { name: 'My Profile', url: '/#/connect-plus/#' },
+  { name: 'Manage Product Listings', url: '/#/connect-plus/#' },
+  { name: 'Invoices & Payment', url: '/#/connect-plus/#' },
 ];
 
 const CPBase = () => {
@@ -30,7 +30,7 @@ const CPBase = () => {
                 <a
                   key={idx}
                   href={`${link.url}`}
-                  className={`w-full h-64 rounded-2xl bg-white shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
+                  className={`w-full h-64 rounded-2xl bg-white bg shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
                 >
                   {link.name}
                 </a>

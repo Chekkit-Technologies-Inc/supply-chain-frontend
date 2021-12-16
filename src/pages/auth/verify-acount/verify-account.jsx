@@ -46,9 +46,15 @@ const VerifyAccount = () => {
 
   const retry = () => {
     if (user?.token) {
-      dispatch(UserActions.verifyAccount()).catch(console.log);
+      dispatch(UserActions.verifyAccount());
     }
   };
+
+  const proceed = () => {
+    dispatch(UserActions.signOut());
+    localStorage.removeItem('chekkit-act');
+    history.push('/auth/signin')
+  }
 
   return (
     <div className={`bg min-h-screen`}>
@@ -66,7 +72,7 @@ const VerifyAccount = () => {
             <Heading className={`font-semibold text-center mt-6`} title={`Verification Successful!`} />
             <Text className={`text-center text-brand_blue`} value={`Account has been Verified`} />
           </div>
-          <Button text={`Sign In`} onClick={() => history.push('/auth/signin')} />
+          <Button text={`Sign In`} onClick={proceed} />
         </FadeIn>
       )}
       {token && !user?.acc_verified && !response.loading && (

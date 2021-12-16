@@ -42,6 +42,9 @@ const SignUp = () => {
     if (user?.name && user?.acc_verified && !user?.isAuthorized) {
       history.push('/auth/signin');
     }
+    if (user && !user.companyIdentfier) {
+      history.push('/');
+    }
     // eslint-disable-next-line
   }, [user]);
 

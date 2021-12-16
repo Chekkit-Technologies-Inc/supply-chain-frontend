@@ -13,7 +13,7 @@ const OverviewBase = () => {
     >
       {user && (
         <>
-          <Heading className={`text-brand_blue font-semibold text-center`} title={`Hello ${user.name.split(' ')[0]}, welcome to your account`} />
+          <Heading className={`text-brand_blue font-semibold text-center capitalize`} title={`Hello ${user.name.split(' ')[0]}, welcome to your account`} />
           <Heading className={`text-brand_blue text-center`} title={`What will you like to do today`} size={2} />
         </>
       )}

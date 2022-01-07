@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import InputBox from '../../../components/fragments/input-box';
 import Button from '../../../components/fragments/button';
@@ -11,7 +11,7 @@ import { UserActions } from '../../../states/actions';
 const UpdatePassword = () => {
   const { token } = useParams();
   const history = useHistory();
-  const response = useSelector(state => state.response);
+  // const response = useSelector(state => state.response);
   const dispatch = useDispatch();
   const [userDetail, setUserDetail] = useState({ newPassword: '', confirmPassword: '' });
 
@@ -32,7 +32,14 @@ const UpdatePassword = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(UserActions.updatePassword(userDetail)).catch(console.log);
+    dispatch(UserActions.updatePassword(userDetail))
+      .then(res => {
+        dispatch(UserActions.signOut());
+        setTimeout(() => {
+          history.push('/auth/signin');
+        }, 1000);
+      })
+      .catch(console.log);
   };
 
   const handleInputChange = event => {

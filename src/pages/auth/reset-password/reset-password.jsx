@@ -18,7 +18,7 @@ const ResetPassword = () => {
   useEffect(() => {
     if (user.isAuthorized) {
       localStorage.setItem('chekkit-act', user.token);
-      history.push('/setup/pick-management');
+      history.push('/overview');
     } else {
       localStorage.removeItem('chekkit-act');
     }

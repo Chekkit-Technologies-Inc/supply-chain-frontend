@@ -29,7 +29,7 @@ const AcceptInvite = () => {
   }, [token]);
 
   useEffect(() => {
-    if (response.type === 'success') {
+    if (userDetail.name && response.type === 'success') {
       history.push('/auth/signin');
     }
     // eslint-disable-next-line

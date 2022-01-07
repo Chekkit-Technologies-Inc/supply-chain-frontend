@@ -23,12 +23,12 @@ const UpdatePassword = () => {
     // eslint-disable-next-line
   }, [token]);
 
-  useEffect(() => {
-    if (response.type === 'success') {
-      history.push('/auth/signin');
-    }
-    // eslint-disable-next-line
-  }, [response]);
+  // useEffect(() => {
+  //   if (response.type === 'success') {
+  //     history.push('/auth/signin');
+  //   }
+  //   // eslint-disable-next-line
+  // }, [response]);
 
   const handleSubmit = e => {
     e.preventDefault();

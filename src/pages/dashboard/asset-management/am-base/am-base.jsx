@@ -46,7 +46,7 @@ const AMBase = () => {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, porro? Odio atque nihil possimus quae delectus harum sed officia nesciunt nam quam
             corporis libero illo iste fugit dolore, dolores accusamus ea ipsum. Quos, unde?
           </div>
-          <Button text={`Activate Plan`} onClick={() => window.open(`${process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as' }/${user?.token}`, '_self')} />
+          <Button text={`Activate Plan`} onClick={() => window.open(`${process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as'}/${user?.token}`)} />
         </div>
       )}
     </FadeIn>

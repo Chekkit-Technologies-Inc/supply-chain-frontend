@@ -27,6 +27,7 @@ const AMBase = () => {
               return (
                 <a
                   key={idx}
+                  target={`_blank`}
                   href={`${link.url}/${user?.token}`}
                   className={`w-full h-64 rounded-2xl bg-white bg shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
                 >

@@ -49,7 +49,8 @@ const CPBase = () => {
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, porro? Odio atque nihil possimus quae delectus harum sed officia nesciunt nam quam
             corporis libero illo iste fugit dolore, dolores accusamus ea ipsum. Quos, unde?
           </div>
-          <Button text={`Activate Plan`} onClick={() => setSubscribed(true)} />
+          <div className={`font-bold text-2xl text-brand_blue`}>Coming Soon</div>
+          <Button className={`hidden`} text={`Activate Plan`} onClick={() => setSubscribed(true)} />
         </div>
       )}
     </FadeIn>

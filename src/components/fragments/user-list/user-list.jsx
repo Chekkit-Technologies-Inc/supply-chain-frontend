@@ -100,7 +100,7 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
   };
 
   return (
-    <div className={`min-w-max flex-shrink-0 px-6 rounded-2xl bg-gray-100`}>
+    <div className={`min-w-max flex-shrink-0 px-6 rounded-2xl bg-white`}>
       <div className={`w-full flex flex-shrink-0 items-center justify-start space-x-6 py-6 font-medium`}>
         <div className={`w-20 flex-shrink-0`}>{sn}</div>
         <div className={`text-brand_blue text-lg w-72 flex-shrink-0`}>

@@ -62,7 +62,9 @@ export const fetchUser = () => async dispatch => {
   try {
     const res = await UserService.fetchUser();
 
-    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch(notify({ loading: false }));
 
     dispatch({
       type: FETCH_USER,
@@ -70,7 +72,8 @@ export const fetchUser = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    dispatch(notify({ loading: false }));
     return Promise.reject(err);
   }
 };
@@ -181,7 +184,8 @@ export const getCompanyUsers = () => async dispatch => {
   try {
     const res = await UserService.getCompanyUsers();
 
-    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ loading: false }));
 
     dispatch({
       type: GET_COMPANY_USERS,
@@ -189,7 +193,8 @@ export const getCompanyUsers = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    dispatch(notify({ loading: false }));
     return Promise.reject(err);
   }
 };
@@ -199,7 +204,8 @@ export const getUsersRoles = () => async dispatch => {
   try {
     const res = await UserService.getUsersRoles();
 
-    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ loading: false }));
 
     dispatch({
       type: GET_USERS_ROLES,
@@ -207,7 +213,8 @@ export const getUsersRoles = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    dispatch(notify({ loading: false }));
     return Promise.reject(err);
   }
 };
@@ -236,7 +243,8 @@ export const getCompanyPermissions = () => async dispatch => {
   try {
     const res = await UserService.getCompanyPermissions();
 
-    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ loading: false }));
 
     dispatch({
       type: GET_COMPANY_PERMISSIONS,
@@ -244,7 +252,8 @@ export const getCompanyPermissions = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    dispatch(notify({ loading: false }));
     return Promise.reject(err);
   }
 };

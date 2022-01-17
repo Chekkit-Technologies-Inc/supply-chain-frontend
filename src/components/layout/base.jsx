@@ -20,7 +20,6 @@ const navigation = [
   { name: 'Overview', href: '/overview', icon: overviewIcon, current: false },
   { name: 'Asset Management', href: '/asset-management', icon: Icon, current: false, sub: false },
   { name: 'Connect Plus', href: '/connect-plus', icon: Icon, current: false, sub: false },
-  { name: 'Engage', href: '/engage', icon: Icon, current: false, sub: false },
   { name: 'Retail & POS', href: '/retail-pos', icon: Icon, current: false, sub: true },
   // { name: 'Reports', href: '/reports', icon: Icon, current: false },
   { name: 'Settings', href: '/settings', icon: settingsIcon, current: false },
@@ -34,7 +33,7 @@ const Base = () => {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navItems, setNavItems] = useState(navigation);
   const [products, setProducts] = useState(navigation);
@@ -67,9 +66,9 @@ const Base = () => {
     } else {
       setNavItems(
         navItems
-        .sort(function (x, y) {
-          return y.name.includes(user.company.subscription?.plan?.product?.name) - x.name.includes(user.company.subscription?.plan?.product?.name);
-        })
+          .sort(function (x, y) {
+            return y.name.includes(user.company.subscription?.plan?.product?.name) - x.name.includes(user.company.subscription?.plan?.product?.name);
+          })
           .map(item => {
             item.current = item.name
               .replace(' ', '-')
@@ -134,7 +133,7 @@ const Base = () => {
                 <div className='flex items-center flex-shrink-0 px-6'>
                   <Logo size={150} />
                 </div>
-                <FadeIn className='mt-2  flex-1 bg-gray-100 space-y-4 flex flex-col justify-between'>
+                <FadeIn className='mt-12  flex-1 bg-gray-100 space-y-12 flex flex-col'>
                   {products
                     .filter(i => i.name === 'Overview')
                     .map(item => (
@@ -207,7 +206,7 @@ const Base = () => {
               <div className='flex items-center flex-shrink-0 px-6'>
                 <Logo size={150} />
               </div>
-              <FadeIn className='mt-2 flex-1 bg-gray-100 space-y-4 flex flex-col justify-between'>
+              <FadeIn className='mt-12 flex-1 bg-gray-100 space-y-12 flex flex-col'>
                 {products
                   .filter(i => i.name === 'Overview')
                   .map(item => (

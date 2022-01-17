@@ -19,7 +19,6 @@ import Content from './content';
 const navigation = [
   { name: 'Overview', href: '/overview', icon: overviewIcon, current: false },
   { name: 'Asset Management', href: '/asset-management', icon: Icon, current: false, sub: false },
-  { name: 'Consumer Intelligence', href: '/consumer-intelligence', icon: Icon, current: false, sub: false },
   { name: 'Connect Plus', href: '/connect-plus', icon: Icon, current: false, sub: false },
   { name: 'Engage', href: '/engage', icon: Icon, current: false, sub: false },
   { name: 'Retail & POS', href: '/retail-pos', icon: Icon, current: false, sub: true },

@@ -4,7 +4,7 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useSelector } from 'react-redux';
 
 const links = [
-  { name: 'Call Chekkit', url: 'tel:000400404' },
+  { name: 'Contact Chekkit', url: 'tel:000400404' },
   { name: 'Help Center', url: '/settings/help' },
   { name: 'User Management Center', url: '/settings/user-management' },
 ];

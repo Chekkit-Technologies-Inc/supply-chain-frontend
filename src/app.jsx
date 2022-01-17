@@ -140,7 +140,7 @@ function App() {
           <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
             <VerifyAcount />
           </Route>
-          <Route path={['/overview', '/asset-management', '/connect-plus', '/consumer-intelligence', '/retail-pos', '/engage', '/reports', '/settings']}>
+          <Route path={['/overview', '/asset-management', '/connect-plus', '/retail-pos', '/engage', '/reports', '/settings']}>
             <Base />
           </Route>
           <Route

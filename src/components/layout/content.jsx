@@ -2,7 +2,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import Overview from '../../pages/dashboard/overview';
 import AssetManagement from '../../pages/dashboard/asset-management';
-import ConsumerIntelligence from '../../pages/dashboard/consumer-intelligence';
 import ConnectPlus from '../../pages/dashboard/connect-plus';
 import Engage from '../../pages/dashboard/engage';
 import Reports from '../../pages/dashboard/reports';
@@ -18,10 +17,6 @@ function Content() {
 
       <Route path={'/asset-management'}>
         <AssetManagement />
-      </Route>
-
-      <Route path={'/consumer-intelligence'}>
-        <ConsumerIntelligence />
       </Route>
 
       <Route path={'/connect-plus'}>

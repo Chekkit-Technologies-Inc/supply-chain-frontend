@@ -24,7 +24,7 @@ export const signUp = data => async dispatch => {
   try {
     const res = await UserService.signUp(data);
 
-    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
 
     dispatch(notify({ loading: false }));
 
@@ -45,7 +45,7 @@ export const signIn = data => async dispatch => {
   try {
     const res = await UserService.signIn(data);
 
-    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
 
     dispatch(notify({ loading: false }));
 

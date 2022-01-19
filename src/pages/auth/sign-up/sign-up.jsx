@@ -33,9 +33,9 @@ const SignUp = () => {
 
   useEffect(() => {
     localStorage.removeItem('chekkit-act');
-    if (user?.name && !user?.acc_verified) {
-      history.push('/auth/verify-account');
-    }
+    // if (user?.name && !user?.acc_verified) {
+    //   history.push('/auth/verify-account');
+    // }
     if (user?.name && user?.acc_verified && user?.isAuthorized) {
       history.push('/overview');
     }
@@ -50,7 +50,9 @@ const SignUp = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(UserActions.signUp(userDetail)).catch(console.log);
+    dispatch(UserActions.signUp(userDetail)).then(() => {
+      history.push('/auth/verify-account');
+    }).catch(console.log);
   };
 
   const handleInputChange = event => {

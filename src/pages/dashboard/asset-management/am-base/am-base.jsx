@@ -44,8 +44,7 @@ const AMBase = () => {
             <Product className='w-full object-cover' />
           </div>
           <div className='text-center text-gray-600'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, porro? Odio atque nihil possimus quae delectus harum sed officia nesciunt nam quam
-            corporis libero illo iste fugit dolore, dolores accusamus ea ipsum. Quos, unde?
+          Track assets and manage inventory all in one place
           </div>
           <Button text={`Activate Plan`} onClick={() => window.open(`${process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as'}/${user?.token}`)} />
         </div>

@@ -46,8 +46,7 @@ const CPBase = () => {
             <Product className='w-full object-cover' />
           </div>
           <div className='text-center text-gray-600'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, porro? Odio atque nihil possimus quae delectus harum sed officia nesciunt nam quam
-            corporis libero illo iste fugit dolore, dolores accusamus ea ipsum. Quos, unde?
+          Connect with manufactures, distributors and retailers in a hub
           </div>
           <div className={`font-bold text-2xl text-brand_blue`}>Coming Soon</div>
           <Button className={`hidden`} text={`Activate Plan`} onClick={() => setSubscribed(true)} />

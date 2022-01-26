@@ -42,17 +42,16 @@ const SignUp = () => {
     if (user?.name && user?.acc_verified && !user?.isAuthorized) {
       history.push('/auth/signin');
     }
-    if (user && !user.companyIdentfier) {
-      history.push('/');
-    }
     // eslint-disable-next-line
   }, [user]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(UserActions.signUp(userDetail)).then(() => {
-      history.push('/auth/verify-account');
-    }).catch(console.log);
+    dispatch(UserActions.signUp(userDetail))
+      .then(() => {
+        history.push('/auth/verify-account');
+      })
+      .catch(console.log);
   };
 
   const handleInputChange = event => {

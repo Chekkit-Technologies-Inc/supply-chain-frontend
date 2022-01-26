@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { UserActions } from '../states/actions';
+import manufacturers from '../assets/manufacturers.png';
+import distributors from '../assets/distributors.png';
+import retailers from '../assets/retailers.png';
 
 import Logo from '../components/fragments/logo';
 import Button from '../components/fragments/button';
 
-const data = [
-  { id: 1, name: 'Manufacturers' },
-  { id: 2, name: 'Distributor' },
-  { id: 3, name: 'Retailer' },
-];
-
 const IndexPage = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  const [selected, setSelected] = useState();
 
   useEffect(() => {
     if (user?.isAuthorized) {
@@ -27,65 +21,78 @@ const IndexPage = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleIdentifier = () => {
-    if (!selected) return;
-    let userUpdate;
-    if (selected === 1) {
-      userUpdate = { companyIdentfier: 'manufacturer' };
-    } else if (selected === 2) {
-      userUpdate = { companyIdentfier: 'distributor' };
-    } else if (selected === 3) {
-      userUpdate = { companyIdentfier: 'retailer' };
-    }
-    dispatch(UserActions.updateUser(userUpdate));
-    history.push(`/auth/signup`);
-  };
-
   return (
-    <div className='min-h-screen'>
-      <div className={`flex items-center justify-between px-4 md:px-12 py-6`}>
+    <div className='min-h-screen overflow-x-hidden'>
+      <div className={`flex items-center justify-between py-6 px-4 lg:px-16 bg-gray-100`}>
         <Logo size={180} />
-        <div className={`flex items-center space-x-6`}>
+        {/* <div className={`flex items-center space-x-6`}>
           <div
             onClick={() => history.push('/auth/signin')}
             className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
           >
             Sign In
           </div>
+        </div> */}
+        <div className={`flex space-x-6`}>
+          <Button text={`Log In`} type={`secondary`} onClick={() => history.push('/auth/signin')} />
+          <Button text={`Sign Up`} onClick={() => history.push('/auth/signup')} />
         </div>
       </div>
-      <div className={`h-full flex flex-col justify-center items-center space-y-28 py-24 px-4 md:px-12`}>
-        <h1 className={`font-semibold text-4xl text-center text-brand_blue`}>Welcome to Chekkit Supply Chain</h1>
-        <FadeIn className={`max-w-7xl w-full flex flex-col lg:flex-row justify-between items-center space-y-12 px-6`}>
-          {data.map(data => {
-            return (
-              <div key={data.id} onClick={() => setSelected(data.id)} className={`relative h-64 w-64`}>
-                <div
-                  className={`${
-                    selected !== data.id && `hidden`
-                  } absolute top-0 -left-4 w-52 h-52 bg-purple-300 rounded-full z-0 mix-blend-multiply filter blur-xl animate-blob opacity-75`}
-                ></div>
-                <div
-                  className={`${
-                    selected !== data.id && `hidden`
-                  } absolute top-0 -right-4 w-52 h-52 bg-yellow-300 rounded-full z-10 mix-blend-multiply filter blur-xl animate-blob opacity-75`}
-                ></div>
-                <div
-                  className={`${
-                    selected !== data.id && `hidden`
-                  } absolute right-6 -bottom-4 w-52 h-52 bg-pink-300 rounded-full z-0 mix-blend-multiply filter blur-xl animate-blob opacity-75`}
-                ></div>
-                <div
-                  className={`absolute w-64 h-64 rounded-full bg-white shadow flex items-center justify-center border border-gray-100 cursor-pointer font-semibold hover:shadow-lg z-20`}
-                >
-                  {data.name}
-                </div>
+      <FadeIn className='space-y-24 pb-12 pt-0 lg:pt-24'>
+        {/*  */}
+        <div className={`base-grid-r-one py-24 xl:py-0 lg:pl-16 opacity-100`}>
+          <div className='base-grid-r-two col-start-2 col-end-4 row-span-full items-center'>
+            <div className='p-6 lg:p-16 col-start-2 col-end-3 row-start-2 row-end-3 space-y-6'>
+              <div className='text-3xl 2xl:text-5xl font-semibold text-white'>Manufacturers</div>
+              <div className='capitalize text-white max-w-xl 2xl:text-xl'>
+                have a focal point of communication and consultation between industry on the one hand, and the government and general public on the other.
               </div>
-            );
-          })}
-        </FadeIn>
-        {selected && <Button className={`mx-auto mt-6`} text={`Proceed`} onClick={handleIdentifier} />}
-      </div>
+              <Button text={`View more`} light={true} />
+            </div>
+          </div>
+
+          <div className='col-start-1 col-end-3 row-start-2 row-end-3 px-6 max-w-2xl w-full xl:max-w-max xl:px-0 overflow-hidden rounded-md'>
+            <img className='w-full h-full object-cover' src={manufacturers} alt='' />
+          </div>
+        </div>
+
+        {/*  */}
+
+        <div className={`base-grid-l-one py-24 xl:py-0 lg:pr-16 opacity-100`}>
+          <div className='base-grid-l-two col-start-1 col-end-3 row-span-full items-center'>
+            <div className='p-6 lg:p-16 col-start-1 col-end-2 row-start-2 row-end-3 space-y-6'>
+              <div className='text-3xl 2xl:text-5xl font-semibold text-white'>Distributors</div>
+              <div className='capitalize text-white max-w-xl 2xl:text-xl'>
+                have a focal point of communication and consultation between industry on the one hand, and the government and general public on the other.
+              </div>
+              <Button text={`View more`} light={true} />
+            </div>
+          </div>
+
+          <div className='col-start-2 col-end-4 row-start-2 row-end-3 px-6  max-w-2xl w-full xl:max-w-max xl:px-0 overflow-hidden rounded-md'>
+            <img className='w-full h-full object-cover' src={distributors} alt='' />
+          </div>
+        </div>
+
+        {/*  */}
+
+        <div className={`base-grid-r-one py-24 xl:py-0 lg:pl-16 opacity-100`}>
+          <div className='base-grid-r-two col-start-2 col-end-4 row-span-full items-center'>
+            <div className='p-6 lg:p-16 col-start-2 col-end-3 row-start-2 row-end-3 space-y-6'>
+              <div className='text-3xl 2xl:text-5xl font-semibold text-white'>Retailers</div>
+              <div className='capitalize text-white max-w-xl 2xl:text-xl'>
+                have a focal point of communication and consultation between industry on the one hand, and the government and general public on the other.
+              </div>
+              <Button text={`View more`} light={true} />
+            </div>
+          </div>
+
+          <div className='col-start-1 col-end-3 row-start-2 row-end-3 px-6 max-w-2xl w-full xl:max-w-max xl:px-0 overflow-hidden rounded-md'>
+            <img className='w-full h-full object-cover' src={retailers} alt='' />
+          </div>
+        </div>
+      </FadeIn>
+      <div className='text-gray-500 text-sm text-center mb-12'>&copy; {new Date().getUTCFullYear()} Chekkit Supply Chain</div>
     </div>
   );
 };

@@ -37,6 +37,78 @@ select:-webkit-autofill:focus {
   caret-color: #d1d5db;
 }
 
+.base-grid-r-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @apply bg-brand_blue;
+  background-image: url('./assets/bg-waves-tl.svg'), url('./assets/bg-waves-br.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 45%;
+}
+
+.base-grid-r-two {
+}
+
+@media screen and (min-width: 1200px) {
+  .base-grid-r-one {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: 200px 400px 1fr;
+    grid-template-rows: 100px auto 100px;
+    @apply bg-transparent;
+    background-image: none;
+  }
+
+  .base-grid-r-two {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: 100px auto 100px;
+    @apply bg-brand_blue;
+    background-image: url('./assets/bg-waves-tl.svg'), url('./assets/bg-waves-br.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: top left, bottom right;
+    background-size: 45%;
+  }
+}
+
+.base-grid-l-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @apply bg-brand_blue;
+  background-image: url('./assets/bg-waves-tl.svg'), url('./assets/bg-waves-br.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 45%;
+}
+
+.base-grid-l-two {
+}
+
+@media screen and (min-width: 1200px) {
+  .base-grid-l-one {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: 1fr 400px 200px;
+    grid-template-rows: 100px auto 100px;
+    @apply bg-transparent;
+    background-image: none;
+  }
+
+  .base-grid-l-two {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: 100px auto 100px;
+    @apply bg-brand_blue;
+    background-image: url('./assets/bg-waves-tl.svg'), url('./assets/bg-waves-br.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: top left, bottom right;
+    background-size: 45%;
+  }
+}
+
 .slate {
   position: relative;
   padding-bottom: 20px;
@@ -53,33 +125,24 @@ select:-webkit-autofill:focus {
 }
 
 .bg {
-  background-image: url('./assets/bg-up.svg'), url('./assets/bg-down.svg');
+  background-image: url('./assets/bg-down.svg');
   background-repeat: no-repeat, no-repeat;
-  background-position: top right, bottom left;
+  background-position: bottom left;
   background-size: 45%;
 }
 
-.bg-dash {
-  background-image: url('./assets/bg.svg');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 1000px;
+.bg-waves-right {
+  background-image: url('./assets/bg-waves-tl.svg'), url('./assets/bg-waves-br.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 45%;
 }
 
-.bg-dots {
-  background-color: white;
-  background-image: url('./assets/bg-dots.svg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: 1000px;
-}
-
-.bg-world {
-  background-color: #cbc9ef;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+.bg-waves-left {
+  background-image: url('./assets/bg-waves-tr.svg'), url('./assets/bg-waves-bl.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: top right, bottom left;
+  background-size: 45%;
 }
 
 input::-webkit-outer-spin-button,
@@ -95,14 +158,6 @@ input[type='number'] {
 .card {
   box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-}
-
-.circle_item {
-  list-style-image: url('assets/circle-item.svg');
-}
-
-.dot_item {
-  list-style-image: url('assets/dot-item.svg');
 }
 
 .tooltip {

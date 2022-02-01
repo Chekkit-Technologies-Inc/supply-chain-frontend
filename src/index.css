@@ -162,6 +162,14 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.small-check-dark {
+  list-style-image: url('assets/small-check-dark.svg');
+}
+
+.small-check-light {
+  list-style-image: url('assets/small-check-light.svg');
+}
+
 .card {
   /* box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1); */
   transition: all 0.2s ease;

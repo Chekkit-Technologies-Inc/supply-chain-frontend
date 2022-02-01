@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import FadeIn from 'react-fade-in';
 
-// import { ReactComponent as LogoSVG } from '../../assets/logo.svg';
 import Logo from '../../components/fragments/logo';
 import { ReactComponent as SignoutIcon } from '../../assets/signout.svg';
-// import PlanList from '../../components/fragments/plan-list';
+import PlanList from '../../components/fragments/plan-list';
+import Dialog from '../../components/fragments/dialog';
 
 import { UserActions } from '../../states/actions';
 
@@ -21,6 +21,10 @@ const plans = [
       { title: 'Generate Reports', included: false },
       { title: 'Attachment of tags and readers', included: false },
     ],
+    details: [
+      { name: 'RFID Tags', unit: 20, unitCost: 350 },
+      { name: 'Gateway Reader', unit: 1, unitCost: 350 },
+    ],
   },
   {
     name: 'Premium Plan',
@@ -32,9 +36,13 @@ const plans = [
       { title: 'Generate Reports', included: true },
       { title: 'Attachment of tags and readers', included: false },
     ],
+    details: [
+      { name: 'RFID Tags', unit: 100, unitCost: 350 },
+      { name: 'Gateway Reader', unit: 1, unitCost: 350 },
+    ],
   },
   {
-    name: 'Premium Plan',
+    name: 'Enterprise Plan',
     sub: '300 tags & 4 gateway reader',
     price: 'N15m',
     features: [
@@ -43,6 +51,10 @@ const plans = [
       { title: 'Generate Reports', included: true },
       { title: 'Attachment of tags and readers', included: true },
     ],
+    details: [
+      { name: 'RFID Tags', unit: 300, unitCost: 350 },
+      { name: 'Gateway Reader', unit: 4, unitCost: 350 },
+    ],
   },
 ];
 
@@ -50,11 +62,13 @@ const Plans = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [plan, setPlan] = useState();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (plan) {
       console.log('selected plan', plan);
       subscribe();
+      toggleDialog(true);
     }
     // eslint-disable-next-line
   }, [plan]);
@@ -69,6 +83,11 @@ const Plans = () => {
     history.push('/auth/signin');
   };
 
+  const toggleDialog = status => {
+    if (!status) setPlan(null);
+    setOpen(status);
+  };
+
   return (
     <div className='min-h-screen bg-blue-50 bg-plans flex flex-col'>
       <div className={`flex items-center justify-center lg:justify-start px-4 md:px-12 py-6`}>
@@ -77,10 +96,14 @@ const Plans = () => {
       <div className='font-semibold text-2xl text-brand_blue text-center px-4 mt-4'>Kindly select a subscription Plan</div>
       <FadeIn className={`flex-1 flex flex-col justify-between items-center space-y-8 py-12 px-4 md:px-12`}>
         <div>{plans && plans.length > 0 && <PlanList items={plans} onComplete={plan => setPlan(plan)} />}</div>
-        <div onClick={signout} className='border border-blue-100 rounded-full w-10 h-10 cursor-pointer shadow hover:shadow-sm'>
-          <SignoutIcon className='w-full h-full' />
+        <div className='flex flex-col items-center space-y-2 text-blue-200'>
+          <div onClick={signout} className='border border-blue-100 rounded-full w-10 h-10 cursor-pointer shadow hover:shadow-sm'>
+            <SignoutIcon className='w-full h-full' />
+          </div>
+          <div className='animate-pulse text-sm'>exit</div>
         </div>
       </FadeIn>
+      {plan && <Dialog open={open} setOpen={toggleDialog} type={`invoice`} data={plan} />}
     </div>
   );
 };

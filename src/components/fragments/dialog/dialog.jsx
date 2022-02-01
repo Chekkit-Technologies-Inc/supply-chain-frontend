@@ -1,17 +1,21 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useRef, forwardRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useReactToPrint } from 'react-to-print';
 
 import Button from '../button';
 import InputBox from '../input-box';
 import Heading from '../heading';
+import { ReactComponent as LogoSVG } from '../../../assets/logo.svg';
 
 import { ResponseActions } from '../../../states/actions';
 
 const initialInviteData = { email: '', companyRole: '' };
 
-const AppDialog = ({ open, setOpen, type, title, action }) => {
+const AppDialog = ({ open, setOpen, type, title, action, data }) => {
+  const componentRef = useRef();
   const dispatch = useDispatch();
+
   const [inviteData, setInviteData] = useState(initialInviteData);
 
   const onSubmit = e => {
@@ -39,6 +43,10 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
     const { name, value } = e.target;
     setInviteData({ ...inviteData, [name]: value });
   };
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -107,6 +115,16 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
                   </div>
                 </form>
               )}
+              {type === 'invoice' && (
+                <div className='bg-white pb-12 inline-block overflow-auto shadow-xl transform transition-all mb-8 mt-20 align-middle max-w-3xl w-full space-y-6'>
+                  {/*  */}
+
+                  <Invoice ref={componentRef} data={data} />
+
+                  {/*  */}
+                  <Button onClick={handlePrint} className={`mx-auto`} text={`Print Now`} />
+                </div>
+              )}
             </div>
           </Transition.Child>
         </div>
@@ -114,5 +132,107 @@ const AppDialog = ({ open, setOpen, type, title, action }) => {
     </Transition.Root>
   );
 };
+
+const Invoice = forwardRef(({ data }, ref) => {
+  const user = useSelector(state => state.user);
+
+  const formatDate = date => {
+    let a = date.replace('/', '.').replace('/', '.');
+    let b = a
+      .split('.')
+      .map(c => {
+        if (c.length < 2) {
+          return 0 + c;
+        }
+        return c;
+      })
+      .join('');
+    let d = `${b[0] + b[1]}.${b[2] + b[3]}.${b[4] + b[5]}${b[6] + b[7]}`;
+    return d;
+  };
+
+  return (
+    <div ref={ref} className='bg-white p-12 space-y-12'>
+      {/*  */}
+
+      <div className='flex justify-between w-full space-x-4 text-sm'>
+        <div className='space-y-2 text-left'>
+          <div className='uppercase text-blue-600 font-semibold'>Invoice - {data.name}</div>
+          <div className=' text-blue-600'>#258942</div>
+        </div>
+        <div className='space-y-2 text-right'>
+          <div className=''>
+            <span className='text-gray-400'>Date: </span>
+            <span className='text-gray-400 font-bold'>{formatDate(new Date().toLocaleDateString())}</span>
+          </div>
+          <div className=''>
+            <span className='text-gray-400'>Due Date: </span>
+            <span className='text-gray-400 font-bold'>
+              {formatDate(new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate()).toLocaleDateString())}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/*  */}
+
+      <div className='flex justify-between w-full space-x-4 text-sm'>
+        <div className='space-y-2 text-left'>
+          <div className='uppercase text-gray-400 text-base'>BILL FROM:</div>
+          <div className='w-40'>
+            <LogoSVG className='w-full' />
+          </div>
+          <div style={{ maxWidth: '180px' }} className=' text-gray-400 capitalize'>
+            9b Onikoyi Lane Parkview Estate, Ikoyi 101223, Lagos.
+          </div>
+        </div>
+
+        <div className='space-y-4 text-left'>
+          <div className='uppercase text-gray-400 text-base'>BILL TO:</div>
+          <div className=' text-gray-800 text-2xl capitalize font-medium'>{user?.company?.name}</div>
+          <div style={{ maxWidth: '180px' }} className=' text-gray-400 capitalize'>
+            {user?.company?.address}, {user?.company?.country}
+          </div>
+        </div>
+      </div>
+
+      {/*  */}
+
+      <div className='space-y-4'>
+        <div className='flex text-blue-600 font-medium text-left text-sm'>
+          <div className='flex-1'>ITEM</div>
+          <div className='w-32'>UNIT COST</div>
+          <div className='w-20'>UNIT</div>
+          <div className='w-20'>TOTAL</div>
+        </div>
+        {data.details.map(d => {
+          return (
+            <div className='flex text-gray-800 font-medium text-left text-sm'>
+              <div className='flex-1'>{d.name}</div>
+              <div className='w-32'>{`N ${d.unitCost}`}</div>
+              <div className='w-20'>{d.unit}</div>
+              <div className='w-20'>{`N ${d.unitCost * d.unit}`}</div>
+            </div>
+          );
+        })}
+        <div style={{ height: '.4px' }} className='bg-gray-100'></div>
+        <div className='flex justify-between space-x-4 capitalize text-blue-600'>
+          <div>{data.name} Total</div>
+          <div className='font-semibold'>
+            {data.name.toLowerCase() === 'basic plan'
+              ? 'N 1,500,000'
+              : data.name.toLowerCase() === 'premium plan'
+              ? 'N 5,000,000'
+              : data.name.toLowerCase() === 'enterprise plan'
+              ? 'N 15,000,000'
+              : 'N 0'}
+          </div>
+        </div>
+      </div>
+
+      {/*  */}
+    </div>
+  );
+});
 
 export default AppDialog;

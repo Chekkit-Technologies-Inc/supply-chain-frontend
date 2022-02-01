@@ -1,58 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import { useSelector } from 'react-redux';
+import ImageFadeIn from 'react-image-fade-in';
+import { useHistory } from 'react-router-dom';
 
-import { ReactComponent as Product } from '../../../../assets/product.svg';
+import Connect from '../../../../assets/connect-plus.png';
 
 import Button from '../../../../components/fragments/button';
 
-const links = [
-  { name: 'View Feed', url: '/#/connect-plus/#' },
-  { name: 'Chat & Messages', url: '/#/connect-plus/#' },
-  { name: 'Order Management', url: '/#/connect-plus/#' },
-  { name: 'My Profile', url: '/#/connect-plus/#' },
-  { name: 'Manage Product Listings', url: '/#/connect-plus/#' },
-  { name: 'Invoices & Payment', url: '/#/connect-plus/#' },
-];
-
 const CPBase = () => {
-  const [subscribed, setSubscribed] = useState(false);
+  const user = useSelector(state => state.user);
+  const history = useHistory();
+
   return (
-    <FadeIn
-      className={`flex flex-col justify-start
-     space-y-6 px-4 md:px-12 py-8 min-h-screen w-full`}
-    >
-      {subscribed && (
-        <div className='space-y-6'>
-          <div className={`font-bold text-2xl text-brand_blue`}>Connect++</div>
-          <FadeIn className={`grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12`}>
-            {links.map((link, idx) => {
-              return (
-                <a
-                  key={idx}
-                  href={`${link.url}`}
-                  className={`w-full h-64 rounded-2xl bg-white bg shadow flex items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg`}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
-          </FadeIn>
+    <div className='bg p-4 md:px-12 py-16 min-h-screen w-full'>
+      <div className='text-sm text-brand_blue mb-6 -mt-6'>
+        <span onClick={() => history.push('/home')} className='text-brand_blue_light cursor-pointer'>
+          Main menu{' '}
+        </span>
+        <span className='text-brand_blue_light'>| </span>
+        <span onClick={() => history.push('/connect-plus')} className='text-blue-500 cursor-pointer'>
+          Connect plus
+        </span>
+      </div>
+      <div className='text-2xl text-brand_blue mb-12'>Connect Plus</div>
+      <FadeIn
+        className={`flex flex-col justify-start items-center
+       space-y-12 mx-auto text-center`}
+      >
+        <div className='text-brand_blue text-2xl font-medium'>
+          <span>Hello </span>
+          <span>{`${user.name.split(' ')[0]}`}, </span>
+          <span>welcome to Connect Plus</span>
         </div>
-      )}
-      {!subscribed && (
-        <div className='flex flex-col items-center justify-center space-y-10 p-4 max-w-4xl w-full mx-auto'>
-          <div className={`font-bold text-2xl text-brand_blue`}>Connect++</div>
-          <div className='w-full '>
-            <Product className='w-full object-cover' />
-          </div>
-          <div className='text-center text-gray-600'>
-          Connect with manufactures, distributors and retailers in a hub
-          </div>
-          <div className={`font-bold text-2xl text-brand_blue`}>Coming Soon</div>
-          <Button className={`hidden`} text={`Activate Plan`} onClick={() => setSubscribed(true)} />
+        <ImageFadeIn src={Connect} className='w-80' />
+        <div className='text-brand_blue_light max-w-3xl'>
+          This page is blank because you do not have any activity on this tool yet. Summary of your activities on asset management, insights on surveys and
+          connections show up here.
         </div>
-      )}
-    </FadeIn>
+        <Button text={`Request Product`} />
+      </FadeIn>
+    </div>
   );
 };
 

@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useSelector } from 'react-redux';
 
+import { Disclosure } from '@headlessui/react';
+import { MdMenu, MdClose } from 'react-icons/md';
+
 import manufacturers from '../assets/manufacturers.png';
 import distributors from '../assets/distributors.png';
 import retailers from '../assets/retailers.png';
@@ -16,28 +19,45 @@ const IndexPage = () => {
 
   useEffect(() => {
     if (user?.isAuthorized) {
-      history.push('/overview');
+      history.push('/home');
     }
     // eslint-disable-next-line
   }, []);
 
   return (
     <div className='min-h-screen overflow-x-hidden'>
-      <div className={`flex items-center justify-between py-6 px-4 lg:px-16 bg-gray-100`}>
-        <Logo size={180} />
-        {/* <div className={`flex items-center space-x-6`}>
-          <div
-            onClick={() => history.push('/auth/signin')}
-            className={`border border-brand_blue text-brand_blue px-4 py-2 rounded-lg cursor-pointer hover:bg-brand_blue hover:text-white hover:shadow-lg`}
-          >
-            Sign In
-          </div>
-        </div> */}
-        <div className={`flex space-x-6`}>
-          <Button text={`Log In`} type={`secondary`} onClick={() => history.push('/auth/signin')} />
-          <Button text={`Sign Up`} onClick={() => history.push('/auth/signup')} />
-        </div>
-      </div>
+      <Disclosure as='nav' className='bg-white'>
+        {({ open }) => (
+          <>
+            <div className='p-6 lg:px-16 bg-gray-50'>
+              <div className='flex justify-between items-center'>
+                <Logo size={180} />
+                <div className='hidden sm:ml-6 sm:flex sm:items-center'>
+                  <div className={`flex space-x-6`}>
+                    <Button text={`Log In`} type={`secondary`} onClick={() => history.push('/auth/signin')} />
+                    <Button text={`Sign Up`} onClick={() => history.push('/pick-modules')} />
+                  </div>
+                </div>
+                <div className='flex items-center sm:hidden'>
+                  {/* Mobile menu button */}
+                  <Disclosure.Button className='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none'>
+                    <span className='sr-only'>Open main menu</span>
+                    {open ? <MdClose className='block h-6 w-6' aria-hidden='true' /> : <MdMenu className='block h-6 w-6' aria-hidden='true' />}
+                  </Disclosure.Button>
+                </div>
+              </div>
+            </div>
+
+            <Disclosure.Panel className='sm:hidden'>
+              <div className={`flex flex-col space-y-6 p-6`}>
+                <Button className={'w-full'} text={`Log In`} type={`secondary`} onClick={() => history.push('/auth/signin')} />
+                <Button className={'w-full'} text={`Sign Up`} onClick={() => history.push('/pick-modules')} />
+              </div>
+            </Disclosure.Panel>
+          </>
+        )}
+      </Disclosure>
+
       <FadeIn className='space-y-24 pb-12 pt-0 lg:pt-24'>
         {/*  */}
         <div className={`base-grid-r-one py-24 xl:py-0 lg:pl-16 opacity-100`}>

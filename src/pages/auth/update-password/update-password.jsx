@@ -18,7 +18,7 @@ const UpdatePassword = () => {
   useEffect(() => {
     localStorage.removeItem('chekkit-act');
     if (token) {
-      dispatch(UserActions.updateUser({ token }));
+      dispatch(UserActions.updateUser({ verifyToken: token }));
     }
     // eslint-disable-next-line
   }, [token]);
@@ -48,8 +48,8 @@ const UpdatePassword = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Update Password</h1>
+    <form className={`max-w-md w-full`}  onSubmit={handleSubmit}>
+      <h1 className='font-semibold text-white text-xl mb-8 text-center'>Update Password</h1>
       <FadeIn className={`space-y-8`}>
         <InputBox
           type={`password`}
@@ -58,7 +58,6 @@ const UpdatePassword = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
-          variant={5}
         />
         <InputBox
           type={`password`}
@@ -67,9 +66,8 @@ const UpdatePassword = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
-          variant={5}
         />
-        <Button text={`Update Password`} className={`w-full`} />
+        <Button text={`Update Password`} className={`w-full`} variant={1} />
       </FadeIn>
     </form>
   );

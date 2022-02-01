@@ -24,3 +24,7 @@ export const REMOVE_TEMP_PERMISSIONS = 'REMOVE_TEMP_PERMISSIONS';
 // response
 export const NOTIFY = 'NOTIFY';
 export const LOADING = 'LOADING';
+
+// Plan
+export const SUBSCRIBE_TO_PLAN = 'SUBSCRIBE_TO_PLAN';
+export const FETCH_PLANS = 'FETCH_PLANS';

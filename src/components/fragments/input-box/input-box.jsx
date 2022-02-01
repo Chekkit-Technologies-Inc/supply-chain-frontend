@@ -39,7 +39,7 @@ const InputBox = ({
           <div
             className={` p-5 rounded-t-lg border-b-2 border-brand_blue_light bg-white bg-opacity-10 text-gray-300 flex items-center space-x-4 overflow-hidden`}
           >
-            {placeholder === 'Company Name' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {/* {placeholder === 'Company Name' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Company Address' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Company Country' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
@@ -49,7 +49,7 @@ const InputBox = ({
             {placeholder === 'Company Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
             {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />}
+            {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />} */}
             <input
               id={label ? label : placeholder}
               className={` bg-transparent focus:outline-none  w-full`}

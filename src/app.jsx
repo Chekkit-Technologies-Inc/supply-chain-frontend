@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
+import { Route, Switch, useLocation, useHistory, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
@@ -7,6 +7,7 @@ import { CgSpinner } from 'react-icons/cg';
 
 import IndexPage from './pages';
 import PickModules from './pages/pick-modules';
+import Plans from './pages/plans';
 import Auth from './pages/auth';
 import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
@@ -116,6 +117,9 @@ function App() {
           <Route exact path={'/pick-modules'}>
             <PickModules />
           </Route>
+          <Route exact path={'/plans'}>
+            <Plans />
+          </Route>
           <Route
             exact
             path={[
@@ -140,8 +144,8 @@ function App() {
           <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
             <VerifyAcount />
           </Route>
-          <Route path={['/overview', '/asset-management', '/connect-plus', '/retail-pos', '/reports', '/settings']}>
-            <Base />
+          <Route path={['/home', '/overview', '/asset-management', '/connect-plus', '/retail-pos', '/reports', '/settings']}>
+            {user?.planActive ? <Base /> : <Redirect to={'/plans'} />}
           </Route>
           <Route
             render={() => {

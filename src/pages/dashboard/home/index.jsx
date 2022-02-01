@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import ReportsBase from './reports-base';
+import Home from './home';
 
 const Reports = () => {
   return (
     <Switch>
-      <Route exact path={'/reports'}>
-        <ReportsBase />
+      <Route exact path={'/home'}>
+        <Home />
       </Route>
       <Redirect to={`/404`} />
     </Switch>

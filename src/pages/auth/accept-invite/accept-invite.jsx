@@ -23,7 +23,7 @@ const AcceptInvite = () => {
 
   useEffect(() => {
     if (token) {
-      dispatch(UserActions.updateUser({ token }));
+      dispatch(UserActions.updateUser({ verifyToken: token }));
     }
     // eslint-disable-next-line
   }, [token]);
@@ -46,10 +46,10 @@ const AcceptInvite = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Update Profile</h1>
+    <form className={`max-w-md w-full`} onSubmit={handleSubmit}>
+      <h1 lassName='font-semibold text-white text-xl mb-8 text-center'>Update Profile</h1>
       <FadeIn className={`space-y-8`}>
-        <InputBox type={`text`} placeholder={`Full Name`} name={`name`} onValueChange={handleInputChange} required={true} variant={5} />
+        <InputBox type={`text`} placeholder={`Full Name`} name={`name`} onValueChange={handleInputChange} required={true} />
         <InputBox
           type={`password`}
           placeholder={`New Password`}
@@ -57,7 +57,6 @@ const AcceptInvite = () => {
           autoComplete={'new-password'}
           onValueChange={handleInputChange}
           required={true}
-          variant={5}
         />
         <InputBox
           type={`password`}
@@ -66,9 +65,8 @@ const AcceptInvite = () => {
           autoComplete={'confirm-password'}
           onValueChange={handleInputChange}
           required={true}
-          variant={5}
         />
-        <Button text={`Accept Invitation`} className={`w-full`} />
+        <Button text={`Accept Invitation`} className={`w-full`} variant={1} />
       </FadeIn>
     </form>
   );

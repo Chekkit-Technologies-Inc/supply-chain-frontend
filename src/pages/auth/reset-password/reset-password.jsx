@@ -18,7 +18,7 @@ const ResetPassword = () => {
   useEffect(() => {
     if (user.isAuthorized) {
       localStorage.setItem('chekkit-act', user.token);
-      history.push('/overview');
+      history.push('/home');
     } else {
       localStorage.removeItem('chekkit-act');
     }
@@ -36,11 +36,11 @@ const ResetPassword = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1 className={`text-lg text-brand_blue font-medium mb-6 sm:-mt-4`}>Reset Password</h1>
+    <form className={`max-w-md w-full`} onSubmit={handleSubmit}>
+      <h1 className='font-semibold text-white text-xl mb-8 text-center'>Reset Password</h1>
       <FadeIn className={`space-y-8`}>
-        <InputBox type={`email`} placeholder={`Email Address`} name={`email`} onValueChange={handleInputChange} required={true} variant={5} />
-        <Button text={`Reset Password`} className={`w-full`} />
+        <InputBox type={`email`} placeholder={`Email Address`} name={`email`} onValueChange={handleInputChange} required={true} />
+        <Button text={`Reset Password`} className={`w-full`} variant={1} />
       </FadeIn>
     </form>
   );

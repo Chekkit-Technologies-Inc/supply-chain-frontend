@@ -8,7 +8,7 @@ export const subcribeToPlan = id => async dispatch => {
   try {
     const res = await PlanService.subcribeToPlan(id);
 
-    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ title: res.data.status, message: 'Plan requested successfully', type: 'success', loading: false }));
 
     dispatch({
       type: SUBSCRIBE_TO_PLAN,

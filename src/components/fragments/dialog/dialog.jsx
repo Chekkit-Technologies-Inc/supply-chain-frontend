@@ -157,7 +157,7 @@ const Invoice = forwardRef(({ data }, ref) => {
 
       <div className='flex justify-between w-full space-x-4 text-sm'>
         <div className='space-y-2 text-left'>
-          <div className='uppercase text-blue-600 font-semibold'>Invoice - {data.name}</div>
+          <div className='uppercase text-blue-600 font-semibold'>Invoice - {data.type}</div>
           <div className=' text-blue-600'>#258942</div>
         </div>
         <div className='space-y-2 text-right'>
@@ -217,13 +217,13 @@ const Invoice = forwardRef(({ data }, ref) => {
         })}
         <div style={{ height: '.4px' }} className='bg-gray-100'></div>
         <div className='flex justify-between space-x-4 capitalize text-blue-600'>
-          <div>{data.name} Total</div>
+          <div>{data.type} Total</div>
           <div className='font-semibold'>
-            {data.name.toLowerCase() === 'basic plan'
+            {data.type.toLowerCase() === 'basic plan'
               ? 'N 1,500,000'
-              : data.name.toLowerCase() === 'premium plan'
+              : data.type.toLowerCase() === 'premium plan'
               ? 'N 5,000,000'
-              : data.name.toLowerCase() === 'enterprise plan'
+              : data.type.toLowerCase() === 'entreprise plan'
               ? 'N 15,000,000'
               : 'N 0'}
           </div>

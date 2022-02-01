@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FadeIn from 'react-fade-in';
 
 import Logo from '../../components/fragments/logo';
@@ -10,10 +10,10 @@ import Dialog from '../../components/fragments/dialog';
 
 import { UserActions } from '../../states/actions';
 
-const plans = [
+const planData = [
   {
-    name: 'Basic Plan',
-    sub: '20 tags & 1 gateway reader',
+    type: 'Basic Plan',
+    description: '20 tags & 1 gateway reader',
     price: 'N1.5m',
     features: [
       { title: 'Enjoy all Supply Chain products', included: true },
@@ -27,8 +27,8 @@ const plans = [
     ],
   },
   {
-    name: 'Premium Plan',
-    sub: '100 tags & 1 gateway reader',
+    type: 'Premium Plan',
+    description: '100 tags & 1 gateway reader',
     price: 'N5m',
     features: [
       { title: 'Enjoy all Supply Chain products', included: true },
@@ -42,8 +42,8 @@ const plans = [
     ],
   },
   {
-    name: 'Enterprise Plan',
-    sub: '300 tags & 4 gateway reader',
+    type: 'Entreprise Plan',
+    description: '300 tags & 4 gateway reader',
     price: 'N15m',
     features: [
       { title: 'Enjoy all Supply Chain products', included: true },
@@ -63,6 +63,23 @@ const Plans = () => {
   const dispatch = useDispatch();
   const [plan, setPlan] = useState();
   const [open, setOpen] = useState(false);
+  const [planList, setPlanList] = useState(planData);
+  const plans = useSelector(state => state.plans);
+
+  useEffect(() => {
+    if (plans && plans.length > 0 && planList && planList.length > 0 && !planList[0]?.id) {
+      let bb = plans.map(a => {
+        let b = '';
+        planList.forEach(c => {
+          if (a.type.toLowerCase() === c.type.toLowerCase()) {
+            b = { ...c, ...a };
+          }
+        });
+        return b;
+      });
+      setPlanList(bb);
+    }
+  }, [plans, planList]);
 
   useEffect(() => {
     if (plan) {
@@ -95,7 +112,7 @@ const Plans = () => {
       </div>
       <div className='font-semibold text-2xl text-brand_blue text-center px-4 mt-4'>Kindly select a subscription Plan</div>
       <FadeIn className={`flex-1 flex flex-col justify-between items-center space-y-8 py-12 px-4 md:px-12`}>
-        <div>{plans && plans.length > 0 && <PlanList items={plans} onComplete={plan => setPlan(plan)} />}</div>
+        <div>{planList && planList.length > 0 && planList[0].id && <PlanList items={planList} onComplete={plan => setPlan(plan)} />}</div>
         <div className='flex flex-col items-center space-y-2 text-blue-200'>
           <div onClick={signout} className='border border-blue-100 rounded-full w-10 h-10 cursor-pointer shadow hover:shadow-sm'>
             <SignoutIcon className='w-full h-full' />

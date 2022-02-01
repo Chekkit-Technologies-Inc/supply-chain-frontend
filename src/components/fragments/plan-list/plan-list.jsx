@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Button from '../button';
-// import { PlanActions } from '../../../states/actions';
+import { PlanActions } from '../../../states/actions';
 
 const PlanList = ({ items, onComplete }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState(1);
 
   const handleClick = idx => {
@@ -14,12 +14,11 @@ const PlanList = ({ items, onComplete }) => {
   };
 
   const handleButtonClick = plan => {
-    // if (plan) {
-    //   dispatch(PlanActions.subcribeToPlan(plan.id))
-    //     .then(() => onComplete(plan))
-    //     .catch(console.log);
-    // }
-    onComplete(plan);
+    if (plan) {
+      dispatch(PlanActions.subcribeToPlan(plan.id))
+        .then(() => onComplete(plan))
+        .catch(console.log);
+    }
   };
 
   return (
@@ -39,8 +38,8 @@ const Item = ({ item, onClick, selected, handleButtonClick }) => {
         selected ? `bg-brand_blue p-6 text-white z-10` : `bg-white p-6 text-brand_blue translate-y-12`
       }`}
     >
-      <div className='font-semibold text-lg'>{item.name}</div>
-      <div className='mt-6 font-semibold text-sm'>{item.sub}</div>
+      <div className='font-semibold text-lg'>{item.type}</div>
+      <div className='mt-6 font-semibold text-sm'>{item.description}</div>
       <ul className='py-6 space-y-4 text-sm'>
         {item.features.map((f, i) => {
           return (
@@ -58,7 +57,7 @@ const Item = ({ item, onClick, selected, handleButtonClick }) => {
         <span className='text-sm text-gray-400'> /year</span>
       </div>
       {selected ? (
-        <Button className={`w-60 mx-auto`} light={true} text={`Choose Plan`} onClick={() => handleButtonClick(item)} variant={1} />
+        <Button className={`w-60 mx-auto`} light={true} text={`Request Plan`} onClick={() => handleButtonClick(item)} variant={1} />
       ) : (
         <Button className={`w-60 mx-auto`} text={`Select Plan`} />
       )}

@@ -13,7 +13,7 @@ import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
 import NotFound from './pages/404-page';
 
-import { UserActions } from './states/actions';
+import { UserActions, PlanActions } from './states/actions';
 import { notify } from './states/actions/response';
 
 function App() {
@@ -52,6 +52,7 @@ function App() {
       dispatch(UserActions.getUsersRoles());
       dispatch(UserActions.getCompanyUsers());
       dispatch(UserActions.getCompanyPermissions());
+      dispatch(PlanActions.fetchPlans());
     }
     // eslint-disable-next-line
   }, [user?.token]);
@@ -145,7 +146,7 @@ function App() {
             <VerifyAcount />
           </Route>
           <Route path={['/home', '/overview', '/asset-management', '/connect-plus', '/retail-pos', '/reports', '/settings']}>
-            {user?.planActive ? <Base /> : <Redirect to={'/plans'} />}
+            {user?.company?.subscription?.status ? <Base /> : <Redirect to={'/plans'} />}
           </Route>
           <Route
             render={() => {

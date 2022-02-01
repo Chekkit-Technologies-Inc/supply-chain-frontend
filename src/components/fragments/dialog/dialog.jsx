@@ -80,7 +80,7 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
               {type === 'user-invite' && (
                 <form
                   onSubmit={onSubmit}
-                  className='inline-block bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all mb-8 mt-32 align-middle max-w-lg w-full p-6'
+                  className='inline-block bg-white text-left overflow-hidden shadow-xl transform transition-all mb-8 mt-32 align-middle max-w-lg w-full p-6'
                 >
                   <div className={`w-full`}>
                     <div className='mt-3 text-center sm:mt-5 w-full'>

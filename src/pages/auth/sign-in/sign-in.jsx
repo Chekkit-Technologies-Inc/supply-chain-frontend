@@ -62,6 +62,11 @@ const SignIn = () => {
         </div>
         <Button text={`Sign In`} className={`w-full max-w-md mx-auto`} variant={1} />
       </FadeIn>
+      <div className={`text-center mt-6 sm:-mb-4 w-full flex justify-center`}>
+        <Text className={`text-gray-400 inline-block`} value={`Don't have an account? `} />
+        &nbsp;
+        <Text onClick={() => history.push('/pick-modules')} className={`cursor-pointer text-gray-100 hover:text-green-300 inline-block`} value={`Sign Up`} />
+      </div>
     </form>
   );
 };

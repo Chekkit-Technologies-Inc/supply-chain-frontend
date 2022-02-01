@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import InputBox from '../../../components/fragments/input-box';
 import SelectBox from '../../../components/fragments/select-box';
 import Button from '../../../components/fragments/button';
+import Text from '../../../components/fragments/text';
 
 // import { User } from '../../../models';
 import { UserActions } from '../../../states/actions';
@@ -123,6 +124,11 @@ const SignUp = () => {
 
         <Button text={`Sign Up`} className={`w-full max-w-md mx-auto`} variant={1} />
       </FadeIn>
+      <div className={`text-center mt-6 sm:-mb-4 w-full flex justify-center`}>
+        <Text className={`text-gray-400 inline-block`} value={`Already have an account? `} />
+        &nbsp;
+        <Text onClick={() => history.push('/auth/signin')} className={`cursor-pointer text-gray-100 hover:text-green-300 inline-block`} value={`Sign In`} />
+      </div>
     </form>
   );
 };

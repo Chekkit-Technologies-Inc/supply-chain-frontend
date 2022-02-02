@@ -2,6 +2,7 @@ import { SUBSCRIBE_TO_PLAN, FETCH_PLANS } from '../type';
 import { notify, loading } from './response';
 
 import { PlanService } from '../../services';
+import { UserActions } from '../actions';
 
 export const subcribeToPlan = id => async dispatch => {
   dispatch(loading({ loading: true }));
@@ -14,6 +15,7 @@ export const subcribeToPlan = id => async dispatch => {
       type: SUBSCRIBE_TO_PLAN,
     });
 
+    dispatch(UserActions.fetchUser());
     return Promise.resolve(res.data);
   } catch (err) {
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));

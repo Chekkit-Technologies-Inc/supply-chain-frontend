@@ -32,7 +32,7 @@ function App() {
       setUserLoading(false);
     } else {
       setUserLoading(false);
-      history.push('/');
+      history.push(location.pathname);
     } // eslint-disable-next-line
   }, []);
 
@@ -119,7 +119,7 @@ function App() {
             <PickModules />
           </Route>
           <Route exact path={'/plans'}>
-            <Plans />
+            <>{user?.isAuthorized ? <Plans /> : <Redirect to={'/auth/signin'} />}</>
           </Route>
           <Route
             exact
@@ -146,7 +146,7 @@ function App() {
             <VerifyAcount />
           </Route>
           <Route path={['/home', '/overview', '/asset-management', '/connect-plus', '/retail-pos', '/reports', '/settings']}>
-            {user?.company?.subscription?.status ? <Base /> : <Redirect to={'/plans'} />}
+            {user?.isAuthorized ? <>{user?.company?.subscription?.status ? <Base /> : <Redirect to={'/plans'} />}</> : <Redirect to={'/auth/signin'} />}
           </Route>
           <Route
             render={() => {

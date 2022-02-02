@@ -17,7 +17,7 @@ const Auth = () => {
   const history = useHistory();
   return (
     <div className='min-h-screen relative bg-brand_blue'>
-      <div className={`absolute left-20 top-0 hidden xl:block z-0`}>
+      <div className={`absolute left-20 -top-12 hidden xl:block z-0 animate__animated animate__swing animate__infinite animate__slower animate__delay-2s`}>
         <Welcome />
       </div>
 

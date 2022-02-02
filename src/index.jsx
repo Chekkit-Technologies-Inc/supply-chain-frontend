@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
+import 'animate.css';
 import './index.css';
 import 'react-notifications-component/dist/theme.css';
 import App from './app';

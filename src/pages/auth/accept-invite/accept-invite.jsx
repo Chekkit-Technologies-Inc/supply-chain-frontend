@@ -47,7 +47,7 @@ const AcceptInvite = () => {
 
   return (
     <form className={`max-w-md w-full`} onSubmit={handleSubmit}>
-      <h1 lassName='font-semibold text-white text-xl mb-8 text-center'>Update Profile</h1>
+      <h1 className='font-semibold text-white text-xl mb-8 text-center'>Update Profile</h1>
       <FadeIn className={`space-y-8`}>
         <InputBox type={`text`} placeholder={`Full Name`} name={`name`} onValueChange={handleInputChange} required={true} />
         <InputBox

@@ -9,6 +9,10 @@ body,
   height: 100%;
 }
 
+:root {
+  --animate-duration: 3s;
+}
+
 .transition_all {
   transition: all 0.25s;
 }

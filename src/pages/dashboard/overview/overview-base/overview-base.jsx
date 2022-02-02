@@ -31,7 +31,9 @@ const OverviewBase = () => {
           <span>{`${user.name.split(' ')[0]}`}, </span>
           <span>welcome to your account overview</span>
         </div>
-        <ImageFadeIn src={Overview} className='w-80' />
+        <div className='w-80'>
+          <ImageFadeIn src={Overview} className='w-full' />
+        </div>
         <div className='text-brand_blue_light max-w-3xl'>
           This page is blank because you do not have any activity on this tool yet. Summary of your activities on asset management, insights on surveys and
           connections show up here.

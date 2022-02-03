@@ -35,8 +35,8 @@ const OverviewBase = () => {
           <ImageFadeIn src={Overview} className='w-full' />
         </div>
         <div className='text-brand_blue_light max-w-3xl'>
-          This page is blank because you do not have any activity on this tool yet. Summary of your activities on asset management, insights on surveys and
-          connections show up here.
+          This page is blank because you do not have any activity on this tool yet. Summary of your activities, analytics, insights on surveys and connections
+          show up here.
         </div>
       </FadeIn>
     </FadeIn>

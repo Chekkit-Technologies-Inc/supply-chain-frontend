@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useSelector } from 'react-redux';
 import ImageFadeIn from 'react-image-fade-in';
@@ -7,8 +7,10 @@ import { useHistory } from 'react-router-dom';
 import Retail from '../../../../assets/retail-pos.png';
 
 import Button from '../../../../components/fragments/button';
+import Dialog from '../../../../components/fragments/dialog';
 
 const RPBase = () => {
+  const [open, setOpen] = useState(false);
   const user = useSelector(state => state.user);
   const history = useHistory();
 
@@ -36,12 +38,13 @@ const RPBase = () => {
         <div className='w-80'>
           <ImageFadeIn src={Retail} className='w-full' />
         </div>
-        <div className='text-brand_blue_light max-w-3xl'>
+        {/* <div className='text-brand_blue_light max-w-3xl'>
           This page is blank because you do not have any activity on this tool yet. Summary of your activities on asset management, insights on surveys and
           connections show up here.
-        </div>
-        <Button text={`Request Product`} />
+        </div> */}
+        <Button onClick={() => setOpen(true)} text={`Request Product`} />
       </FadeIn>
+      <Dialog open={open} setOpen={setOpen} title={`Notification sent`} type={`product-request`} />
     </div>
   );
 };

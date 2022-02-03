@@ -125,6 +125,17 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
                   <Button onClick={handlePrint} className={`mx-auto`} text={`Print Now`} />
                 </div>
               )}
+              {type === 'product-request' && (
+                <div className='inline-block bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all mb-8 mt-32 align-middle max-w-lg w-full p-6'>
+                  {/* <Dialog.Title as='h3' className='text-lg leading-6 font-medium text-gray-900 flex justify-center'>
+                    <Heading className={`text-brand_blue`} title={'Admin notified'} size={2} />
+                  </Dialog.Title> */}
+                  <div className={`w-full my-12 flex justify-center text-gray-500`}>Kindly wait as this product will be available soon</div>
+                  <div className='mt-5 sm:mt-6 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-1 sm:grid-flow-row-dense w-full'>
+                    <Button className={`h-14 w-full`} onClick={closeDialog} text={`Close`} type={`secondary`} cx={2} />
+                  </div>
+                </div>
+              )}
             </div>
           </Transition.Child>
         </div>

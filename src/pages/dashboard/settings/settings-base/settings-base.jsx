@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const links = [
-  { name: 'Contact Chekkit', url: 'tel:000400404' },
+  { name: 'Contact Chekkit', url: 'tel:+2348138491667' },
   { name: 'Help Center', url: '/settings/help' },
   { name: 'User Management Center', url: '/settings/user-management' },
 ];

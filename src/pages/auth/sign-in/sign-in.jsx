@@ -43,7 +43,7 @@ const SignIn = () => {
     <form className={`max-w-md w-full`} onSubmit={handleSubmit}>
       <h1 className='font-semibold text-white text-xl mb-8 text-center'>Sign In</h1>
       <FadeIn className={`space-y-8`}>
-        <InputBox type={`email`} placeholder={`Attendee Work Email`} name={`email`} onValueChange={handleInputChange} required={true} />
+        <InputBox type={`email`} placeholder={`Email Address`} name={`email`} onValueChange={handleInputChange} required={true} />
         <InputBox
           type={`password`}
           placeholder={`Password`}

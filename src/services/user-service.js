@@ -48,8 +48,11 @@ export const getCompanyPermissions = async () => {
   return http().get(`/users/company/permissions`);
 };
 
+export const getCompanyUserPermissions = async userId => {
+  return http().get(`/users/${userId}/permissions`);
+};
+
 export const assignTempPermission = async (id, data) => {
-  console.log(data);
   return http().put(`/users/${id}/assign-permissions`, data);
 };
 
@@ -70,6 +73,7 @@ const UserService = {
   getUsersRoles,
   assignUserRole,
   getCompanyPermissions,
+  getCompanyUserPermissions,
   assignTempPermission,
   removeTempPermission,
 };

@@ -13,6 +13,7 @@ import {
   GET_USERS_ROLES,
   ASSIGN_USER_ROLE,
   GET_COMPANY_PERMISSIONS,
+  GET_COMPANY_USER_PERMISSIONS,
   ASSIGN_TEMP_PERMISSIONS,
   REMOVE_TEMP_PERMISSIONS,
 } from '../type';
@@ -262,6 +263,27 @@ export const getCompanyPermissions = () => async dispatch => {
   }
 };
 
+export const getCompanyUserPermissions = userId => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.getCompanyUserPermissions(userId);
+
+    // dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+    dispatch(notify({ loading: false }));
+
+    dispatch({
+      type: GET_COMPANY_USER_PERMISSIONS,
+      payload: { userId, permissions: res.data.data.permissions },
+    });
+
+    return Promise.resolve(res.data);
+  } catch (err) {
+    // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    dispatch(notify({ loading: false }));
+    return Promise.reject(err);
+  }
+};
+
 export const assignTempPermission = (id, data) => async dispatch => {
   dispatch(loading({ loading: true }));
   let reqData = { permissions: data };
@@ -317,6 +339,7 @@ const UserActions = {
   getUsersRoles,
   assignUserRole,
   getCompanyPermissions,
+  getCompanyUserPermissions,
   assignTempPermission,
   removeTempPermission,
 };

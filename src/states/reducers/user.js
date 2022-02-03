@@ -10,6 +10,7 @@ import {
   GET_COMPANY_USERS,
   GET_USERS_ROLES,
   GET_COMPANY_PERMISSIONS,
+  GET_COMPANY_USER_PERMISSIONS,
 } from '../type';
 import { User } from '../../models';
 
@@ -41,6 +42,14 @@ const userReducer = (user = initialState, action) => {
       return { ...user, roles: payload.data };
     case GET_COMPANY_PERMISSIONS:
       return { ...user, permissions: payload.data };
+    case GET_COMPANY_USER_PERMISSIONS:
+      let companyUsers = user.companyUsers.map(u => {
+        if (payload.userId === u.id) {
+          u.userPermissions = payload.permissions;
+        }
+        return u;
+      });
+      return { ...user, companyUsers };
     default:
       return user;
   }

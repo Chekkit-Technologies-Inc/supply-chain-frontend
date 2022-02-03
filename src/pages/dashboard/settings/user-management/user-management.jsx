@@ -59,7 +59,7 @@ const UserManagement = () => {
         <UserList
           userList={user.companyUsers}
           roles={user.roles}
-          permissions={user.permissions.permissions}
+          permissions={user.permissions}
           changeCompanyRole={changeCompanyRole}
           assignTempPermissions={assignTempPermissions}
           removeTempPermissions={removeTempPermissions}

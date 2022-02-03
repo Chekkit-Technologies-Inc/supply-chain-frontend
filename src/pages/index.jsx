@@ -67,7 +67,7 @@ const IndexPage = () => {
               <div className='capitalize text-white max-w-xl 2xl:text-xl'>
                 have a focal point of communication and consultation between industry on the one hand, and the government and general public on the other.
               </div>
-              <Button onClick={() => history.push('/auth/signup')} text={`Learn more`} light={true} />
+              <Button onClick={() => history.push('/pick-modules')} text={`Learn more`} light={true} />
             </div>
           </div>
 
@@ -85,7 +85,7 @@ const IndexPage = () => {
               <div className='capitalize text-white max-w-xl 2xl:text-xl'>
                 have a focal point of communication and consultation between industry on the one hand, and the government and general public on the other.
               </div>
-              <Button onClick={() => history.push('/auth/signup')} text={`Learn more`} light={true} />
+              <Button onClick={() => history.push('/pick-modules')} text={`Learn more`} light={true} />
             </div>
           </div>
 
@@ -103,7 +103,7 @@ const IndexPage = () => {
               <div className='capitalize text-white max-w-xl 2xl:text-xl'>
                 have a focal point of communication and consultation between industry on the one hand, and the government and general public on the other.
               </div>
-              <Button onClick={() => history.push('/auth/signup')} text={`Learn more`} light={true} />
+              <Button onClick={() => history.push('/pick-modules')} text={`Learn more`} light={true} />
             </div>
           </div>
 

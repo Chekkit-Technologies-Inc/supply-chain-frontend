@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import FadeIn from 'react-fade-in';
 
@@ -35,6 +35,10 @@ const PickModules = () => {
     );
   };
 
+  useEffect(() => {
+    setAllSelected(modules.every(mod => mod.selected));
+  }, [modules]);
+
   const selectAll = () => {
     if (allSelected) {
       setModules(
@@ -43,7 +47,6 @@ const PickModules = () => {
           return mod;
         }),
       );
-      setAllSelected(false);
     } else {
       setModules(
         modules.map((mod, i) => {
@@ -51,7 +54,6 @@ const PickModules = () => {
           return mod;
         }),
       );
-      setAllSelected(true);
     }
   };
 
@@ -109,7 +111,7 @@ const PickModules = () => {
             );
           })}
         </FadeIn>
-        <div className={`flex space-x-6`}>
+        <div className={`flex flex-col space-y-4 w-full sm:w-auto sm:space-x-4 sm:flex-row sm:space-y-0`}>
           <Button text={`${!allSelected ? `Select All` : `Unselect All`}`} type={`secondary`} onClick={selectAll} />
           <Button text={`Continue`} onClick={() => history.push('/auth/signup')} />
         </div>

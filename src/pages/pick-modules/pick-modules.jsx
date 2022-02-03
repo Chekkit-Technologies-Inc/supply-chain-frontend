@@ -71,7 +71,7 @@ const PickModules = () => {
           </div>
           <div className='text-brand_blue_light text-sm'>Kindly select the modules you are interested in</div>
         </div>
-        <FadeIn className={`w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 px-6`}>
+        <FadeIn className={`w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12`}>
           {modules.map((mod, idx) => {
             return (
               <div

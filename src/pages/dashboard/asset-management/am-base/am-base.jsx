@@ -21,7 +21,7 @@ const links = [
     desc: 'Manage all assets in your warehouse',
     video: '#',
     selected: false,
-    url: process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/im',
+    url: process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/inv',
   },
 ];
 

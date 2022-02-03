@@ -160,11 +160,11 @@ const Item = ({ user, sn, roles, permissions, changeCompanyRole, assignTempPermi
               <ul className='grid grid-cols-3 gap-8'>
                 {user?.userPermissions?.map((d, i) => {
                   return (
-                    <li className='text-gray-700 flex justify-between space-x-4 w-full hover:bg-gray-50 p-4 rounded-lg' key={i}>
+                    <li className='text-gray-700 flex justify-between space-x-4 w-full bg-gray-50 hover:bg-gray-100 p-4 rounded-lg' key={i}>
                       <div>{d}</div>
                       <div
                         onClick={() => removeTempPermissions(user.id, [d])}
-                        className='w-5 h-5 text-sm bg-gray-200 rounded-full flex items-center justify-center text-gray-500 cursor-pointer hover:shadow'
+                        className='w-5 h-5 text-sm bg-gray-200 rounded-full flex items-center justify-center text-gray-500 cursor-pointer hover:shadow flex-shrink-0'
                       >
                         x
                       </div>

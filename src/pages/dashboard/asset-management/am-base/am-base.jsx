@@ -1,5 +1,5 @@
 import React from 'react';
-import FadeIn from 'react-fade-in/lib/FadeIn';
+// import FadeIn from 'react-fade-in/lib/FadeIn';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ const AMBase = () => {
         </span>
       </div>
       <div className='text-2xl text-brand_blue mb-12'>Asset & Inventory Management</div>
-      <FadeIn className={`flex flex-wrap justify-center gap-12 mt-12  w-full`}>
+      <div className={`flex flex-wrap justify-center gap-12 mt-12  w-full`}>
         {links.map((link, idx) => {
           return (
             <a
@@ -59,7 +59,7 @@ const AMBase = () => {
             </a>
           );
         })}
-      </FadeIn>
+      </div>
     </div>
   );
 };

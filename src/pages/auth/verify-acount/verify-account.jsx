@@ -97,7 +97,7 @@ const VerifyAccount = () => {
             <div className={`flex items-center`}>
               <Text className={`text-brand_blue text-center`} value={`Thank you for completing the onboarding`} />
             </div>
-            <div className={`flex items-center`}>
+            <div className={`flex flex-col items-center`}>
               <Text className={`text-center text-brand_blue`} value={`An email has been sent to your address `} />
               <Text className={`text-center text-green-600 font-semibold px-1`} value={user.email} />
             </div>

@@ -52,7 +52,7 @@ const OverviewBase = () => {
   return (
     <FadeIn
       className={`flex flex-col justify-start items-center
-     space-y-2 p-6 py-16 min-h-screen w-full mx-auto bg`}
+     space-y-2 p-4 py-16 min-h-screen w-full mx-auto bg`}
     >
       {user && (
         <>
@@ -66,7 +66,7 @@ const OverviewBase = () => {
             </div>
             <div className='text-brand_blue_light'>Let’s help you manage your services easily. Select and view any of the services</div>
           </div>
-          <FadeIn className={`flex flex-wrap justify-center gap-12 mt-12  w-full`}>
+          <div className={`flex flex-wrap justify-center gap-12 mt-12  w-full`}>
             {links
               .filter(d => d.name === 'Overview')
               .map((link, idx) => {
@@ -74,8 +74,7 @@ const OverviewBase = () => {
                   <span
                     onClick={() => history.push(link.url)}
                     key={idx}
-                    style={{ width: '500px' }}
-                    className={`w-full max-w-md flex-1 h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
+                    className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
                   >
                     <div className='w-10 h-10'>
                       <link.icon className='w-full h-full' />
@@ -93,7 +92,6 @@ const OverviewBase = () => {
                     key={idx}
                     target={`_blank`}
                     href={`${link.url}/${user?.token}`}
-                    style={{ width: '500px' }}
                     className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
                   >
                     <div className='w-10 h-10'>
@@ -111,8 +109,7 @@ const OverviewBase = () => {
                   <span
                     onClick={() => history.push(link.url)}
                     key={idx}
-                    style={{ width: '500px' }}
-                    className={`w-full max-w-md flex-1 h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
+                    className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
                   >
                     <div className='w-10 h-10'>
                       <link.icon className='w-full h-full' />
@@ -122,7 +119,7 @@ const OverviewBase = () => {
                   </span>
                 );
               })}
-          </FadeIn>
+          </div>
         </>
       )}
     </FadeIn>

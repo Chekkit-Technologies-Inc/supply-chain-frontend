@@ -63,6 +63,10 @@ module.exports = {
         '48': '12rem',
         '56': '14rem',
         '64': '16rem',
+        'xs': '448px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
       },
       minHeight: {
         '0': '0',

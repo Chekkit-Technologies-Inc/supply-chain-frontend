@@ -116,7 +116,7 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
                 </form>
               )}
               {type === 'invoice' && (
-                <div className='bg-white pb-12 inline-block overflow-auto shadow-xl transform transition-all mb-8 mt-20 align-middle max-w-3xl w-full space-y-6'>
+                <div className='bg-white pb-12 inline-block overflow-auto shadow-xl transform transition-all mb-8 mt-20 align-middle w-full max-w-3xl space-y-6'>
                   {/*  */}
 
                   <Invoice ref={componentRef} data={data} />
@@ -126,10 +126,7 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
                 </div>
               )}
               {type === 'product-request' && (
-                <div className='inline-block bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all mb-8 mt-32 align-middle max-w-lg w-full p-6'>
-                  {/* <Dialog.Title as='h3' className='text-lg leading-6 font-medium text-gray-900 flex justify-center'>
-                    <Heading className={`text-brand_blue`} title={'Admin notified'} size={2} />
-                  </Dialog.Title> */}
+                <div className='inline-block bg-white p-6 overflow-hidden shadow-xl transform transition-all mb-8 mt-32 text-center align-middle max-w-lg w-full'>
                   <div className={`w-full my-12 flex justify-center text-gray-500`}>Kindly wait as this product will be available soon</div>
                   <div className='mt-5 sm:mt-6 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-1 sm:grid-flow-row-dense w-full'>
                     <Button className={`h-14 w-full`} onClick={closeDialog} text={`Close`} type={`secondary`} cx={2} />
@@ -163,7 +160,7 @@ const Invoice = forwardRef(({ data }, ref) => {
   };
 
   return (
-    <div ref={ref} className='bg-white p-12 space-y-12'>
+    <div ref={ref} className='bg-white p-12 space-y-12 overflow-auto'>
       {/*  */}
 
       <div className='flex justify-between w-full space-x-4 text-sm'>

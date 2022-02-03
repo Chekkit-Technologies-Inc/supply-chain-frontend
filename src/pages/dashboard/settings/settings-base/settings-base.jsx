@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const links = [
-  { name: 'Contact Chekkit', url: 'tel:+2348138491667' },
-  { name: 'Help Center', url: '/settings/help' },
-  { name: 'User Management Center', url: '/settings/user-management' },
+  { id: 1, name: 'Contact Chekkit', url: 'tel:+2348138491667' },
+  { id: 2, name: 'Help Center', url: '/settings/help' },
+  { id: 3, name: 'User Management Center', url: '/settings/user-management' },
 ];
 
 const SettingsBase = () => {
@@ -33,13 +33,13 @@ const SettingsBase = () => {
         </span>
       </div>
       <div className='text-2xl text-brand_blue mb-12'>Settings</div>
-      <FadeIn className={`flex flex-wrap justify-center gap-12 mt-12  w-full`}>
+      <div className={`flex flex-wrap justify-center gap-12 mt-12  w-full`}>
         {links.reduce(isAdmin, []).map((link, idx) => {
           return (
             <>
               {link.name !== 'Contact Chekkit' ? (
                 <Link
-                  key={idx}
+                  key={link.id}
                   to={link.url}
                   style={{ width: '500px' }}
                   className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
@@ -48,7 +48,7 @@ const SettingsBase = () => {
                 </Link>
               ) : (
                 <a
-                  key={idx}
+                  key={link.id}
                   href={link.url}
                   style={{ width: '500px' }}
                   className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
@@ -59,7 +59,7 @@ const SettingsBase = () => {
             </>
           );
         })}
-      </FadeIn>
+      </div>
     </FadeIn>
   );
 };

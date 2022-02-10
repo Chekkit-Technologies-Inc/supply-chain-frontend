@@ -35,6 +35,7 @@ const userReducer = (user = initialState, action) => {
     case UPDATE_PASSWORD:
       return user;
     case SIGNOUT:
+      localStorage.removeItem('chekkit-act');
       return initialState;
     case GET_COMPANY_USERS:
       return { ...user, companyUsers: payload.data };

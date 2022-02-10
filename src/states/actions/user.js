@@ -77,6 +77,9 @@ export const fetchUser = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     dispatch(notify({ loading: false }));
     return Promise.reject(err);
@@ -162,6 +165,9 @@ export const sendInvite = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
@@ -198,6 +204,9 @@ export const getCompanyUsers = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     dispatch(notify({ loading: false }));
     return Promise.reject(err);
@@ -218,6 +227,9 @@ export const getUsersRoles = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     dispatch(notify({ loading: false }));
     return Promise.reject(err);
@@ -238,6 +250,9 @@ export const assignUserRole = (id, roleId) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
@@ -257,6 +272,9 @@ export const getCompanyPermissions = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     dispatch(notify({ loading: false }));
     return Promise.reject(err);
@@ -278,6 +296,9 @@ export const getCompanyUserPermissions = userId => async dispatch => {
 
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     dispatch(notify({ loading: false }));
     return Promise.reject(err);
@@ -299,6 +320,9 @@ export const assignTempPermission = (id, data) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
@@ -319,6 +343,9 @@ export const removeTempPermission = (id, data) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(signOut());
+    }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }

@@ -18,6 +18,9 @@ export const subcribeToPlan = id => async dispatch => {
     dispatch(UserActions.fetchUser());
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(UserActions.signOut());
+    }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
     return Promise.reject(err);
   }
@@ -39,8 +42,10 @@ export const fetchPlans = () => async dispatch => {
 
     return Promise.resolve(res.data);
   } catch (err) {
+    if (err.response.status === 401) {
+      dispatch(UserActions.signOut());
+    }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
-
     dispatch(notify({ loading: false }));
     return Promise.reject(err);
   }

@@ -23,7 +23,7 @@ const planData = [
     ],
     details: [
       { name: 'RFID Tags', unit: 20, unitCost: 350 },
-      { name: 'Gateway Reader', unit: 1, unitCost: 350 },
+      { name: 'Gateway Reader', unit: 1, unitCost: 450000 },
     ],
   },
   {
@@ -38,7 +38,7 @@ const planData = [
     ],
     details: [
       { name: 'RFID Tags', unit: 100, unitCost: 350 },
-      { name: 'Gateway Reader', unit: 1, unitCost: 350 },
+      { name: 'Gateway Reader', unit: 1, unitCost: 450000 },
     ],
   },
   {
@@ -53,7 +53,7 @@ const planData = [
     ],
     details: [
       { name: 'RFID Tags', unit: 300, unitCost: 350 },
-      { name: 'Gateway Reader', unit: 4, unitCost: 350 },
+      { name: 'Gateway Reader', unit: 4, unitCost: 450000 },
     ],
   },
 ];

@@ -2,6 +2,7 @@ import React, { Fragment, useState, useRef, forwardRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useReactToPrint } from 'react-to-print';
+import { format } from 'date-fns';
 
 import Button from '../button';
 import InputBox from '../input-box';
@@ -144,21 +145,6 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
 const Invoice = forwardRef(({ data }, ref) => {
   const user = useSelector(state => state.user);
 
-  const formatDate = date => {
-    let a = date.replace('/', '.').replace('/', '.');
-    let b = a
-      .split('.')
-      .map(c => {
-        if (c.length < 2) {
-          return 0 + c;
-        }
-        return c;
-      })
-      .join('');
-    let d = `${b[0] + b[1]}.${b[2] + b[3]}.${b[4] + b[5]}${b[6] + b[7]}`;
-    return d;
-  };
-
   return (
     <div ref={ref} className='bg-white p-12 space-y-12 overflow-auto'>
       {/*  */}
@@ -171,12 +157,12 @@ const Invoice = forwardRef(({ data }, ref) => {
         <div className='space-y-2 text-right'>
           <div className=''>
             <span className='text-gray-400'>Date: </span>
-            <span className='text-gray-400 font-bold'>{formatDate(new Date().toLocaleDateString())}</span>
+            <span className='text-gray-400 font-bold'>{format(new Date(), 'dd.MM.yyyy')}</span>
           </div>
           <div className=''>
             <span className='text-gray-400'>Due Date: </span>
             <span className='text-gray-400 font-bold'>
-              {formatDate(new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate()).toLocaleDateString())}
+              {format(new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate()), 'dd.MM.yyyy')}
             </span>
           </div>
         </div>

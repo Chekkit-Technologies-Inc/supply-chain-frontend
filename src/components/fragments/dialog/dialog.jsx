@@ -162,7 +162,7 @@ const Invoice = forwardRef(({ data }, ref) => {
           <div className=''>
             <span className='text-gray-400'>Due Date: </span>
             <span className='text-gray-400 font-bold'>
-              {format(new Date(new Date().getFullYear() + 1, new Date().getMonth(), new Date().getDate()), 'dd.MM.yyyy')}
+              {format(new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 7), 'dd.MM.yyyy')}
             </span>
           </div>
         </div>

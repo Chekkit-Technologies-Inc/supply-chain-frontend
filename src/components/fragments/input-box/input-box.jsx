@@ -4,25 +4,8 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 // import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 // import { ImOffice } from 'react-icons/im';
 import { FiSearch } from 'react-icons/fi';
-import Autocomplete from 'react-google-autocomplete';
 
-const InputBox = ({
-  className,
-  type,
-  placeholder,
-  label,
-  labelColor,
-  variant,
-  name,
-  value,
-  defaultValue,
-  onValueChange,
-  onPlaceSelected,
-  onFocusChange,
-  required,
-  readOnly,
-  placeType,
-}) => {
+const InputBox = ({ className, type, placeholder, label, labelColor, variant, name, value, defaultValue, onValueChange, required, readOnly }) => {
   const [typex, setTypex] = useState();
   useEffect(() => {
     setTypex(type);
@@ -282,49 +265,6 @@ const InputBox = ({
               onKeyDown={
                 type === 'number' ? evt => (evt.key === 'e' || evt.key === 'E' || evt.key === '+' || evt.key === '-') && evt.preventDefault() : () => {}
               }
-            />
-            {typex === 'password' && (
-              <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />
-            )}
-            {typex === 'textx' && <AiFillEye onClick={() => setTypex('password')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />}
-          </div>
-        </div>
-      )}
-      {variant === 'places' && (
-        <div className={`${className} space-y-2 w-full`}>
-          {label && (
-            <label className={`font-semibold ${labelColor}`} htmlFor={label}>
-              {label}
-            </label>
-          )}
-          <div
-            className={` p-5 rounded-t-lg border-b-2 border-brand_blue_light bg-white bg-opacity-10 text-gray-300 flex items-center space-x-4 overflow-hidden`}
-          >
-            {/* {placeholder === 'Company Name' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {placeholder === 'Company Address' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {placeholder === 'Company Country' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {placeholder === 'Company Type' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {placeholder === 'Attendee Name' && <FaUser className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {placeholder === 'Attendee Role' && <ImOffice className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {type === 'email' && <MdEmail className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {type === 'tel' && <FaPhoneAlt className={`opacity-50 flex-shrink-0 text-lg`} />}
-            {type === 'password' && <MdLock className={`opacity-50 flex-shrink-0 text-lg`} />} */}
-            <Autocomplete
-              id={label ? label : placeholder}
-              className={` bg-transparent focus:outline-none  w-full`}
-              spellCheck={false}
-              type={typex}
-              name={name}
-              value={value ? value : ''}
-              onChange={onValueChange}
-              onPlaceSelected={onPlaceSelected}
-              onBlur={onFocusChange}
-              placeholder={placeholder}
-              required={required}
-              apiKey={process.env.REACT_APP_MAP_API_KEY}
-              options={{
-                types: [placeType],
-              }}
             />
             {typex === 'password' && (
               <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />

@@ -77,7 +77,7 @@ export const fetchUser = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -165,7 +165,7 @@ export const sendInvite = data => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -204,7 +204,7 @@ export const getCompanyUsers = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -227,7 +227,7 @@ export const getUsersRoles = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -250,7 +250,7 @@ export const assignUserRole = (id, roleId) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -272,7 +272,7 @@ export const getCompanyPermissions = () => async dispatch => {
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -296,7 +296,7 @@ export const getCompanyUserPermissions = userId => async dispatch => {
 
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     // dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -320,7 +320,7 @@ export const assignTempPermission = (id, data) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
@@ -343,7 +343,7 @@ export const removeTempPermission = (id, data) => async dispatch => {
     dispatch(getCompanyUsers());
     return Promise.resolve(res.data);
   } catch (err) {
-    if (err.response.status === 401) {
+    if (err.response && err.response.status === 401) {
       dispatch(signOut());
     }
     dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));

@@ -90,7 +90,6 @@ const OverviewBase = () => {
                 return (
                   <a
                     key={idx}
-                    target={`_blank`}
                     href={`${link.url}/${user?.token}`}
                     className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
                   >
@@ -115,7 +114,7 @@ const OverviewBase = () => {
                       <link.icon className='w-full h-full' />
                     </div>
                     <div>{link.name}</div>
-                    <div className='font-normal text-sm'>{link.desc}</div>
+                    <div className='font-normal text-sm'>{link.desc}</div>,
                   </span>
                 );
               })}

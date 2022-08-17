@@ -113,7 +113,7 @@ const Plans = () => {
       <div className='font-semibold text-2xl text-brand_blue text-center px-4 mt-4'>Kindly select a subscription Plan</div>
       <FadeIn className={`flex-1 flex flex-col justify-between items-center space-y-8 py-12 px-4 md:px-12`}>
         <div>{planList && planList.length > 0 && planList[0].id && <PlanList items={planList} onComplete={plan => setPlan(plan)} />}</div>
-        <div className='flex flex-col items-center space-y-2 text-blue-200'>
+        <div className='flex flex-col items-center space-y-2 text-blue-200 relative top-10'>
           <div onClick={signout} className='border border-blue-100 rounded-full w-10 h-10 cursor-pointer shadow hover:shadow-sm'>
             <SignoutIcon className='w-full h-full' />
           </div>

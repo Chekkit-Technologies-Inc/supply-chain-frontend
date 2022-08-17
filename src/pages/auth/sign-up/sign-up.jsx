@@ -28,6 +28,33 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [userDetail, setUserDetail] = useState(detail);
 
+  const handleAddressChange = place => {
+    const address = place.formatted_address;
+    const placeName = place.name;
+    const latitude = place.geometry.location.lat();
+    const longitude = place.geometry.location.lng();
+    setUserDetail({ ...userDetail, address, latitude, longitude, placeName });
+  };
+
+  const onFocusChange = () => {
+    setTimeout(() => {
+      if (!userDetail.latitude && !userDetail.longitude) {
+        setUserDetail({ ...userDetail, address: '', state: '', country: '', latitude: '', longitude: '', placeName: '' });
+        return;
+      }
+    }, 0);
+  };
+
+  useEffect(() => {
+    if (userDetail.address && userDetail.latitude && userDetail.longitude) {
+      let arr = userDetail?.address?.split(',');
+      let address = arr.slice(0, arr.length - 1).join('');
+      let country = arr[arr.length - 1].replace(' ', '');
+      let state = userDetail.placeName;
+      setUserDetail({ ...userDetail, address, state, country });
+    } // eslint-disable-next-line
+  }, [userDetail.latitude, userDetail.longitude]);
+
   useEffect(() => {
     if (user) {
       setUserDetail(user);
@@ -99,8 +126,28 @@ const SignUp = () => {
         </div>
 
         <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8'>
-          <InputBox type={`text`} placeholder={`Company Address`} name={`address`} onValueChange={handleInputChange} required={true} />
-          <InputBox type={`text`} placeholder={`Company Country`} name={`country`} onValueChange={handleInputChange} required={true} />
+          <InputBox
+            label={`Address`}
+            labelColor={`text-gray-200`}
+            placeholder={`Type Here`}
+            variant={'places'}
+            name={`address`}
+            placeType={`address`}
+            value={userDetail?.address}
+            onValueChange={handleInputChange}
+            onPlaceSelected={handleAddressChange}
+            onFocusChange={onFocusChange}
+            required={true}
+          />
+          <InputBox
+            label={`Country`}
+            name={`country`}
+            defaultValue={userDetail?.country}
+            labelColor={`text-gray-200`}
+            placeholder={`Type Here`}
+            readOnly={true}
+            required={true}
+          />
         </div>
 
         <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8'>

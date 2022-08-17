@@ -4,12 +4,48 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 // import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 // import { ImOffice } from 'react-icons/im';
 import { FiSearch } from 'react-icons/fi';
+import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
 
-const InputBox = ({ className, type, placeholder, label, labelColor, variant, name, value, defaultValue, onValueChange, required, readOnly }) => {
+const libraries = ['places'];
+
+const InputBox = ({
+  className,
+  type,
+  placeholder,
+  label,
+  labelColor,
+  variant,
+  name,
+  value,
+  defaultValue,
+  onValueChange,
+  required,
+  readOnly,
+  onPlaceSelected,
+  onFocusChange,
+}) => {
+  const [autocomplete, setAutocomplete] = useState(null);
   const [typex, setTypex] = useState();
   useEffect(() => {
     setTypex(type);
   }, [type]);
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    libraries: libraries,
+    googleMapsApiKey: process.env.REACT_APP_MAP_API_KEY,
+  });
+
+  const onAutocompleteLoad = autocomplete => {
+    setAutocomplete(autocomplete);
+  };
+
+  const onPlaceChanged = () => {
+    if (autocomplete !== null) {
+      if (onPlaceSelected) onPlaceSelected(autocomplete.getPlace());
+    }
+  };
+
   return (
     <>
       {!variant && (
@@ -270,6 +306,36 @@ const InputBox = ({ className, type, placeholder, label, labelColor, variant, na
               <AiFillEyeInvisible onClick={() => setTypex('textx')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />
             )}
             {typex === 'textx' && <AiFillEye onClick={() => setTypex('password')} className={`cursor-pointer opacity-90 select-none flex-shrink-0 text-lg`} />}
+          </div>
+        </div>
+      )}
+      {variant === 'places' && (
+        <div className={`${className} space-y-2 w-full`}>
+          {label && (
+            <label className={`font-semibold ${labelColor}`} htmlFor={label}>
+              {label}
+            </label>
+          )}
+          <div
+            className={` p-5 rounded-t-lg border-b-2 border-brand_blue_light bg-white bg-opacity-10 text-gray-300 flex items-center space-x-4 overflow-hidden`}
+          >
+            {isLoaded && (
+              <Autocomplete className='w-full' onLoad={onAutocompleteLoad} onPlaceChanged={onPlaceChanged}>
+                <input
+                  placeholder={placeholder}
+                  id={label ? label : placeholder}
+                  className={` bg-transparent focus:outline-none  w-full`}
+                  spellCheck={false}
+                  type={typex}
+                  autoComplete='new-password'
+                  name={name}
+                  value={value ? value : ''}
+                  onChange={onValueChange}
+                  onBlur={onFocusChange}
+                  required={required}
+                />
+              </Autocomplete>
+            )}
           </div>
         </div>
       )}

@@ -16,7 +16,7 @@ const detail = {
   lastName: '',
   email: '',
   companyName: '',
-  address: '',
+  address: 'Hello',
   country: '',
   companyRole: '',
   companyIdentifier: 'manufacturer',
@@ -91,7 +91,11 @@ const SignUp = () => {
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setUserDetail({ ...userDetail, [name]: value });
+    if (name === 'country') {
+      setUserDetail({ ...userDetail, [name]: value, latitude: '', longitude: '' });
+    } else {
+      setUserDetail({ ...userDetail, [name]: value });
+    }
   };
 
   const handleSelectChange = event => {
@@ -127,9 +131,8 @@ const SignUp = () => {
 
         <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8'>
           <InputBox
-            label={`Address`}
             labelColor={`text-gray-200`}
-            placeholder={`Type Here`}
+            placeholder={`Address`}
             variant={'places'}
             name={`address`}
             placeType={`address`}
@@ -139,15 +142,7 @@ const SignUp = () => {
             onFocusChange={onFocusChange}
             required={true}
           />
-          <InputBox
-            label={`Country`}
-            name={`country`}
-            defaultValue={userDetail?.country}
-            labelColor={`text-gray-200`}
-            placeholder={`Type Here`}
-            readOnly={true}
-            required={true}
-          />
+          <InputBox name={`country`} defaultValue={userDetail?.country} labelColor={`text-gray-200`} placeholder={`Country`} readOnly={true} required={true} />
         </div>
 
         <div className='flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8'>

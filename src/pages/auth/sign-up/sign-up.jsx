@@ -16,7 +16,7 @@ const detail = {
   lastName: '',
   email: '',
   companyName: '',
-  address: 'Hello',
+  address: '',
   country: '',
   companyRole: '',
   companyIdentifier: 'manufacturer',

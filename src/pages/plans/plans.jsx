@@ -125,7 +125,7 @@ const Plans = () => {
         <div className='flex flex-col items-center space-y-2 text-blue-200 relative top-10 space-y-12'>
           <div
             onClick={() => history.push('/home')}
-            className='text-brand_blue  border border-brand_blue  px-4 py-2 rounded-md cursor-pointer hover:bg-brand_blue hover:text-gray-50'
+            className='flex justify-center items-center text-center text-brand_blue  px-4 py-2 rounded-md hover:underline cursor-pointer'
           >
             Skip &rarr;
           </div>

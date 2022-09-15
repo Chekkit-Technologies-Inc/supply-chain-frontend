@@ -1,13 +1,13 @@
 import React from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import ImageFadeIn from 'react-image-fade-in';
 import { useHistory } from 'react-router-dom';
 
 import Overview from '../../../../assets/overview.png';
 
 const OverviewBase = () => {
-  const user = useSelector(state => state.user);
+  // const user = useSelector(state => state.user);
   const history = useHistory();
 
   return (
@@ -27,9 +27,7 @@ const OverviewBase = () => {
         space-y-12 mx-auto text-center`}
       >
         <div className='text-brand_blue text-2xl font-medium'>
-          <span>Hello </span>
-          <span>{`${user.name.split(' ')[0]}`}, </span>
-          <span>welcome to your account overview</span>
+          <span>Overview</span>
         </div>
         <div className='w-80'>
           <ImageFadeIn src={Overview} className='w-full' />

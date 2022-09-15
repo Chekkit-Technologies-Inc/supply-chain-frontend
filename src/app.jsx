@@ -145,7 +145,9 @@ function App() {
           <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
             <VerifyAcount />
           </Route>
-          <Route path={['/home', '/overview', '/asset-management', '/connect-plus', '/retail-pos', '/reports', '/settings']}>
+          <Route path={['/home', '/overview', '/settings']}>{user?.isAuthorized ? <Base /> : <Redirect to={'/auth/signin'} />}</Route>
+
+          <Route path={['/asset-management', '/connect-plus', '/retail-pos', '/reports']}>
             {user?.isAuthorized ? <>{user?.company?.subscription?.status ? <Base /> : <Redirect to={'/plans'} />}</> : <Redirect to={'/auth/signin'} />}
           </Route>
           <Route

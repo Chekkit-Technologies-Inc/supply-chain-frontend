@@ -22,7 +22,7 @@ const SignIn = () => {
   useEffect(() => {
     if (user?.name && user?.isAuthorized) {
       localStorage.setItem('chekkit-act', user.token);
-      history.push('/home');
+      history.push('/plans');
     } else {
       localStorage.removeItem('chekkit-act');
     }

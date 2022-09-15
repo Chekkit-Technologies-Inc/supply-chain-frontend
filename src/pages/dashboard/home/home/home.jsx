@@ -94,7 +94,7 @@ const OverviewBase = () => {
                       if (!user?.company?.subscription?.status) {
                         return;
                       } else {
-                        window.open(`${link.url}/${user?.token}`);
+                        window.open(`${link.url}/${user?.token}`, '_self');
                       }
                     }}
                     className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}

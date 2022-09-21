@@ -23,6 +23,15 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Chekkit - Supply Chain</title>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: 'ad2bd9c3-3c10-4247-bd33-dacda264e915',
+        });
+      });
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

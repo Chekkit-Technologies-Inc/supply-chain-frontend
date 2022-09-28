@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import { CgSpinner } from 'react-icons/cg';
+import runOneSignal from './runOneSignal';
 
 import IndexPage from './pages';
 import PickModules from './pages/pick-modules';
@@ -23,6 +24,16 @@ function App() {
   const history = useHistory();
   const response = useSelector(state => state.response);
   const [userLoading, setUserLoading] = useState(true);
+
+  useEffect(() => {
+    if (user?.id) {
+      console.log('updates here');
+      if (!window.OneSignal) {
+        runOneSignal(user?.company?.id);
+      }
+    }
+    // eslint-disable-next-line
+  }, [user?.id]);
 
   useEffect(() => {
     let token = localStorage.getItem('chekkit-act');

@@ -5,6 +5,7 @@ import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import { CgSpinner } from 'react-icons/cg';
 import runOneSignal from './runOneSignal';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
 import IndexPage from './pages';
 import PickModules from './pages/pick-modules';
@@ -24,6 +25,18 @@ function App() {
   const history = useHistory();
   const response = useSelector(state => state.response);
   const [userLoading, setUserLoading] = useState(true);
+
+  useEffect(() => {
+    const appInsights = new ApplicationInsights({
+      config: {
+        connectionString: process.env.REACT_APP_CONNECT_STRING,
+        /* ...Other Configuration Options... */
+      },
+    });
+    console.log('appInsights', appInsights);
+    appInsights.loadAppInsights();
+    appInsights.trackPageView();
+  }, []);
 
   useEffect(() => {
     if (user?.id) {

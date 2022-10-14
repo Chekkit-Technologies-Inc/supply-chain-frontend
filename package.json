@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.2.0",
     "@headlessui/react": "^1.4.1",
+    "@microsoft/applicationinsights-web": "^2.8.8",
     "@react-google-maps/api": "^2.7.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -36,6 +37,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "predeploy": "aws cloudfront create-invalidation --distribution-id E25GHHVMWZG6YM --paths '/*'",
     "deploy": "aws s3 sync --delete build/ s3://chekkit-supply-chain",
     "invalidate": "aws cloudfront create-invalidation --distribution-id E25GHHVMWZG6YM --paths '/*'",
     "test": "craco test",

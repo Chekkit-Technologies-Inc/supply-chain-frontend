@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.2.0",
     "@headlessui/react": "^1.4.1",
+    "@microsoft/applicationinsights-react-js": "^3.4.0",
     "@microsoft/applicationinsights-web": "^2.8.8",
     "@react-google-maps/api": "^2.7.0",
     "@testing-library/jest-dom": "^5.11.4",

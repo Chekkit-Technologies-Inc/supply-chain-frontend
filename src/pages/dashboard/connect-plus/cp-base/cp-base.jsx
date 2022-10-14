@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import ImageFadeIn from 'react-image-fade-in';
 import { useHistory } from 'react-router-dom';
 
 import Connect from '../../../../assets/connect-plus.png';
 
-import Button from '../../../../components/fragments/button';
+// import Button from '../../../../components/fragments/button';
 import Dialog from '../../../../components/fragments/dialog';
 
 const CPBase = () => {
   const [open, setOpen] = useState(false);
-  const user = useSelector(state => state.user);
+  // const user = useSelector(state => state.user);
   const history = useHistory();
 
   return (
@@ -30,19 +30,13 @@ const CPBase = () => {
         className={`flex flex-col justify-start items-center
        space-y-12 mx-auto text-center`}
       >
-        <div className='text-brand_blue text-2xl font-medium'>
-          <span>Hello </span>
-          <span>{`${user.name.split(' ')[0]}`}, </span>
-          <span>welcome to Connect Plus</span>
+        <div>
+          <div className='text-brand_blue text-2xl font-medium'>Connect Plus</div>
+          <div className='text-gray-500 text-sm '>Available soon</div>
         </div>
         <div className='w-80'>
           <ImageFadeIn src={Connect} className='w-full' />
         </div>
-        {/* <div className='text-brand_blue_light max-w-3xl'>
-          This page is blank because you do not have any activity on this tool yet. Summary of your activities on asset management, insights on surveys and
-          connections show up here.
-        </div> */}
-        <Button onClick={() => setOpen(true)} text={`Request Product`} />
       </FadeIn>
       <Dialog open={open} setOpen={setOpen} title={`Notification sent`} type={`product-request`} />
     </div>

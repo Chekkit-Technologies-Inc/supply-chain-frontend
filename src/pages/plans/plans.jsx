@@ -65,6 +65,14 @@ const Plans = () => {
   const [open, setOpen] = useState(false);
   const [planList, setPlanList] = useState(planData);
   const plans = useSelector(state => state.plans);
+  const user = useSelector(state => state.user);
+
+  useEffect(() => {
+    if (user?.company?.subscription?.status) {
+      history.push('/home');
+    }
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (plans && plans.length > 0 && planList && planList.length > 0 && !planList[0]?.id) {
@@ -113,11 +121,20 @@ const Plans = () => {
       <div className='font-semibold text-2xl text-brand_blue text-center px-4 mt-4'>Kindly select a subscription Plan</div>
       <FadeIn className={`flex-1 flex flex-col justify-between items-center space-y-8 py-12 px-4 md:px-12`}>
         <div>{planList && planList.length > 0 && planList[0].id && <PlanList items={planList} onComplete={plan => setPlan(plan)} />}</div>
-        <div className='flex flex-col items-center space-y-2 text-blue-200 relative top-10'>
-          <div onClick={signout} className='border border-blue-100 rounded-full w-10 h-10 cursor-pointer shadow hover:shadow-sm'>
-            <SignoutIcon className='w-full h-full' />
+
+        <div className='flex flex-col items-center space-y-2 text-blue-200 relative top-10 space-y-12'>
+          <div
+            onClick={() => history.push('/home')}
+            className='flex justify-center items-center text-center text-brand_blue  px-4 py-2 rounded-md hover:underline cursor-pointer'
+          >
+            Skip &rarr;
           </div>
-          <div className='animate-pulse text-sm'>exit</div>
+          <div className='flex flex-col space-y-2 justify-center'>
+            <div onClick={signout} className='border border-blue-100 rounded-full w-10 h-10 cursor-pointer shadow hover:shadow-sm'>
+              <SignoutIcon className='w-full h-full' />
+            </div>
+            <div className='animate-pulse text-sm text-center'>exit</div>
+          </div>
         </div>
       </FadeIn>
       {plan && <Dialog open={open} setOpen={toggleDialog} type={`invoice`} data={plan} />}

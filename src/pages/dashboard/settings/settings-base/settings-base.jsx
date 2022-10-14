@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const links = [
-  { id: 1, name: 'Contact Chekkit', url: 'tel:+2348138491667' },
+  { id: 1, name: 'Contact Chekkit', url: '/settings/contact-chekkit' },
   { id: 2, name: 'Help Center', url: '/settings/help' },
   { id: 3, name: 'User Management Center', url: '/settings/user-management' },
 ];
@@ -37,24 +37,33 @@ const SettingsBase = () => {
         {links.reduce(isAdmin, []).map((link, idx) => {
           return (
             <>
-              {link.name !== 'Contact Chekkit' ? (
+              {link.name === 'User Management Center' ? (
                 <Link
-                  key={link.id}
+                  key={idx}
+                  to={user?.company?.subscription?.status ? link.url : '#'}
+                  style={{ width: '500px' }}
+                  className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
+                >
+                  <span className={`${!user?.company?.subscription?.status ? ' opacity-50' : ''}`}>{link.name}</span>
+
+                  <div
+                    onClick={() => history.push('/plans')}
+                    className={`w-40 h-12 bg-brand_blue text-gray-50 px-4 py-2 shadow rounded-md cursor-pointer hover:shadow-lg ${
+                      user?.company?.subscription?.status ? 'hidden' : ''
+                    }`}
+                  >
+                    Select Plan
+                  </div>
+                </Link>
+              ) : (
+                <Link
+                  key={idx}
                   to={link.url}
                   style={{ width: '500px' }}
                   className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
                 >
                   {link.name}
                 </Link>
-              ) : (
-                <a
-                  key={link.id}
-                  href={link.url}
-                  style={{ width: '500px' }}
-                  className={`w-full max-w-md h-64 rounded-3xl bg-white bg shadow flex flex-col items-center justify-center cursor-pointer font-semibold hover:shadow-lg p-6 text-center border-2 border-brand_blue text-brand_blue text-lg space-y-4`}
-                >
-                  {link.name}
-                </a>
               )}
             </>
           );

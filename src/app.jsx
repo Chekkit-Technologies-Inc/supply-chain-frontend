@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import { CgSpinner } from 'react-icons/cg';
+import runOneSignal from './runOneSignal';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
 import IndexPage from './pages';
 import PickModules from './pages/pick-modules';
@@ -23,6 +25,28 @@ function App() {
   const history = useHistory();
   const response = useSelector(state => state.response);
   const [userLoading, setUserLoading] = useState(true);
+
+  useEffect(() => {
+    const appInsights = new ApplicationInsights({
+      config: {
+        connectionString: process.env.REACT_APP_CONNECT_STRING,
+        /* ...Other Configuration Options... */
+      },
+    });
+    console.log('appInsights', appInsights);
+    appInsights.loadAppInsights();
+    appInsights.trackPageView();
+  }, []);
+
+  useEffect(() => {
+    if (user?.id) {
+      console.log('updates here');
+      if (!window.OneSignal) {
+        runOneSignal(user?.company?.id);
+      }
+    }
+    // eslint-disable-next-line
+  }, [user?.id]);
 
   useEffect(() => {
     let token = localStorage.getItem('chekkit-act');
@@ -145,7 +169,9 @@ function App() {
           <Route exact path={['/verify-account/:token', '/auth/verify-account/:token', '/auth/verify-account', '/verify-account']}>
             <VerifyAcount />
           </Route>
-          <Route path={['/home', '/overview', '/asset-management', '/connect-plus', '/retail-pos', '/reports', '/settings']}>
+          <Route path={['/home', '/overview', '/settings']}>{user?.isAuthorized ? <Base /> : <Redirect to={'/auth/signin'} />}</Route>
+
+          <Route path={['/asset-management', '/connect-plus', '/retail-pos', '/reports']}>
             {user?.isAuthorized ? <>{user?.company?.subscription?.status ? <Base /> : <Redirect to={'/plans'} />}</> : <Redirect to={'/auth/signin'} />}
           </Route>
           <Route

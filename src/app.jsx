@@ -6,6 +6,7 @@ import { store } from 'react-notifications-component';
 import { CgSpinner } from 'react-icons/cg';
 import runOneSignal from './runOneSignal';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
 
 import IndexPage from './pages';
 import PickModules from './pages/pick-modules';
@@ -27,15 +28,26 @@ function App() {
   const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
-    const appInsights = new ApplicationInsights({
+    // const appInsights = new ApplicationInsights({
+    //   config: {
+    //     // connectionString: process.env.REACT_APP_CONNECT_STRING,
+    //     connectionString:
+    //       'InstrumentationKey=01667578-0def-4cdd-a366-d9b748aef3ae;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/',
+    //     /* ...Other Configuration Options... */
+    //   },
+    // });
+    // console.log('appInsights', appInsights);
+    // appInsights.loadAppInsights();
+    // appInsights.trackPageView();
+    let reactPlugin = new ReactPlugin();
+    let appInsights = new ApplicationInsights({
       config: {
-        connectionString: process.env.REACT_APP_CONNECT_STRING,
-        /* ...Other Configuration Options... */
+        instrumentationKey: '96272af3-f429-4f81-9822-ab2d339fd184',
+        enableAutoRouteTracking: true,
+        extensions: [reactPlugin],
       },
     });
-    console.log('appInsights', appInsights);
     appInsights.loadAppInsights();
-    appInsights.trackPageView();
   }, []);
 
   useEffect(() => {

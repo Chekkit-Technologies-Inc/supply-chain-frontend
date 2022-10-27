@@ -33,7 +33,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           REACT_APP_MAP_API_KEY: AIzaSyBIhKt7YhWM0qAcLZrIAJGmrqnJLs8dT8E
-          REACT_APP_SUPPLY_CHAIN_URL: https://happy-pond-0ca78e203.2.azurestaticapps.net/#/
+          REACT_APP_SUPPLY_CHAIN_URL: https://happy-pond-0ca78e203.2.azurestaticapps.net
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

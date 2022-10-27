@@ -18,6 +18,7 @@ import NotFound from './pages/404-page';
 
 import { UserActions, PlanActions } from './states/actions';
 import { notify } from './states/actions/response';
+import { REACT_APP_CONNECT_STRING } from './config';
 
 function App() {
   const user = useSelector(state => state.user);
@@ -42,9 +43,8 @@ function App() {
     let reactPlugin = new ReactPlugin();
     let appInsights = new ApplicationInsights({
       config: {
-        instrumentationKey: '96272af3-f429-4f81-9822-ab2d339fd184',
-        enableAutoRouteTracking: true,
-        extensions: [reactPlugin],
+        connectionString: REACT_APP_CONNECT_STRING,
+        /* ...Other Configuration Options... */
       },
     });
     appInsights.loadAppInsights();

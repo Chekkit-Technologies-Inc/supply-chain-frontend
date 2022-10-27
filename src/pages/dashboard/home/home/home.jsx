@@ -9,6 +9,7 @@ import { ReactComponent as ItemAssets } from '../../../../assets/item-assets.svg
 import { ReactComponent as ItemInventory } from '../../../../assets/item-inventory.svg';
 import { ReactComponent as ItemConnect } from '../../../../assets/item-connect.svg';
 import { ReactComponent as ItemRetail } from '../../../../assets/item-retail.svg';
+import { REACT_APP_ASSET_MANAGEMNET_URL } from '../../../../config';
 
 const links = [
   {
@@ -25,7 +26,7 @@ const links = [
     desc: 'Track and manage all asset in one place',
     video: '#',
     selected: false,
-    url: process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/as',
+    url: REACT_APP_ASSET_MANAGEMNET_URL + '/as',
   },
   {
     name: 'Inventory Management',
@@ -33,7 +34,7 @@ const links = [
     desc: 'Manage all assets in your warehouse',
     video: '#',
     selected: false,
-    url: process.env.REACT_APP_ASSET_MANAGEMNET_URL + '/inv',
+    url: REACT_APP_ASSET_MANAGEMNET_URL + '/inv',
   },
   {
     name: 'Connect Plus',

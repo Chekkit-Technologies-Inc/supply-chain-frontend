@@ -29,17 +29,6 @@ function App() {
   const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
-    // const appInsights = new ApplicationInsights({
-    //   config: {
-    //     // connectionString: process.env.REACT_APP_CONNECT_STRING,
-    //     connectionString:
-    //       'InstrumentationKey=01667578-0def-4cdd-a366-d9b748aef3ae;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/',
-    //     /* ...Other Configuration Options... */
-    //   },
-    // });
-    // console.log('appInsights', appInsights);
-    // appInsights.loadAppInsights();
-    // appInsights.trackPageView();
     let reactPlugin = new ReactPlugin();
     let appInsights = new ApplicationInsights({
       config: {
@@ -54,7 +43,6 @@ function App() {
 
   useEffect(() => {
     if (user?.id) {
-      console.log('updates here');
       if (!window.OneSignal) {
         runOneSignal(user?.company?.id);
       }

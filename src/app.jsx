@@ -44,6 +44,8 @@ function App() {
     let appInsights = new ApplicationInsights({
       config: {
         connectionString: REACT_APP_CONNECT_STRING,
+        enableAutoRouteTracking: true,
+        extensions: [reactPlugin],
         /* ...Other Configuration Options... */
       },
     });

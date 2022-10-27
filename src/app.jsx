@@ -17,6 +17,7 @@ import NotFound from './pages/404-page';
 
 import { UserActions, PlanActions } from './states/actions';
 import { notify } from './states/actions/response';
+import { REACT_APP_CONNECT_STRING } from './config';
 
 function App() {
   const user = useSelector(state => state.user);
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
     const appInsights = new ApplicationInsights({
       config: {
-        connectionString: process.env.REACT_APP_CONNECT_STRING,
+        connectionString: REACT_APP_CONNECT_STRING,
         /* ...Other Configuration Options... */
       },
     });

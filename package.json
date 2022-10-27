@@ -37,7 +37,6 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "predeploy": "aws cloudfront create-invalidation --distribution-id E25GHHVMWZG6YM --paths '/*'",
     "deploy": "aws s3 sync --delete build/ s3://chekkit-supply-chain",
     "invalidate": "aws cloudfront create-invalidation --distribution-id E25GHHVMWZG6YM --paths '/*'",
     "test": "craco test",

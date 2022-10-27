@@ -29,6 +29,7 @@ function App() {
   const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
+    console.log('new updates here');
     let reactPlugin = new ReactPlugin();
     let appInsights = new ApplicationInsights({
       config: {

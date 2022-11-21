@@ -5,6 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 // import { ImOffice } from 'react-icons/im';
 import { FiSearch } from 'react-icons/fi';
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
+import { REACT_APP_MAP_API_KEY } from '../../../config';
 
 const libraries = ['places'];
 
@@ -33,7 +34,7 @@ const InputBox = ({
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     libraries: libraries,
-    googleMapsApiKey: process.env.REACT_APP_MAP_API_KEY,
+    googleMapsApiKey: REACT_APP_MAP_API_KEY,
   });
 
   const onAutocompleteLoad = autocomplete => {

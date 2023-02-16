@@ -16,7 +16,7 @@ import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
 import NotFound from './pages/404-page';
 
-import { UserActions, PlanActions } from './states/actions';
+import { UserActions, PlanActions, ProductActions } from './states/actions';
 import { notify } from './states/actions/response';
 import { REACT_APP_CONNECT_STRING } from './config';
 
@@ -29,7 +29,6 @@ function App() {
   const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
-    console.log('chektrack updates here');
     let reactPlugin = new ReactPlugin();
     let appInsights = new ApplicationInsights({
       config: {
@@ -52,6 +51,7 @@ function App() {
   }, [user?.id]);
 
   useEffect(() => {
+    dispatch(ProductActions.fetchProducts());
     let token = localStorage.getItem('chekkit-act');
     if (token) {
       dispatch(UserActions.updateUser({ token }));

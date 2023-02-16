@@ -27,6 +27,7 @@ const SignUp = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [userDetail, setUserDetail] = useState(detail);
+  const { selectedModules } = useSelector(state => state.products);
 
   const handleAddressChange = place => {
     const address = place.formatted_address;
@@ -82,7 +83,7 @@ const SignUp = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(UserActions.signUp(userDetail))
+    dispatch(UserActions.signUp({ ...userDetail, moduleIds: selectedModules }))
       .then(() => {
         history.push('/auth/verify-account');
       })

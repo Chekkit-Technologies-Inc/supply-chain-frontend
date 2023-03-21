@@ -60,6 +60,10 @@ export const removeTempPermission = async (id, data) => {
   return http().put(`/users/${id}/remove-permissions`, data);
 };
 
+export const sendMessage = async data => {
+  return http().post(`/contact`, data);
+};
+
 const UserService = {
   signUp,
   signIn,
@@ -76,6 +80,7 @@ const UserService = {
   getCompanyUserPermissions,
   assignTempPermission,
   removeTempPermission,
+  sendMessage,
 };
 
 export default UserService;

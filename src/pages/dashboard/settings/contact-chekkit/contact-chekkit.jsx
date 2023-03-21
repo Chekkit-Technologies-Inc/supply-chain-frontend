@@ -6,12 +6,13 @@ import { useDispatch } from 'react-redux';
 import Button from '../../../../components/fragments/button';
 import InputBox from '../../../../components/fragments/input-box';
 
+import UserActions from '../../../../states/actions/user';
+
 const initialData = {
-  full_name: '',
+  name: '',
   email: '',
-  phone_number: '',
+  phoneNumber: '',
   message: '',
-  title: '',
 };
 
 const HelpBase = () => {
@@ -24,22 +25,16 @@ const HelpBase = () => {
     setData({ ...data, [name]: value });
   };
 
-  // const handlePhoneChange = phone_number => {
-  //   if (phone_number) {
-  //     setData({ ...data, phone_number: phone_number });
-  //   }
-  // };
-
   const sendMessage = e => {
     e.preventDefault();
     console.log(dispatch);
-    // dispatch(MarketingActions.sendRequest(data))
-    //   .then(res => {
-    //     if (res?.ok) {
-    //       setData(initialData);
-    //     }
-    //   })
-    //   .catch(console.log);
+    dispatch(UserActions.sendMessage(data))
+      .then(res => {
+        if (res) {
+          setData(initialData);
+        }
+      })
+      .catch(console.log);
   };
 
   return (
@@ -63,10 +58,10 @@ const HelpBase = () => {
         <form onSubmit={sendMessage} className='space-y-6'>
           <InputBox
             id='landing'
-            name={'full_name'}
+            name={'name'}
             placeholder={'Full Name'}
             required={true}
-            value={data.full_name}
+            value={data.name}
             onValueChange={handleInput}
             variant={2}
             landing={true}
@@ -84,9 +79,9 @@ const HelpBase = () => {
           />
           <InputBox
             id='landing'
-            name={'phone_number'}
+            name={'phoneNumber'}
             placeholder={'Phone Number'}
-            value={data.phone_number}
+            value={data.phoneNumber}
             onValueChange={handleInput}
             variant={2}
             landing={true}
@@ -99,12 +94,18 @@ const HelpBase = () => {
             onChange={handleInput}
             name='message'
             placeholder='Message'
+            maxLength={'950'}
             id='message'
             cols='30'
             rows='6'
             required
           ></textarea>
-          <Button className={!data.full_name ? 'pointer-events-none opacity-80' : ''} text={'Send message'} type='submit' variant={'landing'} />
+          <Button
+            className={!data.name || !data.email || !data.message ? 'pointer-events-none opacity-80' : ''}
+            text={'Send message'}
+            type='submit'
+            variant={'landing'}
+          />
         </form>
       </FadeIn>
     </FadeIn>

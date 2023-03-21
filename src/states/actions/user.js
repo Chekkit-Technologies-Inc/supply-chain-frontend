@@ -351,6 +351,21 @@ export const removeTempPermission = (id, data) => async dispatch => {
   }
 };
 
+export const sendMessage = data => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.sendMessage(data);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch(notify({ loading: false }));
+    return Promise.resolve(res);
+  } catch (err) {
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
 const UserActions = {
   signUp,
   signIn,
@@ -369,6 +384,8 @@ const UserActions = {
   getCompanyUserPermissions,
   assignTempPermission,
   removeTempPermission,
+
+  sendMessage,
 };
 
 export default UserActions;

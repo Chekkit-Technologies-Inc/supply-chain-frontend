@@ -112,7 +112,7 @@ const IndexPage = () => {
           </div>
         </div>
       </FadeIn>
-      <div className='text-gray-500 text-sm text-center mb-12'>&copy; {new Date().getUTCFullYear()} Chekkit Supply Chain</div>
+      <div className='text-gray-500 text-sm text-center mb-12'>&copy; {new Date().getUTCFullYear()} Chekkit ChekTrack</div>
     </div>
   );
 };

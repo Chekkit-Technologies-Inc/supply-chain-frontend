@@ -1,7 +1,7 @@
 import http from '../http';
 
 export const retrieveProducts = async () => {
-  return http().get(`/products`);
+  return http().get(`/appmodule`);
 };
 
 const ProductService = {

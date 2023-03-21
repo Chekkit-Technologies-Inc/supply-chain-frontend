@@ -1,6 +1,7 @@
 // products
 export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const SET_SELECTED_MODULES = 'SET_SELECTED_MODULES';
 
 // user
 export const SIGNUP = 'SIGNUP';

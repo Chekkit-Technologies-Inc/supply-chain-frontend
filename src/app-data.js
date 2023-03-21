@@ -3,7 +3,7 @@ import { ReactComponent as inventory } from './assets/inventory.svg';
 
 export const appData = {
   name: 'Chekkit',
-  description: 'Supply Chain',
+  description: 'ChekTrack',
 };
 
 export const setupData = {

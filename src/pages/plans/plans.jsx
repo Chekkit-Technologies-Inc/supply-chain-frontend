@@ -16,7 +16,7 @@ const planData = [
     description: '20 tags & 1 gateway reader',
     price: 'N1.5m',
     features: [
-      { title: 'Enjoy all Supply Chain products', included: true },
+      { title: 'Enjoy all ChekTrack products', included: true },
       { title: 'Payments Can Be Made Quaterly', included: true },
       { title: 'Generate Reports', included: false },
       { title: 'Attachment of tags and readers', included: false },
@@ -31,7 +31,7 @@ const planData = [
     description: '100 tags & 1 gateway reader',
     price: 'N5m',
     features: [
-      { title: 'Enjoy all Supply Chain products', included: true },
+      { title: 'Enjoy all ChekTrack products', included: true },
       { title: 'Payments Can Be Made Quaterly', included: true },
       { title: 'Generate Reports', included: true },
       { title: 'Attachment of tags and readers', included: false },
@@ -46,7 +46,7 @@ const planData = [
     description: '300 tags & 4 gateway reader',
     price: 'N15m',
     features: [
-      { title: 'Enjoy all Supply Chain products', included: true },
+      { title: 'Enjoy all ChekTrack products', included: true },
       { title: 'Payments Can Be Made Quaterly', included: true },
       { title: 'Generate Reports', included: true },
       { title: 'Attachment of tags and readers', included: true },

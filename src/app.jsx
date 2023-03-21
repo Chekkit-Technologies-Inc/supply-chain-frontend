@@ -16,8 +16,9 @@ import VerifyAcount from './pages/auth/verify-acount';
 import Base from './components/layout/base';
 import NotFound from './pages/404-page';
 
-import { UserActions, PlanActions } from './states/actions';
+import { UserActions, PlanActions, ProductActions } from './states/actions';
 import { notify } from './states/actions/response';
+import { REACT_APP_CONNECT_STRING } from './config';
 
 function App() {
   const user = useSelector(state => state.user);
@@ -28,23 +29,13 @@ function App() {
   const [userLoading, setUserLoading] = useState(true);
 
   useEffect(() => {
-    // const appInsights = new ApplicationInsights({
-    //   config: {
-    //     // connectionString: process.env.REACT_APP_CONNECT_STRING,
-    //     connectionString:
-    //       'InstrumentationKey=01667578-0def-4cdd-a366-d9b748aef3ae;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/',
-    //     /* ...Other Configuration Options... */
-    //   },
-    // });
-    // console.log('appInsights', appInsights);
-    // appInsights.loadAppInsights();
-    // appInsights.trackPageView();
     let reactPlugin = new ReactPlugin();
     let appInsights = new ApplicationInsights({
       config: {
-        instrumentationKey: '96272af3-f429-4f81-9822-ab2d339fd184',
+        connectionString: REACT_APP_CONNECT_STRING,
         enableAutoRouteTracking: true,
         extensions: [reactPlugin],
+        /* ...Other Configuration Options... */
       },
     });
     appInsights.loadAppInsights();
@@ -52,7 +43,6 @@ function App() {
 
   useEffect(() => {
     if (user?.id) {
-      console.log('updates here');
       if (!window.OneSignal) {
         runOneSignal(user?.company?.id);
       }
@@ -61,6 +51,7 @@ function App() {
   }, [user?.id]);
 
   useEffect(() => {
+    dispatch(ProductActions.fetchProducts());
     let token = localStorage.getItem('chekkit-act');
     if (token) {
       dispatch(UserActions.updateUser({ token }));

@@ -28,6 +28,10 @@ export const sendInvite = async data => {
   return http().post(`/users/invite`, data);
 };
 
+export const addAgent = async data => {
+  return http().post(`/auth/agent/signup`, data);
+};
+
 export const acceptInvite = async data => {
   return http().post(`/users/accept-invite`, data);
 };
@@ -72,6 +76,7 @@ const UserService = {
   resetPassword,
   updatePassword,
   sendInvite,
+  addAgent,
   acceptInvite,
   getCompanyUsers,
   getUsersRoles,

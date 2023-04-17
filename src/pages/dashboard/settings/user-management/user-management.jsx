@@ -14,10 +14,20 @@ const UserManagement = () => {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const history = useHistory();
 
   const InviteUser = data => {
     dispatch(UserActions.sendInvite(data));
+  };
+
+  const AddAgent = data => {
+    let d = {...data}
+    d.companyRole = 'Agent'
+    d.companyName = user?.company?.name
+    d.address = user?.company?.address
+    d.country = user?.company?.country
+    dispatch(UserActions.addAgent(d));
   };
 
   const changeCompanyRole = (userId, roleId) => {
@@ -50,22 +60,44 @@ const UserManagement = () => {
         </div>
         <div className='text-2xl text-brand_blue mb-12'>User Management</div>
 
-        <div
-          className={`flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between w-full xl:w-auto items-start sm:items-center sm:space-x-6 flex-shrink-0`}
-        >
-          <Heading className={`font-semibold text-brand_blue`} title={`Company Users`} size={3} />
-          <Button className={`h-14`} onClick={() => setOpen(true)} text={`Invite User`} cx={2} />
-        </div>
-        <UserList
-          userList={user.companyUsers}
-          roles={user.roles}
-          permissions={user?.permissions?.permissions ? user?.permissions?.permissions : user?.permissions}
-          changeCompanyRole={changeCompanyRole}
-          assignTempPermissions={assignTempPermissions}
-          removeTempPermissions={removeTempPermissions}
-        />
+        <FadeIn className='space-y-20'>
+          <div>
+            <div
+              className={`flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between w-full xl:w-auto items-start sm:items-center sm:space-x-6 flex-shrink-0`}
+            >
+              <Heading className={`font-semibold text-brand_blue`} title={`Company Users`} size={3} />
+              <Button className={`h-14`} onClick={() => setOpen(true)} text={`Invite User`} cx={2} />
+            </div>
+            <UserList
+              userList={user.companyUsers.filter(d => d.roleId !== 'ef539566-efed-43b1-acdc-70da5b743d16')}
+              roles={user.roles}
+              permissions={user?.permissions?.permissions ? user?.permissions?.permissions : user?.permissions}
+              changeCompanyRole={changeCompanyRole}
+              assignTempPermissions={assignTempPermissions}
+              removeTempPermissions={removeTempPermissions}
+            />
+          </div>
+
+          <div>
+            <div
+              className={`flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between w-full xl:w-auto items-start sm:items-center sm:space-x-6 flex-shrink-0`}
+            >
+              <Heading className={`font-semibold text-brand_blue`} title={`Agents`} size={3} />
+              <Button className={`h-14`} onClick={() => setOpen2(true)} text={`Add Agent`} cx={2} />
+            </div>
+            <UserList
+              userList={user.companyUsers.filter(d => d.roleId === 'ef539566-efed-43b1-acdc-70da5b743d16')}
+              roles={user.roles}
+              permissions={user?.permissions?.permissions ? user?.permissions?.permissions : user?.permissions}
+              changeCompanyRole={changeCompanyRole}
+              assignTempPermissions={assignTempPermissions}
+              removeTempPermissions={removeTempPermissions}
+            />
+          </div>
+        </FadeIn>
       </FadeIn>
       <Dialog open={open} setOpen={setOpen} title={`User Invite`} type={`user-invite`} action={InviteUser} />
+      <Dialog open={open2} setOpen={setOpen2} title={`Add Agent`} type={`agent-invite`} action={AddAgent} />
     </div>
   );
 };

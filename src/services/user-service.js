@@ -5,7 +5,7 @@ export const signUp = async data => {
 };
 
 export const signIn = async data => {
-  return http().post('/auth/signin', data);
+  return http().post('/auth/signin/web', data);
 };
 
 export const fetchUser = async () => {

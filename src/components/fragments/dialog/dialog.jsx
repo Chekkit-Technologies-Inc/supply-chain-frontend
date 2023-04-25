@@ -32,6 +32,16 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
           dispatch(ResponseActions.notify({ title: 'Error', message: 'Incomplete data', type: 'danger' }));
         }
       }
+      if (type === 'agent-invite') {
+        let send = inviteData.name && inviteData.password && inviteData.email;
+        if (send) {
+          action(inviteData);
+          setInviteData(initialInviteData);
+          setOpen(false);
+        } else {
+          dispatch(ResponseActions.notify({ title: 'Error', message: 'Incomplete data', type: 'danger' }));
+        }
+      }
     }
   };
 
@@ -113,6 +123,52 @@ const AppDialog = ({ open, setOpen, type, title, action, data }) => {
                   <div className='mt-5 sm:mt-6 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense w-full'>
                     <Button className={`h-14 w-full`} onClick={closeDialog} text={`Cancel`} type={`secondary`} cx={2} />
                     <Button type={`submit`} className={`h-14 w-full`} text={`Invite`} cx={2} />
+                  </div>
+                </form>
+              )}
+              {type === 'agent-invite' && (
+                <form
+                  onSubmit={onSubmit}
+                  className='inline-block bg-white text-left overflow-hidden shadow-xl transform transition-all mb-8 mt-32 align-middle max-w-lg w-full p-6'
+                >
+                  <div className={`w-full`}>
+                    <div className='mt-3 text-center sm:mt-5 w-full'>
+                      <Dialog.Title as='h3' className='text-lg leading-6 font-medium text-gray-900'>
+                        <Heading className={`text-brand_blue`} title={title} size={2} />
+                      </Dialog.Title>
+                      <div style={{ minWidth: '300px' }} className='mt-6 space-y-4'>
+                      <InputBox
+                          placeholder={`Name`}
+                          name={`name`}
+                          value={inviteData.name}
+                          onValueChange={handleInputChange}
+                          variant={3}
+                          required={true}
+                        />
+                        <InputBox
+                          placeholder={`Company Email`}
+                          name={`email`}
+                          type={'email'}
+                          value={inviteData.email}
+                          onValueChange={handleInputChange}
+                          variant={3}
+                          required={true}
+                        />
+                        <InputBox
+                          placeholder={`Password`}
+                          name={`password`}
+                          type={'password'}
+                          value={inviteData.password}
+                          onValueChange={handleInputChange}
+                          variant={3}
+                          required={true}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className='mt-5 sm:mt-6 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense w-full'>
+                    <Button className={`h-14 w-full`} onClick={closeDialog} text={`Cancel`} type={`secondary`} cx={2} />
+                    <Button type={`submit`} className={`h-14 w-full`} text={`Add Agent`} cx={2} />
                   </div>
                 </form>
               )}

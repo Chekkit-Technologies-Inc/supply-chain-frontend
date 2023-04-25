@@ -173,6 +173,24 @@ export const sendInvite = data => async dispatch => {
   }
 };
 
+export const addAgent = data => async dispatch => {
+  dispatch(loading({ loading: true }));
+  try {
+    const res = await UserService.addAgent(data);
+
+    dispatch(notify({ title: res.data.status, message: res.data.message, type: 'success', loading: false }));
+
+    dispatch(getCompanyUsers())
+    return Promise.resolve(res.data);
+  } catch (err) {
+    if (err.response && err.response.status === 401) {
+      dispatch(signOut());
+    }
+    dispatch(notify({ title: err.name, message: err.response?.data?.error || err.message, type: 'danger', loading: false }));
+    return Promise.reject(err);
+  }
+};
+
 export const acceptInvite = data => async dispatch => {
   dispatch(loading({ loading: true }));
   try {
@@ -368,6 +386,7 @@ export const sendMessage = data => async dispatch => {
 
 const UserActions = {
   signUp,
+  addAgent,
   signIn,
   fetchUser,
   updateUser,
@@ -384,7 +403,6 @@ const UserActions = {
   getCompanyUserPermissions,
   assignTempPermission,
   removeTempPermission,
-
   sendMessage,
 };
 

@@ -5,7 +5,7 @@ export const signUp = async data => {
 };
 
 export const signIn = async data => {
-  return http().post('/auth/signin', data);
+  return http().post('/auth/signin/web', data);
 };
 
 export const fetchUser = async () => {
@@ -26,6 +26,10 @@ export const updatePassword = async data => {
 
 export const sendInvite = async data => {
   return http().post(`/users/invite`, data);
+};
+
+export const addAgent = async data => {
+  return http().post(`/auth/agent/signup`, data);
 };
 
 export const acceptInvite = async data => {
@@ -72,6 +76,7 @@ const UserService = {
   resetPassword,
   updatePassword,
   sendInvite,
+  addAgent,
   acceptInvite,
   getCompanyUsers,
   getUsersRoles,

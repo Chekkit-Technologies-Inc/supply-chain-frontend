@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import { CgSpinner } from 'react-icons/cg';
-import runOneSignal from './runOneSignal';
+// import runOneSignal from './runOneSignal';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { ReactPlugin } from '@microsoft/applicationinsights-react-js';
 
@@ -42,11 +42,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (user?.id) {
-      if (!window.OneSignal) {
-        runOneSignal(user?.company?.id);
-      }
-    }
+    console.log('onesignal removed')
+    // if (user?.id) {
+    //   if (!window.OneSignal) {
+    //     runOneSignal(user?.company?.id);
+    //   }
+    // }
     // eslint-disable-next-line
   }, [user?.id]);
 

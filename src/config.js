@@ -1,5 +1,5 @@
 // export const apiUrl = 'https://api-supply-chain.chekkit.app/api/v1';
-export const apiUrl = 'https://supplychaindev.azurewebsites.net/api/v1';
+export const apiUrl = 'https://supply-chain-backend.azurewebsites.net/api/v1';
 
 export const REACT_APP_MAP_API_KEY = 'AIzaSyBIhKt7YhWM0qAcLZrIAJGmrqnJLs8dT8E';
 

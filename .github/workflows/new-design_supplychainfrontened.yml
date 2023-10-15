@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'SupplyChainFrontened'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40EAA6C983564C4E92E14A1161D76730 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A9A8B5825D6642C7819F13CAAEF9AFA4 }}
           package: .
